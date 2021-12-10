@@ -1,10 +1,10 @@
-16:25:01 **** Incremental Build of configuration Debug for project Dev_Board_Tests ****
+14:44:43 **** Incremental Build of configuration Debug for project Dev_Board_Tests ****
 make -j8 all 
 arm-none-eabi-size   Dev_Board_Tests.elf 
    text	   data	    bss	    dec	    hex	filename
-  17468	    120	   2936	  20524	   502c	Dev_Board_Tests.elf
+  17436	    120	   2936	  20492	   500c	Dev_Board_Tests.elf
 Finished building: default.size.stdout
  
 
-16:25:02 Build Finished. 0 errors, 0 warnings. (took 309ms)
+14:44:44 Build Finished. 0 errors, 0 warnings. (took 470ms)
 

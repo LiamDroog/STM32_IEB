@@ -113,7 +113,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
 //  char buffer[] = "Don't Panic :)\r\n";
 //  char uartbuffer[] = "Don't Panic - from USART\r\n";
-  char uart2Data[64] = "Connected to UART Two\r\n";
+  char uart2Data[] = "\nInitializing UART..\n\rConnected to UART.\r\n";
 
   HAL_UART_Transmit(&huart1, (uint8_t *)&uart2Data, sizeof(uart2Data), 0xFFFF);
 
@@ -126,7 +126,7 @@ int main(void)
 
   int j = 1;
   char output2[] = "Address found at 0x";
-  char output1[] = ".\r\n";
+//  char output1[] = ".\r\n";
 
   for (i=1; i<128; i++)
 	{

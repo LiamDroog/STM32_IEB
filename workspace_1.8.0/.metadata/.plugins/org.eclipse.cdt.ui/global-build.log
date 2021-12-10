@@ -1,0 +1,36 @@
+16:24:55 **** Incremental Build of configuration Debug for project Dev_Board_Tests ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L053xx -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:141:5: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  141 |     sprintf(buf, "%d", j);
+      |     ^~~~~~~
+../Core/Src/main.c:141:5: warning: incompatible implicit declaration of built-in function 'sprintf'
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:129:8: warning: unused variable 'output1' [-Wunused-variable]
+  129 |   char output1[] = ".\r\n";
+      |        ^~~~~~~
+arm-none-eabi-gcc -o "Dev_Board_Tests.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\Dev_Board_Tests\STM32L053C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Dev_Board_Tests.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Dev_Board_Tests.elf
+ 
+arm-none-eabi-size   Dev_Board_Tests.elf 
+arm-none-eabi-objdump -h -S  Dev_Board_Tests.elf  > "Dev_Board_Tests.list"
+arm-none-eabi-objcopy  -O binary  Dev_Board_Tests.elf  "Dev_Board_Tests.bin"
+   text	   data	    bss	    dec	    hex	filename
+  17468	    120	   2936	  20524	   502c	Dev_Board_Tests.elf
+Finished building: default.size.stdout
+ 
+Finished building: Dev_Board_Tests.bin
+ 
+Finished building: Dev_Board_Tests.list
+ 
+16:25:01 **** Incremental Build of configuration Debug for project Dev_Board_Tests ****
+make -j8 all 
+arm-none-eabi-size   Dev_Board_Tests.elf 
+   text	   data	    bss	    dec	    hex	filename
+  17468	    120	   2936	  20524	   502c	Dev_Board_Tests.elf
+Finished building: default.size.stdout
+ 

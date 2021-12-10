@@ -67,7 +67,43 @@ static void MX_I2C2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+//void read_register(uint8_t register_pointer, uint8_t* receive_buffer)
+//{
+//    // first set the register pointer to the register wanted to be read
+//    HAL_I2C_Master_Transmit(&hi2c1, 0x79, &register_pointer, 1, 100);  // note the & operator which gives us the address of the register_pointer variable
+//
+//    // receive the 2 x 8bit data into the receive buffer
+//    HAL_I2C_Master_Receive(&hi2c1, 0x79, receive_buffer, 2, 100);
+//}
+uint16_t read_register(uint8_t register_pointer)
+{
+    HAL_StatusTypeDef status = HAL_OK;
+    uint16_t return_value = 0;
 
+    status = HAL_I2C_Mem_Read(&hi2c1, 0x79, (uint16_t)register_pointer, I2C_MEMADD_SIZE_8BIT, &return_value, 2, 100);
+
+    /* Check the communication status */
+    if(status != HAL_OK)
+    {
+
+    }
+
+    return return_value;
+}
+
+void write_register(uint8_t register_pointer, uint16_t register_value)
+{
+    HAL_StatusTypeDef status = HAL_OK;
+
+    status = HAL_I2C_Mem_Write(&hi2c1, 0x78<<1, (uint16_t)register_pointer, I2C_MEMADD_SIZE_8BIT, (uint8_t*)(&register_value), 2, 100);
+
+    /* Check the communication status */
+    if(status != HAL_OK)
+    {
+        // Error handling, for example re-initialization of the I2C peripheral
+    	printf("I2C Write failed...\r\n");
+    }
+}
 /* USER CODE END 0 */
 
 /**
@@ -101,16 +137,12 @@ int main(void)
   MX_I2C1_Init();
   MX_SPI2_Init();
   MX_TSC_Init();
+  // PRINTF REQUIRES UART1!!
   MX_USART1_UART_Init();
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
-  //  char buffer[] = "Don't Panic :)\r\n";
-  //  char uartbuffer[] = "Don't Panic - from USART\r\n";
-
-  	printf("HELLO");
-    //HAL_UART_Transmit(&huart1, (unsigned char *)"\r\n--------\r\n\r\nProject: I2C_BUS_SCAN; V0.1\r\nInitializing UART..\n\rConnected to UART.\r\n", strlen("\r\n--------\r\n\r\nProject: I2C_BUS_SCAN; V0.1\r\nInitializing UART..\n\rConnected to UART.\r\n"), 0xFFFF);
-    //HAL_UART_Transmit(&huart1, (unsigned char *)"Scanning I2C Bus: \r\n", strlen("Scanning I2C Bus: \r\n"), 0xFFFF);
-
+  	printf("\r\n--------\r\n\r\nProject: I2C_BUS_SCAN; V0.1\r\nInitializing UART..\n\rConnected to UART.\r\n");
+  	printf("Scanning I2C Bus: \r\n");
 
     HAL_StatusTypeDef result;
     uint8_t i;
@@ -126,21 +158,25 @@ int main(void)
     for (i=1; i<128; i++)
   	{
   	  result = HAL_I2C_IsDeviceReady(&hi2c1, (uint16_t)(i<<1), 2, 2);
-  //	  if (result != HAL_OK) // HAL_ERROR or HAL_BUSY or HAL_TIMEOUT
-  //	  {
-  //		  HAL_UART_Transmit(&huart1, (uint8_t *)output1, sizeof(output1), 0xFFFF);
-  //	  }
+
   	  if (result == HAL_OK)
   	  {
-//  		  char buf[64];
-  		  printf("%x\r\n", (uint16_t)(i<<1));
-//  		  HAL_UART_Transmit(&huart1,(unsigned char *)"Address Found \r\n", strlen("Address Found \r\n"), 0xFFFF);
-//  		  HAL_UART_Transmit(&huart1, (uint8_t *)buf, sizeof(buf), 0xFFFF);
-//  		  HAL_UART_Transmit(&huart1, buf, sizeof(buf), 0xFFFF);
-
+  		  printf("I2C address found: 0x%X\r\n", (uint16_t)(i<<1));
   	  }
   	}
-  /* USER CODE END 2 */
+
+    uint8_t reg_ptr = 0x00;
+    uint16_t buffer;
+    write_register(reg_ptr, 0x05);
+
+    printf("\nReading from 0x00 on 0x78\r\n");
+    buffer = read_register(reg_ptr);
+    printf("Obtained 0x%x\r\n\n", buffer);
+
+    printf("Reading from 0x41 on 0x78\r\n");
+    buffer = read_register(0x41);
+    printf("Obtained 0x%x\r\n\n", buffer);
+    /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -157,6 +193,7 @@ int main(void)
   * @brief System Clock Configuration
   * @retval None
   */
+
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};

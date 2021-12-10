@@ -1,90 +1,19 @@
-14:39:13 **** Incremental Build of configuration Debug for project I2C_BUS_SCAN ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/printf.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L053xx -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/printf.d" -MT"Core/Src/printf.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/printf.o"
-../Core/Src/printf.c:117:8: error: unknown type name 'UART_HandleTypeDef'
-  117 | extern UART_HandleTypeDef huart1;
-      |        ^~~~~~~~~~~~~~~~~~
-../Core/Src/printf.c: In function '__putchar':
-../Core/Src/printf.c:123:2: warning: implicit declaration of function 'HAL_UART_Transmit' [-Wimplicit-function-declaration]
-  123 |  HAL_UART_Transmit(&huart1, &outchar, 1, 0xFFFF);
-      |  ^~~~~~~~~~~~~~~~~
-make: *** [Core/Src/subdir.mk:37: Core/Src/printf.o] Error 1
-"make -j8 all" terminated with exit code 2. Build might be incomplete.
-14:40:49 **** Incremental Build of configuration Debug for project Dev_Board_Tests ****
-make -j8 all 
-arm-none-eabi-size   Dev_Board_Tests.elf 
-   text	   data	    bss	    dec	    hex	filename
-  17436	    120	   2936	  20492	   500c	Dev_Board_Tests.elf
-Finished building: default.size.stdout
- 
-14:40:50 **** Incremental Build of configuration Debug for project I2C_BUS_SCAN ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/printf.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L053xx -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/printf.d" -MT"Core/Src/printf.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/printf.o"
-../Core/Src/printf.c: In function '__putchar':
-../Core/Src/printf.c:124:29: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
-  124 |  HAL_UART_Transmit(&huart1, &outchar, 1, 0xFFFF);
-      |                             ^~~~~~~~
-      |                             |
-      |                             char *
-In file included from ../Core/Inc/stm32l0xx_hal_conf.h:281,
-                 from ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h:30,
-                 from ../Core/Src/printf.c:37:
-../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h:1488:73: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
- 1488 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
-      |                                                                ~~~~~~~~~^~~~~
-arm-none-eabi-gcc -o "I2C_BUS_SCAN.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_BUS_SCAN\STM32L053C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="I2C_BUS_SCAN.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: I2C_BUS_SCAN.elf
- 
-arm-none-eabi-size   I2C_BUS_SCAN.elf 
-arm-none-eabi-objdump -h -S  I2C_BUS_SCAN.elf  > "I2C_BUS_SCAN.list"
-arm-none-eabi-objcopy  -O binary  I2C_BUS_SCAN.elf  "I2C_BUS_SCAN.bin"
-   text	   data	    bss	    dec	    hex	filename
-  16244	    120	   2040	  18404	   47e4	I2C_BUS_SCAN.elf
-Finished building: default.size.stdout
- 
-Finished building: I2C_BUS_SCAN.bin
- 
-Finished building: I2C_BUS_SCAN.list
- 
-14:41:29 **** Incremental Build of configuration Debug for project Dev_Board_Tests ****
-make -j8 all 
-arm-none-eabi-size   Dev_Board_Tests.elf 
-   text	   data	    bss	    dec	    hex	filename
-  17436	    120	   2936	  20492	   500c	Dev_Board_Tests.elf
-Finished building: default.size.stdout
- 
-14:41:30 **** Incremental Build of configuration Debug for project I2C_BUS_SCAN ****
+16:42:07 **** Incremental Build of configuration Debug for project I2C_BUS_SCAN ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L053xx -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:110:11: warning: character constant too long for its type
-  110 |    printf('HELLO');
-      |           ^~~~~~~
-../Core/Src/main.c:110:11: warning: passing argument 1 of 'printf_' makes pointer from integer without a cast [-Wint-conversion]
-In file included from ../Core/Src/main.c:21:
-../Core/Inc/printf.h:55:25: note: expected 'const char *' but argument is of type 'int'
-   55 | int printf_(const char *format, ...);
-      |             ~~~~~~~~~~~~^~~~~~
-../Core/Src/main.c:111:149: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
-  111 |     HAL_UART_Transmit(&huart1, (unsigned char *)"\r\n--------\r\n\r\nProject: I2C_BUS_SCAN; V0.1\r\nInitializing UART..\n\rConnected to UART.\r\n", strlen("\r\n--------\r\n\r\nProject: I2C_BUS_SCAN; V0.1\r\nInitializing UART..\n\rConnected to UART.\r\n"), 0xFFFF);
-      |                                                                                                                                                     ^~~~~~
-../Core/Src/main.c:111:149: warning: incompatible implicit declaration of built-in function 'strlen'
-../Core/Src/main.c:22:1: note: include '<string.h>' or provide a declaration of 'strlen'
-   21 | #include "printf.h"
-  +++ |+#include <string.h>
-   22 | 
-../Core/Src/main.c:139:34: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
-  139 |       HAL_UART_Transmit(&huart1, buf, sizeof(buf), 0xFFFF);
-      |                                  ^~~
-      |                                  |
-      |                                  char *
-In file included from ../Core/Inc/stm32l0xx_hal_conf.h:281,
+../Core/Src/main.c: In function 'read_register':
+../Core/Src/main.c:83:95: warning: passing argument 5 of 'HAL_I2C_Mem_Read' from incompatible pointer type [-Wincompatible-pointer-types]
+   83 |     status = HAL_I2C_Mem_Read(&hi2c1, 0x79, (uint16_t)register_pointer, I2C_MEMADD_SIZE_8BIT, &return_value, 2, 100);
+      |                                                                                               ^~~~~~~~~~~~~
+      |                                                                                               |
+      |                                                                                               uint16_t * {aka short unsigned int *}
+In file included from ../Core/Inc/stm32l0xx_hal_conf.h:236,
                  from ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h:30,
                  from ../Core/Inc/main.h:30,
                  from ../Core/Src/main.c:20:
-../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h:1488:73: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
- 1488 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
-      |                                                                ~~~~~~~~~^~~~~
+../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h:633:66: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
+  633 |                                    uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                         ~~~~~~~~~^~~~~
 arm-none-eabi-gcc -o "I2C_BUS_SCAN.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_BUS_SCAN\STM32L053C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="I2C_BUS_SCAN.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: I2C_BUS_SCAN.elf
  
@@ -92,96 +21,7 @@ arm-none-eabi-size   I2C_BUS_SCAN.elf
 arm-none-eabi-objdump -h -S  I2C_BUS_SCAN.elf  > "I2C_BUS_SCAN.list"
 arm-none-eabi-objcopy  -O binary  I2C_BUS_SCAN.elf  "I2C_BUS_SCAN.bin"
    text	   data	    bss	    dec	    hex	filename
-  28700	     20	   2012	  30732	   780c	I2C_BUS_SCAN.elf
-Finished building: default.size.stdout
- 
-Finished building: I2C_BUS_SCAN.bin
- 
-Finished building: I2C_BUS_SCAN.list
- 
-14:41:39 **** Incremental Build of configuration Debug for project I2C_BUS_SCAN ****
-make -j8 all 
-arm-none-eabi-size   I2C_BUS_SCAN.elf 
-   text	   data	    bss	    dec	    hex	filename
-  28700	     20	   2012	  30732	   780c	I2C_BUS_SCAN.elf
-Finished building: default.size.stdout
- 
-14:42:14 **** Incremental Build of configuration Debug for project I2C_BUS_SCAN ****
-make -j8 all 
-arm-none-eabi-size   I2C_BUS_SCAN.elf 
-   text	   data	    bss	    dec	    hex	filename
-  28700	     20	   2012	  30732	   780c	I2C_BUS_SCAN.elf
-Finished building: default.size.stdout
- 
-14:42:51 **** Incremental Build of configuration Debug for project I2C_BUS_SCAN ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L053xx -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:111:149: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
-  111 |     HAL_UART_Transmit(&huart1, (unsigned char *)"\r\n--------\r\n\r\nProject: I2C_BUS_SCAN; V0.1\r\nInitializing UART..\n\rConnected to UART.\r\n", strlen("\r\n--------\r\n\r\nProject: I2C_BUS_SCAN; V0.1\r\nInitializing UART..\n\rConnected to UART.\r\n"), 0xFFFF);
-      |                                                                                                                                                     ^~~~~~
-../Core/Src/main.c:111:149: warning: incompatible implicit declaration of built-in function 'strlen'
-../Core/Src/main.c:22:1: note: include '<string.h>' or provide a declaration of 'strlen'
-   21 | #include "printf.h"
-  +++ |+#include <string.h>
-   22 | 
-../Core/Src/main.c:139:34: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
-  139 |       HAL_UART_Transmit(&huart1, buf, sizeof(buf), 0xFFFF);
-      |                                  ^~~
-      |                                  |
-      |                                  char *
-In file included from ../Core/Inc/stm32l0xx_hal_conf.h:281,
-                 from ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h:30,
-                 from ../Core/Inc/main.h:30,
-                 from ../Core/Src/main.c:20:
-../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h:1488:73: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
- 1488 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
-      |                                                                ~~~~~~~~~^~~~~
-arm-none-eabi-gcc -o "I2C_BUS_SCAN.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_BUS_SCAN\STM32L053C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="I2C_BUS_SCAN.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: I2C_BUS_SCAN.elf
- 
-arm-none-eabi-size   I2C_BUS_SCAN.elf 
-arm-none-eabi-objdump -h -S  I2C_BUS_SCAN.elf  > "I2C_BUS_SCAN.list"
-arm-none-eabi-objcopy  -O binary  I2C_BUS_SCAN.elf  "I2C_BUS_SCAN.bin"
-   text	   data	    bss	    dec	    hex	filename
-  28708	     20	   2012	  30740	   7814	I2C_BUS_SCAN.elf
-Finished building: default.size.stdout
- 
-Finished building: I2C_BUS_SCAN.bin
- 
-Finished building: I2C_BUS_SCAN.list
- 
-14:44:43 **** Incremental Build of configuration Debug for project Dev_Board_Tests ****
-make -j8 all 
-arm-none-eabi-size   Dev_Board_Tests.elf 
-   text	   data	    bss	    dec	    hex	filename
-  17436	    120	   2936	  20492	   500c	Dev_Board_Tests.elf
-Finished building: default.size.stdout
- 
-14:44:44 **** Incremental Build of configuration Debug for project I2C_BUS_SCAN ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L053xx -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:136:41: error: expected ';' before '}' token
-  136 |       printf("%x\r\n", (uint16_t)(i<<1))
-      |                                         ^
-      |                                         ;
-......
-  141 |      }
-      |      ~                                   
-make: *** [Core/Src/subdir.mk:37: Core/Src/main.o] Error 1
-"make -j8 all" terminated with exit code 2. Build might be incomplete.
-14:44:54 **** Incremental Build of configuration Debug for project I2C_BUS_SCAN ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L053xx -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "I2C_BUS_SCAN.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_BUS_SCAN\STM32L053C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="I2C_BUS_SCAN.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: I2C_BUS_SCAN.elf
- 
-arm-none-eabi-size   I2C_BUS_SCAN.elf 
-arm-none-eabi-objdump -h -S  I2C_BUS_SCAN.elf  > "I2C_BUS_SCAN.list"
-arm-none-eabi-objcopy  -O binary  I2C_BUS_SCAN.elf  "I2C_BUS_SCAN.bin"
-   text	   data	    bss	    dec	    hex	filename
-  28388	     20	   2012	  30420	   76d4	I2C_BUS_SCAN.elf
+  31188	     20	   2012	  33220	   81c4	I2C_BUS_SCAN.elf
 Finished building: default.size.stdout
  
 Finished building: I2C_BUS_SCAN.bin

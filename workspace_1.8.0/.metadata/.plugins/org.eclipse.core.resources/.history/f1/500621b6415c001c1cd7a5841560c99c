@@ -21,8 +21,6 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-// IMPORTANT: printf prints out over UART - Pins PA10, PA9! NEED A USB-SERIAL CONVERTER
-// AND TERMINAL TO SEE STATEMENTS!
 #include "printf.h"
 //#include "ArduCAM.h"
 /* USER CODE END Includes */
@@ -173,7 +171,7 @@ int main(void)
     buffer = hi2c1_read_register(0xEC, 0xD0);
     printf("Obtained 0x%x\r\n\n", buffer);
 
-    // Try to scan ArduCam chip to no avail :?
+    // Try to scan ArduCam chip to no avail :/
     for (int j=0x3000; j<0x3009; j++){
     		printf("Reading from 0x%x on 0x79\r\n", j);
     		buffer = hi2c1_read_register(0x79, j);

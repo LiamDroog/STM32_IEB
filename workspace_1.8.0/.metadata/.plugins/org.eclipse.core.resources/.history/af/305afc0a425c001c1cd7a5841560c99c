@@ -21,8 +21,6 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-// IMPORTANT: printf prints out over UART - Pins PA10, PA9! NEED A USB-SERIAL CONVERTER
-// AND TERMINAL TO SEE STATEMENTS!
 #include "printf.h"
 //#include "ArduCAM.h"
 /* USER CODE END Includes */

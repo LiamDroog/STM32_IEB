@@ -1,37 +1,10 @@
-11:18:05 **** Incremental Build of configuration Debug for project I2C_BUS_SCAN ****
+11:24:21 **** Incremental Build of configuration Debug for project I2C_BUS_SCAN ****
 make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L053xx -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'hi2c1_read_register':
-../Core/Src/main.c:76:106: warning: passing argument 5 of 'HAL_I2C_Mem_Read' from incompatible pointer type [-Wincompatible-pointer-types]
-   76 |     status = HAL_I2C_Mem_Read(&hi2c1, address_pointer, (uint16_t)register_pointer, I2C_MEMADD_SIZE_8BIT, &return_value, 2, 100);
-      |                                                                                                          ^~~~~~~~~~~~~
-      |                                                                                                          |
-      |                                                                                                          uint16_t * {aka short unsigned int *}
-In file included from ../Core/Inc/stm32l0xx_hal_conf.h:236,
-                 from ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h:30,
-                 from ../Core/Inc/main.h:30,
-                 from ../Core/Src/main.c:20:
-../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h:633:66: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
-  633 |                                    uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
-      |                                                         ~~~~~~~~~^~~~~
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:152:13: warning: unused variable 'reg_ptr' [-Wunused-variable]
-  152 |     uint8_t reg_ptr = 0x00;
-      |             ^~~~~~~
-arm-none-eabi-gcc -o "I2C_BUS_SCAN.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_BUS_SCAN\STM32L053C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="I2C_BUS_SCAN.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: I2C_BUS_SCAN.elf
- 
 arm-none-eabi-size   I2C_BUS_SCAN.elf 
-arm-none-eabi-objdump -h -S  I2C_BUS_SCAN.elf  > "I2C_BUS_SCAN.list"
-arm-none-eabi-objcopy  -O binary  I2C_BUS_SCAN.elf  "I2C_BUS_SCAN.bin"
    text	   data	    bss	    dec	    hex	filename
   31544	     20	   2012	  33576	   8328	I2C_BUS_SCAN.elf
 Finished building: default.size.stdout
  
-Finished building: I2C_BUS_SCAN.bin
- 
-Finished building: I2C_BUS_SCAN.list
- 
 
-11:18:06 Build Finished. 0 errors, 2 warnings. (took 1s.78ms)
+11:24:22 Build Finished. 0 errors, 0 warnings. (took 313ms)
 

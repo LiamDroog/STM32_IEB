@@ -192,3 +192,6 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2021-12-13 09:35:52.556
 !MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2021-12-13 11:28:26.160
+!MESSAGE Indexed 'I2C_SPI_Sensor_Test' (26 sources, 86 headers) in 2.23 sec: 5,695 declarations; 37,004 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0047%)

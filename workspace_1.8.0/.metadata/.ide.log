@@ -2704,3 +2704,289 @@
 2021-12-13 10:23:22,997 [INFO] ProjectBuilder:3832 - Time for Generating toolchain IDE Files: 3682mS.
 2021-12-13 10:23:22,997 [INFO] ProjectBuilder:2461 - Time for Copy CMSIS : 0mS.
 2021-12-13 10:23:22,997 [INFO] ProjectBuilder:2461 - Time for Copy CMSIS : 0mS.
+2021-12-13 11:27:22,083 [INFO] MainUpdater:2729 - connection check result : 10
+2021-12-13 11:27:22,305 [INFO] McuFinderGlobals:52 - Set McuFinderConnectedMode to true
+2021-12-13 11:27:22,442 [INFO] CrossSelectorPresenter:1330 - Cross Selector saved comparison directory: C:\Users\Liam Droog\.stmcufinder\plugins\mcufinder\mcu\cs_comparisons_mx
+2021-12-13 11:27:22,451 [INFO] MultiScanPanel:197 - Auto-refresh data requested => check proxy status ongoing
+2021-12-13 11:27:22,459 [INFO] FinderPluginLoader:87 - Searching for filters in installed packs
+2021-12-13 11:27:22,898 [INFO] LoadUrlFilesThread:172 - End of LoadServerUrlFiles without Thread
+2021-12-13 11:27:22,945 [INFO] DetailPanel:310 - Set advertising image to C:/Users/Liam Droog/STM32Cube/Repository/\en.Prom_NBSTM32U50921.jpg
+2021-12-13 11:27:23,242 [INFO] MultiScanPanel:799 - Auto Refresh Data is not needed
+2021-12-13 11:27:23,336 [INFO] DbBoardsPdsc:90 - Found 26 items
+2021-12-13 11:27:23,352 [INFO] DbBoardsPdsc:90 - Found 9 items
+2021-12-13 11:27:23,367 [INFO] DbBoardsPdsc:90 - Found 33 items
+2021-12-13 11:27:23,367 [INFO] DbBoardsPdsc:90 - Found 1 items
+2021-12-13 11:27:23,398 [INFO] DbBoardsPdsc:90 - Found 48 items
+2021-12-13 11:27:23,414 [INFO] DbBoardsPdsc:90 - Found 43 items
+2021-12-13 11:27:23,414 [INFO] DbBoardsPdsc:90 - Found 2 items
+2021-12-13 11:27:23,430 [INFO] DbBoardsPdsc:90 - Found 5 items
+2021-12-13 11:27:23,477 [WARN] DbBoardsPdsc:254 - Board STM32H7B3I-DK: unknown feature type=Audio, name=, username=Audio stereo codec with Headphone Amp (CS42L51-CNZ), n=1
+2021-12-13 11:27:23,477 [WARN] DbBoardsPdsc:254 - Board STM32H735G-DK: unknown feature type=Audio, name=, username=Audio stereo codec with Headphone Amp (WM8994ECS/R), n=1
+2021-12-13 11:27:23,477 [WARN] DbBoardsPdsc:254 - Board STM32H7B3I-EVAL: unknown feature type=Audio, name=, username=Multi-Channel Audio Codec (CS42L51-CNZ), n=1
+2021-12-13 11:27:23,477 [WARN] DbBoardsPdsc:254 - Board STM32H7B3I-EVAL: unknown feature type=Meter, name=, username=Power-metering and Temperature-monitoring with sigma-delta modulators, n=1
+2021-12-13 11:27:23,477 [WARN] DbBoardsPdsc:254 - Board STM32H7B3I-EVAL: unknown feature type=Motor, name=, username=Motor Control, n=1
+2021-12-13 11:27:23,477 [WARN] DbBoardsPdsc:254 - Board STM32U575I-EV: unknown feature type=joystick, name=, username=4-direction joystick with selection button, n=1
+2021-12-13 11:27:23,539 [INFO] DbBoardsJson:86 - JSON generation date=Tue Nov 16 09:17:54 MST 2021 (1637079474)
+2021-12-13 11:27:23,539 [INFO] DbBoards:117 - Found 167 boards (164 are supported by CubeMX)
+2021-12-13 11:27:23,555 [INFO] DbBoardsDocs:143 - JSON generation date=Tue Nov 16 09:17:54 MST 2021 (1637079474)
+2021-12-13 11:27:23,555 [INFO] DbBoardsDocs:79 - Found 209 boards documents
+2021-12-13 11:27:23,555 [WARN] DbBoards:127 - board B-L475E-IOT01A2 has no document id list !
+2021-12-13 11:27:23,555 [WARN] DbBoards:127 - board NUCLEO-H743ZI has no document id list !
+2021-12-13 11:27:23,555 [WARN] DbBoards:127 - board NUCLEO-WL55JC2 has no document id list !
+2021-12-13 11:27:23,555 [WARN] DbBoards:127 - board P-NUCLEO-WB55-Nucleo has no document id list !
+2021-12-13 11:27:23,555 [WARN] DbBoards:127 - board P-NUCLEO-WB55-USBDongle has no document id list !
+2021-12-13 11:27:23,555 [WARN] DbBoards:127 - board STEVAL-BFA001V1B has no document id list !
+2021-12-13 11:27:23,555 [WARN] DbBoards:127 - board STEVAL-BFA001V2B has no document id list !
+2021-12-13 11:27:23,555 [WARN] DbBoards:127 - board STEVAL-IDP005V1 has no document id list !
+2021-12-13 11:27:23,555 [WARN] DbBoards:127 - board STEVAL-IDP005V2 has no document id list !
+2021-12-13 11:27:23,555 [WARN] DbBoards:127 - board STEVAL-MKSBOX1V1 has no document id list !
+2021-12-13 11:27:23,555 [WARN] DbBoards:127 - board STEVAL-STWINKT1 has no document id list !
+2021-12-13 11:27:23,555 [WARN] DbBoards:127 - board STEVAL-STWINKT1B has no document id list !
+2021-12-13 11:27:23,555 [WARN] DbBoards:127 - board STM32439I-EVAL2 has no document id list !
+2021-12-13 11:27:23,555 [WARN] DbBoards:127 - board STM32F401C-DISCO has no document id list !
+2021-12-13 11:27:23,555 [WARN] DbBoards:127 - board STM32F769I-DISC1 has no document id list !
+2021-12-13 11:27:23,555 [WARN] DbBoards:127 - board STM32G474E-EVAL1 has no document id list !
+2021-12-13 11:27:23,555 [WARN] DbBoards:127 - board STM32H743I-EVAL2 has no document id list !
+2021-12-13 11:27:23,555 [WARN] DbBoards:127 - board STM32H747I-DISC1 has no document id list !
+2021-12-13 11:27:23,555 [WARN] DbBoards:127 - board STM32H753I-EVAL2 has no document id list !
+2021-12-13 11:27:23,555 [WARN] DbBoards:127 - board STM32L-DISCOVERY has no document id list !
+2021-12-13 11:27:25,852 [INFO] ApiDb:251 - Load user favorites file C:\Users\Liam Droog/.stm32cubeide/favorites.boards.txt: 0 item(s)
+2021-12-13 11:27:25,852 [INFO] ApiDb:255 - User favorites Boards=[]
+2021-12-13 11:27:25,852 [INFO] DbBoards:206 - Set 0 / 0 favorites Boards
+2021-12-13 11:28:11,680 [INFO] MainUpdater:2729 - connection check result : 10
+2021-12-13 11:28:11,680 [INFO] MainUpdater:2729 - connection check result : 10
+2021-12-13 11:28:11,711 [INFO] I2cTimingTraitement:325 - 0x00300F38
+2021-12-13 11:28:11,743 [INFO] I2cTimingTraitement:325 - 0x00707CBB
+2021-12-13 11:28:11,930 [INFO] I2cTimingTraitement:325 - 0x00300F38
+2021-12-13 11:28:11,993 [INFO] MicroXplorer:447 - Change Database Path : 
+2021-12-13 11:28:11,993 [INFO] MicroXplorer:477 - Change Database Version : DB.6.0.40
+2021-12-13 11:28:11,993 [WARN] ThirdParty:823 - waiting for thirdparty lock release [close project]
+2021-12-13 11:28:11,993 [INFO] ThirdParty:825 - entering critical section [close project]
+2021-12-13 11:28:11,993 [INFO] ThirdParty:835 - exiting critical section [close project]
+2021-12-13 11:28:11,993 [INFO] PinOutPanel:1463 - setPackage(No Configuration,No Configuration)
+2021-12-13 11:28:11,993 [INFO] UtilMem:74 - Begin LoadConfig() Used Memory: 498073600 Bytes (739246080)
+2021-12-13 11:28:11,993 [INFO] MicroXplorer:447 - Change Database Path : 
+2021-12-13 11:28:11,993 [INFO] MicroXplorer:477 - Change Database Version : DB.6.0.40
+2021-12-13 11:28:11,993 [INFO] OpenFileManager:313 - Change cursor
+2021-12-13 11:28:12,035 [INFO] RulesReader:57 - Compatibility file has been processed (244 Rules)
+2021-12-13 11:28:12,925 [INFO] Context:592 - Trying to add GPIOservice into a context  which must be forbidden
+2021-12-13 11:28:13,191 [WARN] ApiManager:304 - Cannot register API 'Board Extension:S2868A1' from pack STMicroelectronics.X-CUBE-SFXS2LP1.3.1.0: no header file found
+2021-12-13 11:28:13,191 [WARN] ApiManager:304 - Cannot register API 'Board Extension:S2868A2' from pack STMicroelectronics.X-CUBE-SFXS2LP1.3.1.0: no header file found
+2021-12-13 11:28:13,191 [WARN] ApiManager:304 - Cannot register API 'Board Extension:S2915A1' from pack STMicroelectronics.X-CUBE-SFXS2LP1.3.1.0: no header file found
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ModelIntegratedComponent:60 - No mode defined for component null
+2021-12-13 11:28:13,207 [WARN] ApiManager:304 - Cannot register API 'Board Extension:S2868A1' from pack STMicroelectronics.X-CUBE-SUBG2.4.2.0: no header file found
+2021-12-13 11:28:13,207 [WARN] ApiManager:304 - Cannot register API 'Board Extension:S2868A2' from pack STMicroelectronics.X-CUBE-SUBG2.4.2.0: no header file found
+2021-12-13 11:28:13,207 [WARN] ApiManager:304 - Cannot register API 'Board Extension:S2915A1' from pack STMicroelectronics.X-CUBE-SUBG2.4.2.0: no header file found
+2021-12-13 11:28:13,363 [WARN] ApiManager:304 - Cannot register API 'Board Extension:IKS01A3' from pack STMicroelectronics.X-CUBE-MEMS1.9.1.0: no header file found
+2021-12-13 11:28:13,363 [WARN] ApiManager:304 - Cannot register API 'Board Extension:IKS01A2' from pack STMicroelectronics.X-CUBE-MEMS1.9.1.0: no header file found
+2021-12-13 11:28:13,363 [WARN] ApiManager:304 - Cannot register API 'Board Extension:IKS02A1' from pack STMicroelectronics.X-CUBE-MEMS1.9.1.0: no header file found
+2021-12-13 11:28:13,378 [INFO] RtosManager:484 - Registered RTOS mode: class=CMSIS, group=RTOS, mode=CMSIS_V1, owner=FREERTOS
+2021-12-13 11:28:13,378 [INFO] RtosManager:484 - Registered RTOS mode: class=CMSIS, group=RTOS2, mode=CMSIS_V2, owner=FREERTOS
+2021-12-13 11:28:13,378 [INFO] RtosManager:484 - Registered RTOS mode: class=RTOS, group=Core, mode=CMSIS_V1, owner=FREERTOS
+2021-12-13 11:28:13,378 [INFO] RtosManager:484 - Registered RTOS mode: class=RTOS, group=Core, mode=CMSIS_V2, owner=FREERTOS
+2021-12-13 11:28:13,378 [WARN] ModelIntegratedComponent:181 - Missing modes for component STMicroelectronics:FreeRTOS:0.0.1:STMicroelectronics:RTOS:FreeRTOS:Core:::10.2.0:
+2021-12-13 11:28:13,378 [WARN] ApiManager:304 - Cannot register API 'Board Extension:EEPRMA1' from pack STMicroelectronics.X-CUBE-EEPRMA1.3.1.0: no header file found
+2021-12-13 11:28:13,378 [WARN] ApiManager:304 - Cannot register API 'Board Extension:EEPRMA2' from pack STMicroelectronics.X-CUBE-EEPRMA1.3.1.0: no header file found
+2021-12-13 11:28:13,378 [WARN] ApiManager:304 - Cannot register API 'Board Extension:GNSS1A1' from pack STMicroelectronics.X-CUBE-GNSS1.5.2.0: no header file found
+2021-12-13 11:28:13,378 [WARN] ApiManager:304 - Cannot register API 'Board Support:Custom' from pack STMicroelectronics.X-CUBE-GNSS1.5.2.0: no header file found
+2021-12-13 11:28:13,378 [WARN] ApiManager:304 - Cannot register API 'Data Exchange:lib_gnss' from pack STMicroelectronics.X-CUBE-GNSS1.5.2.0: no header file found
+2021-12-13 11:28:13,378 [WARN] ApiManager:304 - Cannot register API 'Wireless:BlueNRG-MS' from pack STMicroelectronics.X-CUBE-BLE1.6.2.2: no header file found
+2021-12-13 11:28:13,378 [WARN] ApiManager:304 - Cannot register API 'Wireless:BlueNRG-2' from pack STMicroelectronics.X-CUBE-BLE2.3.2.2: no header file found
+2021-12-13 11:28:13,378 [WARN] ApiManager:304 - Cannot register API 'Board Extension:NFC04A1' from pack STMicroelectronics.X-CUBE-NFC4.2.0.3: no header file found
+2021-12-13 11:28:14,128 [INFO] ImportTextPane:167 - (OptionalMessage_ERROR) IP (RCC) : Invalid parameter (FamilyName)
+2021-12-13 11:28:14,144 [INFO] ImportTextPane:167 - (OptionalMessage_ERROR) IP (RCC) : Parameter (RTCHSEDivFreq_Value) has invalid value (4000000)
+2021-12-13 11:28:14,144 [INFO] ImportTextPane:167 - (OptionalMessage_ERROR) IP (RCC) : Invalid parameter (TIMFreq_Value)
+2021-12-13 11:28:14,319 [INFO] UtilMem:74 - End LoadConfig() Used Memory: 587337272 Bytes (739246080)
+2021-12-13 11:28:14,353 [WARN] ThirdParty:785 - waiting for thirdparty lock release [change project]
+2021-12-13 11:28:14,353 [INFO] ThirdParty:787 - entering critical section [change project]
+2021-12-13 11:28:14,354 [INFO] ThirdParty:977 - CMSIS Pack Vendor :wolfSSL I-CUBE-wolfSSL 5.0.0
+2021-12-13 11:28:14,354 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-SFXS2LP1 3.1.0
+2021-12-13 11:28:14,354 [INFO] ThirdParty:977 - CMSIS Pack Vendor :RoweBots I-CUBE-UNISONRTOS 5.5.0-4
+2021-12-13 11:28:14,354 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-AZRTOS-F4 1.0.0
+2021-12-13 11:28:14,354 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics USB_HOST 2.0.0
+2021-12-13 11:28:14,354 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-AZRTOS-H7 2.0.0
+2021-12-13 11:28:14,354 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics LIBJPEG 8.0.0
+2021-12-13 11:28:14,354 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-AZRTOS-G4 1.0.0
+2021-12-13 11:28:14,354 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-AZRTOS-L4 1.0.0
+2021-12-13 11:28:14,354 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics USB_DEVICE 3.0.0
+2021-12-13 11:28:14,354 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-TOF1 2.0.0
+2021-12-13 11:28:14,354 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics HAL Drivers 0.0.0
+2021-12-13 11:28:14,354 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics MBEDTLS 2.16.2
+2021-12-13 11:28:14,354 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics MBEDTLS 2.14.1
+2021-12-13 11:28:14,354 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-AZRTOS-F7 1.0.0
+2021-12-13 11:28:14,355 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-SUBG2 4.2.0
+2021-12-13 11:28:14,355 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-MEMS1 9.1.0
+2021-12-13 11:28:14,355 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-ALS 1.0.1
+2021-12-13 11:28:14,355 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics USB_DEVICE 2.0.0
+2021-12-13 11:28:14,355 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-AI 7.0.0
+2021-12-13 11:28:14,355 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics ThreadX 1.0.0
+2021-12-13 11:28:14,355 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-ALGOBUILD 1.2.1
+2021-12-13 11:28:14,355 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-AZRTOS-L5 1.0.0
+2021-12-13 11:28:14,355 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics FreeRTOS 0.0.1
+2021-12-13 11:28:14,355 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics USB_DEVICE 1.0.0
+2021-12-13 11:28:14,355 [INFO] ThirdParty:977 - CMSIS Pack Vendor :SEGGER I-CUBE-embOS 1.2.0
+2021-12-13 11:28:14,355 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-EEPRMA1 3.1.0
+2021-12-13 11:28:14,355 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics STM32_WPAN 1.0.0
+2021-12-13 11:28:14,355 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-GNSS1 5.2.0
+2021-12-13 11:28:14,355 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics ThreadX 0.0.2
+2021-12-13 11:28:14,355 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics lwIP 2.0.3
+2021-12-13 11:28:14,355 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics lwIP 2.1.2
+2021-12-13 11:28:14,356 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-BLE1 6.2.2
+2021-12-13 11:28:14,356 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-BLE2 3.2.2
+2021-12-13 11:28:14,356 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-DISPLAY 2.0.0
+2021-12-13 11:28:14,356 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics USB_HOST 1.0.0
+2021-12-13 11:28:14,356 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-NFC4 2.0.3
+2021-12-13 11:28:14,356 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics PDM2PCM 3.1.0
+2021-12-13 11:28:14,356 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics PDM2PCM 3.2.0
+2021-12-13 11:28:14,356 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics PDM2PCM 3.3.0
+2021-12-13 11:28:14,356 [INFO] ThirdParty:977 - CMSIS Pack Vendor :STMicroelectronics X-CUBE-TOUCHGFX 4.18.0
+2021-12-13 11:28:14,356 [INFO] ThirdParty:793 - exiting critical section [change project]
+2021-12-13 11:28:14,543 [INFO] PinOutPanel:1463 - setPackage(No Configuration,No Configuration)
+2021-12-13 11:28:14,543 [INFO] PinOutPanel:1463 - setPackage(STM32L053C8Tx,LQFP48)
+2021-12-13 11:28:14,887 [INFO] UtilMem:74 - Before build in PCC Used Memory: 534141136 Bytes (739246080)
+2021-12-13 11:28:15,184 [INFO] UtilMem:74 - After build in PCC Used Memory: 417652432 Bytes (739246080)
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,199 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,215 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,215 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,215 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,215 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,215 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,215 [INFO] IPUIPlugin:74 - create IPUIPlugin
+2021-12-13 11:28:15,311 [INFO] OpenFileManager:333 - Restore cursor
+2021-12-13 11:28:15,639 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 500196392 Bytes (739246080)
+2021-12-13 11:28:15,702 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 511962288 Bytes (739246080)
+2021-12-13 11:28:15,998 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: SPI
+2021-12-13 11:28:15,998 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: NVIC
+2021-12-13 11:28:15,998 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: USART
+2021-12-13 11:28:15,998 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: TSC
+2021-12-13 11:28:15,998 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: SYS
+2021-12-13 11:28:15,998 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: GPIO
+2021-12-13 11:28:15,998 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: RCC
+2021-12-13 11:28:15,998 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: I2C
+2021-12-13 11:28:15,998 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: I2C
+2021-12-13 11:28:15,998 [INFO] CodeGenerator:663 - code generatio: config db path: C:\ST\STM32CubeIDE_1.8.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.4.0.202111222105\\db\
+2021-12-13 11:28:16,498 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\MXTmpFiles\license.tmp_save
+2021-12-13 11:28:16,608 [INFO] CodeEngine:257 - Generated code: C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\MXTmpFiles\license.tmp
+2021-12-13 11:28:16,809 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\MXTmpFiles\gpio.tmp_save
+2021-12-13 11:28:16,872 [INFO] CodeEngine:257 - Generated code: C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\MXTmpFiles\gpio.tmp
+2021-12-13 11:28:17,950 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\Core\Src\stm32l0xx_it.c_save
+2021-12-13 11:28:18,013 [INFO] CodeEngine:257 - Generated code: C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\Core\Src\stm32l0xx_it.c
+2021-12-13 11:28:18,028 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\Core\Inc\stm32l0xx_it.h_save
+2021-12-13 11:28:18,075 [INFO] CodeEngine:257 - Generated code: C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\Core\Inc\stm32l0xx_it.h
+2021-12-13 11:28:18,091 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\Core\Src\stm32l0xx_hal_msp.c_save
+2021-12-13 11:28:18,216 [INFO] CodeEngine:257 - Generated code: C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\Core\Src\stm32l0xx_hal_msp.c
+2021-12-13 11:28:18,216 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\MXTmpFiles\system.tmp_save
+2021-12-13 11:28:18,278 [INFO] CodeEngine:257 - Generated code: C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\MXTmpFiles\system.tmp
+2021-12-13 11:28:18,294 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\Core\Inc\stm32l0xx_hal_conf.h_save
+2021-12-13 11:28:18,387 [INFO] CodeEngine:257 - Generated code: C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\Core\Inc\stm32l0xx_hal_conf.h
+2021-12-13 11:28:18,419 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\Core\Inc\main.h_save
+2021-12-13 11:28:18,497 [INFO] CodeEngine:257 - Generated code: C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\Core\Inc\main.h
+2021-12-13 11:28:18,497 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\Core\Src\main.c_save
+2021-12-13 11:28:18,606 [INFO] CodeEngine:257 - Generated code: C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\Core\Src\main.c
+2021-12-13 11:28:19,591 [INFO] ProjectBuilder:2589 - Time for Copy HAL[1] : 204mS.
+2021-12-13 11:28:19,591 [INFO] ProjectBuilder:3665 - Project Generator version: 3.15.2
+2021-12-13 11:28:20,091 [INFO] ConfigFileManager:1273 - The Die is : DIE417
+2021-12-13 11:28:20,106 [INFO] ApiDbMcu:488 - Load IP Config File for FATFS
+2021-12-13 11:28:20,137 [INFO] ApiDbMcu:488 - Load IP Config File for FREERTOS
+2021-12-13 11:28:20,341 [INFO] ApiDbMcu:488 - Load IP Config File for TOUCHSENSING
+2021-12-13 11:28:20,372 [INFO] ApiDbMcu:488 - Load IP Config File for USB_DEVICE
+2021-12-13 11:28:23,946 [INFO] ProjectBuilder:3832 - Time for Generating toolchain IDE Files: 4355mS.
+2021-12-13 11:28:23,946 [INFO] ProjectBuilder:2461 - Time for Copy CMSIS : 0mS.
+2021-12-13 11:28:23,946 [INFO] ProjectBuilder:2461 - Time for Copy CMSIS : 0mS.
+2021-12-13 11:28:24,474 [INFO] McuFinderGlobals:52 - Set McuFinderConnectedMode to true
+2021-12-13 11:28:24,489 [INFO] ApiDb:276 - Save user favorites file C:\Users\Liam Droog/.stm32cubeide/favorites.mcus.txt: 0 item(s)
+2021-12-13 11:28:24,489 [INFO] ApiDb:280 - User favorites MCUs=[]
+2021-12-13 11:51:27,526 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 341185480 Bytes (861929472)
+2021-12-13 11:51:30,591 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 362157000 Bytes (861929472)
+2021-12-13 11:51:33,180 [INFO] UtilMem:74 - End SaveConfig() Used Memory: 401526048 Bytes (861929472)
+2021-12-13 11:51:33,507 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: SPI
+2021-12-13 11:51:33,507 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: NVIC
+2021-12-13 11:51:33,507 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: USART
+2021-12-13 11:51:33,507 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: TSC
+2021-12-13 11:51:33,507 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: SYS
+2021-12-13 11:51:33,508 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: GPIO
+2021-12-13 11:51:33,508 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: RCC
+2021-12-13 11:51:33,508 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: I2C
+2021-12-13 11:51:33,508 [INFO] BlockDiagram:2740 - set Specific Code input for plugin: I2C
+2021-12-13 11:51:33,509 [INFO] CodeGenerator:663 - code generatio: config db path: C:\ST\STM32CubeIDE_1.8.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.4.0.202111222105\\db\
+2021-12-13 11:51:33,831 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\MXTmpFiles\license.tmp_save
+2021-12-13 11:51:33,878 [INFO] CodeEngine:257 - Generated code: C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\MXTmpFiles\license.tmp
+2021-12-13 11:51:34,097 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\MXTmpFiles\gpio.tmp_save
+2021-12-13 11:51:34,159 [INFO] CodeEngine:257 - Generated code: C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\MXTmpFiles\gpio.tmp
+2021-12-13 11:51:35,222 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\Core\Src\stm32l0xx_it.c_save
+2021-12-13 11:51:35,300 [INFO] CodeEngine:257 - Generated code: C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\Core\Src\stm32l0xx_it.c
+2021-12-13 11:51:35,300 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\Core\Inc\stm32l0xx_it.h_save
+2021-12-13 11:51:35,347 [INFO] CodeEngine:257 - Generated code: C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\Core\Inc\stm32l0xx_it.h
+2021-12-13 11:51:35,378 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\Core\Src\stm32l0xx_hal_msp.c_save
+2021-12-13 11:51:35,493 [INFO] CodeEngine:257 - Generated code: C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\Core\Src\stm32l0xx_hal_msp.c
+2021-12-13 11:51:35,493 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\MXTmpFiles\system.tmp_save
+2021-12-13 11:51:35,540 [INFO] CodeEngine:257 - Generated code: C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\MXTmpFiles\system.tmp
+2021-12-13 11:51:35,555 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\Core\Inc\stm32l0xx_hal_conf.h_save
+2021-12-13 11:51:35,633 [INFO] CodeEngine:257 - Generated code: C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\Core\Inc\stm32l0xx_hal_conf.h
+2021-12-13 11:51:35,680 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\Core\Inc\main.h_save
+2021-12-13 11:51:35,821 [INFO] CodeEngine:257 - Generated code: C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\Core\Inc\main.h
+2021-12-13 11:51:35,836 [INFO] CodeEngine:239 - oldGeneratedFile, C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\Core\Src\main.c_save
+2021-12-13 11:51:36,008 [INFO] CodeEngine:257 - Generated code: C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\Core\Src\main.c
+2021-12-13 11:51:36,798 [INFO] ProjectBuilder:2589 - Time for Copy HAL[1] : 203mS.
+2021-12-13 11:51:36,798 [INFO] ProjectBuilder:3665 - Project Generator version: 3.15.2
+2021-12-13 11:51:37,392 [INFO] ConfigFileManager:1273 - The Die is : DIE417
+2021-12-13 11:51:39,043 [INFO] ProjectBuilder:3832 - Time for Generating toolchain IDE Files: 2245mS.
+2021-12-13 11:51:39,043 [INFO] ProjectBuilder:2461 - Time for Copy CMSIS : 0mS.
+2021-12-13 11:51:39,058 [INFO] ProjectBuilder:2461 - Time for Copy CMSIS : 0mS.

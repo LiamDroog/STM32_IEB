@@ -18,11 +18,11 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "printf.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "printf.h"
+//#include "ArduCAM.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -67,41 +67,34 @@ static void MX_I2C2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-//void read_register(uint8_t register_pointer, uint8_t* receive_buffer)
-//{
-//    // first set the register pointer to the register wanted to be read
-//    HAL_I2C_Master_Transmit(&hi2c1, 0x79, &register_pointer, 1, 100);  // note the & operator which gives us the address of the register_pointer variable
-//
-//    // receive the 2 x 8bit data into the receive buffer
-//    HAL_I2C_Master_Receive(&hi2c1, 0x79, receive_buffer, 2, 100);
-//}
-uint16_t read_register(uint8_t register_pointer)
+
+uint16_t hi2c1_read_register(uint8_t address_pointer, uint8_t register_pointer)
 {
     HAL_StatusTypeDef status = HAL_OK;
     uint16_t return_value = 0;
 
-    status = HAL_I2C_Mem_Read(&hi2c1, 0x79, (uint16_t)register_pointer, I2C_MEMADD_SIZE_8BIT, &return_value, 2, 100);
+    status = HAL_I2C_Mem_Read(&hi2c1, address_pointer, (uint16_t)register_pointer, I2C_MEMADD_SIZE_8BIT, &return_value, 2, 100);
 
     /* Check the communication status */
     if(status != HAL_OK)
     {
-
+    	printf("I2C read from 0x%x failed...\r\n", register_pointer );
     }
 
     return return_value;
 }
 
-void write_register(uint8_t register_pointer, uint16_t register_value)
+void hi2c1_write_register(uint8_t address_pointer,uint8_t register_pointer, uint16_t register_value)
 {
     HAL_StatusTypeDef status = HAL_OK;
 
-    status = HAL_I2C_Mem_Write(&hi2c1, 0x78<<1, (uint16_t)register_pointer, I2C_MEMADD_SIZE_8BIT, (uint8_t*)(&register_value), 2, 100);
+    status = HAL_I2C_Mem_Write(&hi2c1, address_pointer, (uint16_t)register_pointer, I2C_MEMADD_SIZE_8BIT, (uint8_t*)(&register_value), 2, 100);
 
     /* Check the communication status */
     if(status != HAL_OK)
     {
         // Error handling, for example re-initialization of the I2C peripheral
-    	printf("I2C Write failed...\r\n");
+    	printf("I2C write to 0x%x failed...\r\n", register_pointer );
     }
 }
 /* USER CODE END 0 */
@@ -113,6 +106,7 @@ void write_register(uint8_t register_pointer, uint16_t register_value)
 int main(void)
 {
   /* USER CODE BEGIN 1 */
+	// this shouldn't be deleted!
 
   /* USER CODE END 1 */
 
@@ -137,24 +131,14 @@ int main(void)
   MX_I2C1_Init();
   MX_SPI2_Init();
   MX_TSC_Init();
-  // PRINTF REQUIRES UART1!!
   MX_USART1_UART_Init();
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
   	printf("\r\n--------\r\n\r\nProject: I2C_BUS_SCAN; V0.1\r\nInitializing UART..\n\rConnected to UART.\r\n");
-  	printf("Scanning I2C Bus: \r\n");
+  	printf("\r\nScanning I2C Bus: \r\n");
 
     HAL_StatusTypeDef result;
     uint8_t i;
-//	char buf[64];
-//	sprintf(buf, "%X", 66);
-//    result = HAL_I2C_IsDeviceReady(&hi2c1, (uint16_t)(66<<1), 2, 2);
-//
-//    if (result == HAL_OK){
-//    	HAL_UART_Transmit(&huart1,(unsigned char *)"Address Found\r\n", strlen("Address Found\r\n"), 0xFFFF);
-//    	HAL_UART_Transmit(&huart1, buf, sizeof(buf), 0xFFFF);
-
-//    }
     for (i=1; i<128; i++)
   	{
   	  result = HAL_I2C_IsDeviceReady(&hi2c1, (uint16_t)(i<<1), 2, 2);
@@ -167,16 +151,35 @@ int main(void)
 
     uint8_t reg_ptr = 0x00;
     uint16_t buffer;
-    write_register(reg_ptr, 0x05);
+//    hi2c1_write_register(0x78, reg_ptr, 0x05);
 
-    printf("\nReading from 0x00 on 0x78\r\n");
-    buffer = read_register(reg_ptr);
+    // 0xEC is a BME280 I had laying around to test I2C
+    // Upon power up this should be 0x0
+    printf("Reading from 0xF5 on 0xEC\r\n");
+    buffer = hi2c1_read_register(0xEC, 0xF5);
+    printf("Obtained 0x%x\r\n\n", buffer);
+    // write binary 101 to reg
+    printf("\nWriting b101 to 0xF5 on 0xEC\r\n");
+    hi2c1_write_register(0xEC, 0xF5, 0b101);
+    printf("Obtained 0x%x\r\n\n", buffer);
+    // read back to assert it's written properly (redundant; hi2c1_write_register should throw an error if it fails)
+    printf("\nReading from 0xF5 on 0xEC\r\n");
+    buffer = hi2c1_read_register(0xEC, 0xF5);
+    printf("Obtained 0x%x\r\n\n", buffer);
+    // Read test reg for fun
+    printf("\nReading from 0xD0 on 0xEC\r\n");
+    buffer = hi2c1_read_register(0xEC, 0xD0);
     printf("Obtained 0x%x\r\n\n", buffer);
 
-    printf("Reading from 0x41 on 0x78\r\n");
-    buffer = read_register(0x41);
-    printf("Obtained 0x%x\r\n\n", buffer);
-    /* USER CODE END 2 */
+    // Try to scan ArduCam chip to no avail :/
+    for (int j=0x3000; j<0x3009; j++){
+    		printf("Reading from 0x%x on 0x79\r\n", j);
+    		buffer = hi2c1_read_register(0x79, j);
+    	    printf("Obtained 0x%x\r\n", buffer);
+
+    }
+
+  /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -193,7 +196,6 @@ int main(void)
   * @brief System Clock Configuration
   * @retval None
   */
-
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
@@ -254,7 +256,7 @@ static void MX_I2C1_Init(void)
 
   /* USER CODE END I2C1_Init 1 */
   hi2c1.Instance = I2C1;
-  hi2c1.Init.Timing = 0x00707CBB;
+  hi2c1.Init.Timing = 0x00300F38;
   hi2c1.Init.OwnAddress1 = 0;
   hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
   hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;

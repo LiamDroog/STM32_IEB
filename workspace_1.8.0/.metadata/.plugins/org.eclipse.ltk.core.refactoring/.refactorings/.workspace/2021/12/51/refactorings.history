@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete 7 resources" deleteContents="false" description="Delete 7 resources" element1="/I2C_BUS_SCAN/Core/Inc/ArduCAM.h" element2="/I2C_BUS_SCAN/Core/Inc/delay.h" element3="/I2C_BUS_SCAN/Core/Inc/ov5642_regs.h" element4="/I2C_BUS_SCAN/Core/Inc/sccb_bus.h" element5="/I2C_BUS_SCAN/Core/Src/ArduCAM.c" element6="/I2C_BUS_SCAN/Core/Src/delay.c" element7="/I2C_BUS_SCAN/Core/Src/sccb_bus.c" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="7" stamp="1639419243947"/>
+</session>

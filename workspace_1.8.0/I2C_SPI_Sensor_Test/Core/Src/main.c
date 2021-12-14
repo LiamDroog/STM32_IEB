@@ -100,8 +100,26 @@ void hi2c1_write_register(uint8_t address_pointer,uint8_t register_pointer, uint
     }
 }
 
+void scan_i2c(){
+	HAL_StatusTypeDef result;
+	uint8_t i;
+
+	printf("--------------------\r\n");
+	printf("Scanning I2C...\r\n");
+
+	for (i=0; i<128; i++){
+		result = HAL_I2C_IsDeviceReady(&hi2c2, (uint16_t)(i<<1), 2, 2);
+
+		if (result == HAL_OK){
+			printf("I2C address found: 0x%X\r\n", (uint16_t)(i<<1));
+		}
+	}
+	printf("I2C Scan Complete\r\n--------------------\r\n");
+
+}
+
 void test_i2c(){
-	 HAL_StatusTypeDef result;
+	    HAL_StatusTypeDef result;
 	    uint8_t i;
 	    for (i=1; i<128; i++)
 	  	{
@@ -145,71 +163,78 @@ void test_i2c(){
 }
 /* USER CODE END 0 */
 
+void detect_ov5642(){
+	return;
+}
 /**
   * @brief  The application entry point.
   * @retval int
   */
 int main(void)
 {
-  /* USER CODE BEGIN 1 */
+	/* USER CODE BEGIN 1 */
 	// this shouldn't be deleted!
 
-  /* USER CODE END 1 */
+	/* USER CODE END 1 */
 
-  /* MCU Configuration--------------------------------------------------------*/
+	/* MCU Configuration--------------------------------------------------------*/
 
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+	HAL_Init();
 
-  /* USER CODE BEGIN Init */
+	/* USER CODE BEGIN Init */
 
-  /* USER CODE END Init */
+	/* USER CODE END Init */
 
-  /* Configure the system clock */
-  SystemClock_Config();
+	/* Configure the system clock */
+	SystemClock_Config();
 
-  /* USER CODE BEGIN SysInit */
+	/* USER CODE BEGIN SysInit */
 
-  /* USER CODE END SysInit */
+	/* USER CODE END SysInit */
 
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  MX_I2C1_Init();
-  MX_SPI2_Init();
-  MX_TSC_Init();
-  MX_USART1_UART_Init();
-  MX_I2C2_Init();
-  /* USER CODE BEGIN 2 */
-  	printf("\r\n--------\r\n\r\nProject: I2C_BUS_SCAN; V0.1\r\nInitializing UART..\n\rConnected to UART.\r\n");
-  	printf("Transmitting...\r\n ");
-  	HAL_StatusTypeDef status;
-  	status = HAL_SPI_Transmit(&hspi2, 0x55, sizeof(0x55), 0xFFFF);
-  	if (status == HAL_OK){
-  		printf("Transmitted successfully.\r\n");
-  	}
-  	else{
-  		printf("Transmission failed.\r\n");
-  	}
-  	uint8_t temp;
-  	status = HAL_SPI_Receive(&hspi2, temp, sizeof(0x55), 0xFFFF);
-  	if (status == HAL_OK){
-  		printf("Received successfully.\r\n");
-  	}
-  	else{
-  		printf("Received failed.\r\n");
-  	}
-  	printf('%x', temp);
-  /* USER CODE END 2 */
+	/* Initialize all configured peripherals */
+	MX_GPIO_Init();
+	MX_I2C1_Init();
+	MX_SPI2_Init();
+	MX_TSC_Init();
+	MX_USART1_UART_Init();
+	MX_I2C2_Init();
+	/* USER CODE BEGIN 2 */
+	printf("\r\n--------\r\n\r\nProject: I2C_BUS_SCAN; V0.1\r\nInitializing UART..\n\rConnected to UART.\r\n");
 
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-    /* USER CODE END WHILE */
+	scan_i2c();
 
-    /* USER CODE BEGIN 3 */
+	printf("Testing SPI Connection\r\n");
+	printf("Transmitting...\r\n ");
+	HAL_StatusTypeDef status;
+	status = HAL_SPI_Transmit(&hspi2, 0x55, sizeof(0x55), 0xFFFF);
+	if (status == HAL_OK){
+		printf("Transmitted successfully.\r\n");
+	}
+	else{
+		printf("Transmission failed.\r\n");
+	}
+	uint8_t temp;
+	status = HAL_SPI_Receive(&hspi2, temp, sizeof(0x55), 0xFFFF);
+	if (status == HAL_OK){
+		printf("Received successfully.\r\n");
+	}
+	else{
+		printf("Received failed.\r\n");
+	}
+	printf('%x', temp);
+	/* USER CODE END 2 */
 
-  }
+	/* Infinite loop */
+	/* USER CODE BEGIN WHILE */
+	while (1)
+	{
+	/* USER CODE END WHILE */
+
+	/* USER CODE BEGIN 3 */
+
+	}
   /* USER CODE END 3 */
 }
 

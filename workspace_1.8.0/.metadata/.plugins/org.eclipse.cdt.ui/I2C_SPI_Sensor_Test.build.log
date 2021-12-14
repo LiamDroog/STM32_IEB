@@ -1,10 +1,10 @@
-13:36:55 **** Incremental Build of configuration Debug for project I2C_SPI_Sensor_Test ****
-make -j8 all 
+16:13:45 **** Incremental Build of configuration Debug for project I2C_SPI_Sensor_Test ****
+make -j16 all 
 arm-none-eabi-size   I2C_SPI_Sensor_Test.elf 
    text	   data	    bss	    dec	    hex	filename
-  31020	     20	   2012	  33052	   811c	I2C_SPI_Sensor_Test.elf
+  22456	     20	   2012	  24488	   5fa8	I2C_SPI_Sensor_Test.elf
 Finished building: default.size.stdout
  
 
-13:36:55 Build Finished. 0 errors, 0 warnings. (took 302ms)
+16:13:45 Build Finished. 0 errors, 0 warnings. (took 377ms)
 

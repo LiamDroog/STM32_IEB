@@ -24,6 +24,7 @@
 // IMPORTANT: printf prints out over UART - Pins PA10, PA9! NEED A USB-SERIAL CONVERTER
 // AND TERMINAL TO SEE STATEMENTS!
 #include "printf.h"
+//#include "arducam_methods.h"
 //#include "ArduCAM.h"
 /* USER CODE END Includes */
 
@@ -45,6 +46,7 @@
 I2C_HandleTypeDef hi2c1;
 I2C_HandleTypeDef hi2c2;
 
+SPI_HandleTypeDef hspi1;
 SPI_HandleTypeDef hspi2;
 
 TSC_HandleTypeDef htsc;
@@ -63,6 +65,7 @@ static void MX_SPI2_Init(void);
 static void MX_TSC_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_I2C2_Init(void);
+static void MX_SPI1_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -108,7 +111,7 @@ void scan_i2c(){
 	printf("Scanning I2C...\r\n");
 
 	for (i=0; i<128; i++){
-		result = HAL_I2C_IsDeviceReady(&hi2c2, (uint16_t)(i<<1), 2, 2);
+		result = HAL_I2C_IsDeviceReady(&hi2c1, (uint16_t)(i<<1), 2, 2);
 
 		if (result == HAL_OK){
 			printf("I2C address found: 0x%X\r\n", (uint16_t)(i<<1));
@@ -161,78 +164,134 @@ void test_i2c(){
 
 	    }
 }
-/* USER CODE END 0 */
+
+void CS_LOW(){
+	HAL_GPIO_WritePin(GPIO_PB6_GPIO_Port, GPIO_PB6_Pin, GPIO_PIN_RESET);
+}
+
+void CS_HIGH(){
+	HAL_GPIO_WritePin(GPIO_PB6_GPIO_Port, GPIO_PB6_Pin, GPIO_PIN_SET);
+
+}
 
 void detect_ov5642(){
-	return;
-}
+	uint8_t temp=0;
+	CS_LOW();
+	HAL_Delay(200);
+	uint8_t data[2];
+	data[0] = 0x00 | 0x80;
+	data[1] = 0x55;
+	// send spi
+	HAL_StatusTypeDef status;
+    char spi_buf[2];
+	status = HAL_SPI_Transmit(&hspi1, data, 2, 100);
+	if (status == HAL_OK){
+		printf("Transmitted successfully.\r\n");
+	}
+	else{
+		if (status == HAL_TIMEOUT){
+			printf("Connection timed out\r\n");
+		}
+		printf("Transmission failed.\r\n");
+	}
+	status = HAL_SPI_Receive(&hspi1, (uint8_t *)spi_buf, 2, 100);
+	if (status == HAL_OK){
+		printf("Recieved successfully.\r\n");
+	}
+	else{
+		if (status == HAL_TIMEOUT){
+			printf("Connection timed out\r\n");
+		}
+		printf("Receive failed.\r\n");
+	}
+	HAL_Delay(200);
+	CS_HIGH();
+	printf("Received: 0x%x", spi_buf);
+	}
+
+//	SPI2_write_reg(0x00, 0x55);
+//			temp = SPI2_read_reg(0x00);
+//			if(temp==0x55)
+//			{
+//				printf("SPI is ready\r\n");
+//			}
+//			else
+//			{
+//				printf("SPI communication error\r\n");
+//			}
+//}
+/* USER CODE END 0 */
+
 /**
   * @brief  The application entry point.
   * @retval int
   */
 int main(void)
 {
-	/* USER CODE BEGIN 1 */
+  /* USER CODE BEGIN 1 */
 	// this shouldn't be deleted!
 
-	/* USER CODE END 1 */
+  /* USER CODE END 1 */
 
-	/* MCU Configuration--------------------------------------------------------*/
+  /* MCU Configuration--------------------------------------------------------*/
 
-	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-	HAL_Init();
+  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  HAL_Init();
 
-	/* USER CODE BEGIN Init */
+  /* USER CODE BEGIN Init */
 
-	/* USER CODE END Init */
+  /* USER CODE END Init */
 
-	/* Configure the system clock */
-	SystemClock_Config();
+  /* Configure the system clock */
+  SystemClock_Config();
 
-	/* USER CODE BEGIN SysInit */
+  /* USER CODE BEGIN SysInit */
 
-	/* USER CODE END SysInit */
+  /* USER CODE END SysInit */
 
-	/* Initialize all configured peripherals */
-	MX_GPIO_Init();
-	MX_I2C1_Init();
-	MX_SPI2_Init();
-	MX_TSC_Init();
-	MX_USART1_UART_Init();
-	MX_I2C2_Init();
-	/* USER CODE BEGIN 2 */
+  /* Initialize all configured peripherals */
+  MX_GPIO_Init();
+  MX_I2C1_Init();
+  MX_SPI2_Init();
+  MX_TSC_Init();
+  MX_USART1_UART_Init();
+  MX_I2C2_Init();
+  MX_SPI1_Init();
+  /* USER CODE BEGIN 2 */
+  HAL_Delay(1000);
 	printf("\r\n--------\r\n\r\nProject: I2C_BUS_SCAN; V0.1\r\nInitializing UART..\n\rConnected to UART.\r\n");
 
 	scan_i2c();
-
+	CS_HIGH();
 	printf("Testing SPI Connection\r\n");
-	printf("Transmitting...\r\n ");
-	HAL_StatusTypeDef status;
-	status = HAL_SPI_Transmit(&hspi2, 0x55, sizeof(0x55), 0xFFFF);
-	if (status == HAL_OK){
-		printf("Transmitted successfully.\r\n");
-	}
-	else{
-		printf("Transmission failed.\r\n");
-	}
-	uint8_t temp;
-	status = HAL_SPI_Receive(&hspi2, temp, sizeof(0x55), 0xFFFF);
-	if (status == HAL_OK){
-		printf("Received successfully.\r\n");
-	}
-	else{
-		printf("Received failed.\r\n");
-	}
-	printf('%x', temp);
-	/* USER CODE END 2 */
+	detect_ov5642();
+//	printf("Transmitting...\r\n ");
+//	HAL_StatusTypeDef status;
+//	status = HAL_SPI_Transmit(&hspi2, 0x55, sizeof(0x55), 0xFFFF);
+//	if (status == HAL_OK){
+//		printf("Transmitted successfully.\r\n");
+//	}
+//	else{
+//		printf("Transmission failed.\r\n");
+//	}
+//	uint8_t temp;
+//	status = HAL_SPI_Receive(&hspi2, temp, sizeof(0x55), 0xFFFF);
+//	if (status == HAL_OK){
+//		printf("Received successfully.\r\n");
+//	}
+//	else{
+//		printf("Received failed.\r\n");
+//	}
+//	printf('%x', temp);
+  /* USER CODE END 2 */
 
-	/* Infinite loop */
-	/* USER CODE BEGIN WHILE */
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
 	while (1)
 	{
-	/* USER CODE END WHILE */
+    /* USER CODE END WHILE */
 
-	/* USER CODE BEGIN 3 */
+    /* USER CODE BEGIN 3 */
 
 	}
   /* USER CODE END 3 */
@@ -379,6 +438,44 @@ static void MX_I2C2_Init(void)
 }
 
 /**
+  * @brief SPI1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_SPI1_Init(void)
+{
+
+  /* USER CODE BEGIN SPI1_Init 0 */
+
+  /* USER CODE END SPI1_Init 0 */
+
+  /* USER CODE BEGIN SPI1_Init 1 */
+
+  /* USER CODE END SPI1_Init 1 */
+  /* SPI1 parameter configuration*/
+  hspi1.Instance = SPI1;
+  hspi1.Init.Mode = SPI_MODE_MASTER;
+  hspi1.Init.Direction = SPI_DIRECTION_2LINES;
+  hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
+  hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
+  hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi1.Init.NSS = SPI_NSS_SOFT;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
+  hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
+  hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  hspi1.Init.CRCPolynomial = 7;
+  if (HAL_SPI_Init(&hspi1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN SPI1_Init 2 */
+
+  /* USER CODE END SPI1_Init 2 */
+
+}
+
+/**
   * @brief SPI2 Initialization Function
   * @param None
   * @retval None
@@ -400,7 +497,7 @@ static void MX_SPI2_Init(void)
   hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
   hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
-  hspi2.Init.NSS = SPI_NSS_HARD_INPUT;
+  hspi2.Init.NSS = SPI_NSS_SOFT;
   hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
   hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
@@ -512,7 +609,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(LD_R_GPIO_Port, LD_R_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, ePD1_RESET_Pin|LD_G_Pin|GPIO_PB6_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, ePD1_RESET_Pin|GPIO_PIN_12|GPIO_PB6_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : MFX_IRQ_OUT_Pin */
   GPIO_InitStruct.Pin = MFX_IRQ_OUT_Pin;
@@ -539,27 +636,11 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LD_R_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : ePD1_RESET_Pin LD_G_Pin GPIO_PB6_Pin */
-  GPIO_InitStruct.Pin = ePD1_RESET_Pin|LD_G_Pin|GPIO_PB6_Pin;
+  /*Configure GPIO pins : ePD1_RESET_Pin PB12 GPIO_PB6_Pin */
+  GPIO_InitStruct.Pin = ePD1_RESET_Pin|GPIO_PIN_12|GPIO_PB6_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : ePD1_CS_Pin */
-  GPIO_InitStruct.Pin = ePD1_CS_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  GPIO_InitStruct.Alternate = GPIO_AF0_SPI1;
-  HAL_GPIO_Init(ePD1_CS_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : ePD1_SCK_Pin ePD1_MOSI_Pin */
-  GPIO_InitStruct.Pin = ePD1_SCK_Pin|ePD1_MOSI_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  GPIO_InitStruct.Alternate = GPIO_AF0_SPI1;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 }

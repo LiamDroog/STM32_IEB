@@ -1,0 +1,13 @@
+/*
+ * arducam_methods.c
+ *
+ *  Created on: Dec 15, 2021
+ *      Author: Liam Droog
+ */
+#include "arducam_methods.h"
+
+void SPI2_write_reg(uint8_t addr, uint8_t data)
+{
+	 bus_write(addr | 0x80, data);
+}
+

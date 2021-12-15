@@ -60,8 +60,8 @@ all: main-build
 main-build: I2C_SPI_Sensor_Test.elf secondary-outputs
 
 # Tool invocations
-I2C_SPI_Sensor_Test.elf: $(OBJS) $(USER_OBJS) C:\Users\Liam\Documents\GitHub\STM32_IEB\workspace_1.8.0\I2C_SPI_Sensor_Test\STM32L053C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "I2C_SPI_Sensor_Test.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"C:\Users\Liam\Documents\GitHub\STM32_IEB\workspace_1.8.0\I2C_SPI_Sensor_Test\STM32L053C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="I2C_SPI_Sensor_Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+I2C_SPI_Sensor_Test.elf: $(OBJS) $(USER_OBJS) C:\Users\Liam\ Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\STM32L053C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "I2C_SPI_Sensor_Test.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\I2C_SPI_Sensor_Test\STM32L053C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="I2C_SPI_Sensor_Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

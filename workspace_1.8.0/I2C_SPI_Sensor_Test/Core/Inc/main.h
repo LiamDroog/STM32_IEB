@@ -31,7 +31,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+//#include "arducam_methods.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -75,8 +75,6 @@ void Error_Handler(void);
 #define ePD1_RESET_GPIO_Port GPIOB
 #define NFC_SCK_Pin GPIO_PIN_10
 #define NFC_SCK_GPIO_Port GPIOB
-#define NFC_NSS_Pin GPIO_PIN_12
-#define NFC_NSS_GPIO_Port GPIOB
 #define NFC_MISO_Pin GPIO_PIN_14
 #define NFC_MISO_GPIO_Port GPIOB
 #define NFC_MOSI_Pin GPIO_PIN_15
@@ -99,8 +97,6 @@ void Error_Handler(void);
 #define ePD1_CS_GPIO_Port GPIOA
 #define ePD1_SCK_Pin GPIO_PIN_3
 #define ePD1_SCK_GPIO_Port GPIOB
-#define LD_G_Pin GPIO_PIN_4
-#define LD_G_GPIO_Port GPIOB
 #define ePD1_MOSI_Pin GPIO_PIN_5
 #define ePD1_MOSI_GPIO_Port GPIOB
 #define GPIO_PB6_Pin GPIO_PIN_6

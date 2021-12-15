@@ -5,6 +5,8 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Core/Src/arducam_methods.c \
+../Core/Src/delay.c \
 ../Core/Src/main.c \
 ../Core/Src/printf.c \
 ../Core/Src/stm32l0xx_hal_msp.c \
@@ -14,6 +16,8 @@ C_SRCS += \
 ../Core/Src/system_stm32l0xx.c 
 
 OBJS += \
+./Core/Src/arducam_methods.o \
+./Core/Src/delay.o \
 ./Core/Src/main.o \
 ./Core/Src/printf.o \
 ./Core/Src/stm32l0xx_hal_msp.o \
@@ -23,6 +27,8 @@ OBJS += \
 ./Core/Src/system_stm32l0xx.o 
 
 C_DEPS += \
+./Core/Src/arducam_methods.d \
+./Core/Src/delay.d \
 ./Core/Src/main.d \
 ./Core/Src/printf.d \
 ./Core/Src/stm32l0xx_hal_msp.d \
@@ -39,7 +45,7 @@ Core/Src/%.o: ../Core/Src/%.c Core/Src/subdir.mk
 clean: clean-Core-2f-Src
 
 clean-Core-2f-Src:
-	-$(RM) ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/printf.d ./Core/Src/printf.o ./Core/Src/stm32l0xx_hal_msp.d ./Core/Src/stm32l0xx_hal_msp.o ./Core/Src/stm32l0xx_it.d ./Core/Src/stm32l0xx_it.o ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/system_stm32l0xx.d ./Core/Src/system_stm32l0xx.o
+	-$(RM) ./Core/Src/arducam_methods.d ./Core/Src/arducam_methods.o ./Core/Src/delay.d ./Core/Src/delay.o ./Core/Src/main.d ./Core/Src/main.o ./Core/Src/printf.d ./Core/Src/printf.o ./Core/Src/stm32l0xx_hal_msp.d ./Core/Src/stm32l0xx_hal_msp.o ./Core/Src/stm32l0xx_it.d ./Core/Src/stm32l0xx_it.o ./Core/Src/syscalls.d ./Core/Src/syscalls.o ./Core/Src/sysmem.d ./Core/Src/sysmem.o ./Core/Src/system_stm32l0xx.d ./Core/Src/system_stm32l0xx.o
 
 .PHONY: clean-Core-2f-Src
 

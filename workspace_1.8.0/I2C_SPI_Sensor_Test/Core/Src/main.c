@@ -49,8 +49,6 @@ I2C_HandleTypeDef hi2c2;
 SPI_HandleTypeDef hspi1;
 SPI_HandleTypeDef hspi2;
 
-TSC_HandleTypeDef htsc;
-
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
@@ -60,14 +58,14 @@ UART_HandleTypeDef huart1;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_I2C1_Init(void);
 static void MX_SPI2_Init(void);
-static void MX_TSC_Init(void);
-static void MX_USART1_UART_Init(void);
-static void MX_I2C2_Init(void);
 static void MX_SPI1_Init(void);
+static void MX_I2C1_Init(void);
+static void MX_I2C2_Init(void);
+static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN PFP */
-
+#define testaddr 0x00
+#define testwrite 0x55
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -111,7 +109,7 @@ void scan_i2c(){
 	printf("Scanning I2C...\r\n");
 
 	for (i=0; i<128; i++){
-		result = HAL_I2C_IsDeviceReady(&hi2c1, (uint16_t)(i<<1), 2, 2);
+		result = HAL_I2C_IsDeviceReady(&hi2c2, (uint16_t)(i<<1), 2, 2);
 
 		if (result == HAL_OK){
 			printf("I2C address found: 0x%X\r\n", (uint16_t)(i<<1));
@@ -165,6 +163,25 @@ void test_i2c(){
 	    }
 }
 
+uint8_t SPI_Write(uint8_t addr, uint8_t data){
+	uint8_t txBuf[2] = {(addr | 0x80), data};
+	HAL_GPIO_WritePin(GPIO_PB6_GPIO_Port, GPIO_PB6_Pin, GPIO_PIN_RESET);
+	uint8_t status = (HAL_SPI_Transmit(&hspi2, txBuf, 2, HAL_MAX_DELAY) == HAL_OK);
+	HAL_GPIO_WritePin(GPIO_PB6_GPIO_Port, GPIO_PB6_Pin, GPIO_PIN_SET);
+
+	return status;
+}
+
+uint8_t SPI_Read(uint8_t addr, uint8_t *data) {
+	uint8_t txBuf[2] = {addr, 0x00};
+	uint8_t rxBuf[2];
+	HAL_GPIO_WritePin(GPIO_PB6_GPIO_Port, GPIO_PB6_Pin, GPIO_PIN_RESET);
+	uint8_t status = (HAL_SPI_TransmitReceive(&hspi2, txBuf, rxBuf, 2, HAL_MAX_DELAY) == HAL_OK);
+	HAL_GPIO_WritePin(GPIO_PB6_GPIO_Port, GPIO_PB6_Pin, GPIO_PIN_SET);
+	*data = rxBuf[1];
+	return status;
+}
+
 void CS_LOW(){
 	HAL_GPIO_WritePin(GPIO_PB6_GPIO_Port, GPIO_PB6_Pin, GPIO_PIN_RESET);
 }
@@ -177,14 +194,17 @@ void CS_HIGH(){
 void detect_ov5642(){
 	uint8_t temp=0;
 	CS_LOW();
-	HAL_Delay(200);
+	HAL_Delay(100);
 	uint8_t data[2];
 	data[0] = 0x00 | 0x80;
 	data[1] = 0x55;
 	// send spi
+	HAL_SPI_Init(&hspi1);
 	HAL_StatusTypeDef status;
     char spi_buf[2];
+//    status = HAL_SPI_TransmitReceive(&hspi1, &data, (uint8_t *)spi_buf, 2, 100);
 	status = HAL_SPI_Transmit(&hspi1, data, 2, 100);
+//    while(HAL_SPI_GetState(&hspi1) != HAL_SPI_STATE_READY);
 	if (status == HAL_OK){
 		printf("Transmitted successfully.\r\n");
 	}
@@ -195,6 +215,7 @@ void detect_ov5642(){
 		printf("Transmission failed.\r\n");
 	}
 	status = HAL_SPI_Receive(&hspi1, (uint8_t *)spi_buf, 2, 100);
+//    while(HAL_SPI_GetState(&hspi1) != HAL_SPI_STATE_READY);
 	if (status == HAL_OK){
 		printf("Recieved successfully.\r\n");
 	}
@@ -204,22 +225,29 @@ void detect_ov5642(){
 		}
 		printf("Receive failed.\r\n");
 	}
-	HAL_Delay(200);
+	HAL_Delay(100);
 	CS_HIGH();
 	printf("Received: 0x%x", spi_buf);
 	}
 
-//	SPI2_write_reg(0x00, 0x55);
-//			temp = SPI2_read_reg(0x00);
-//			if(temp==0x55)
-//			{
-//				printf("SPI is ready\r\n");
-//			}
-//			else
-//			{
-//				printf("SPI communication error\r\n");
-//			}
-//}
+HAL_StatusTypeDef ReadRegister(uint8_t addr, uint8_t *byte)
+{
+    HAL_StatusTypeDef hal_status;
+    uint8_t tx_data[2];
+    uint8_t rx_data[2];
+
+    tx_data[0] = addr | 0x80;  // read operation
+    tx_data[1] = 0;            // dummy byte for response
+
+    hal_status = HAL_SPI_TransmitReceive(&hspi2, tx_data, rx_data, 2, 0xFFFF);
+
+    if (hal_status == HAL_OK)
+    {
+        *byte = rx_data[1];    // response is in the second byte
+    }
+    return hal_status;
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -251,44 +279,54 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_I2C1_Init();
   MX_SPI2_Init();
-  MX_TSC_Init();
-  MX_USART1_UART_Init();
-  MX_I2C2_Init();
   MX_SPI1_Init();
+  MX_I2C1_Init();
+  MX_I2C2_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-  HAL_Delay(1000);
+	HAL_Delay(1000);
 	printf("\r\n--------\r\n\r\nProject: I2C_BUS_SCAN; V0.1\r\nInitializing UART..\n\rConnected to UART.\r\n");
 
 	scan_i2c();
 	CS_HIGH();
 	printf("Testing SPI Connection\r\n");
-	detect_ov5642();
-//	printf("Transmitting...\r\n ");
-//	HAL_StatusTypeDef status;
-//	status = HAL_SPI_Transmit(&hspi2, 0x55, sizeof(0x55), 0xFFFF);
-//	if (status == HAL_OK){
-//		printf("Transmitted successfully.\r\n");
-//	}
-//	else{
-//		printf("Transmission failed.\r\n");
-//	}
-//	uint8_t temp;
-//	status = HAL_SPI_Receive(&hspi2, temp, sizeof(0x55), 0xFFFF);
-//	if (status == HAL_OK){
-//		printf("Received successfully.\r\n");
-//	}
-//	else{
-//		printf("Received failed.\r\n");
-//	}
-//	printf('%x', temp);
+//	detect_ov5642();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+//	uint8_t data[2];
+//	data[0] = 0x00 | 0x80;
+//	data[1] = 0x55;
+//	// send spi
+//	HAL_StatusTypeDef status;
+//	uint8_t spi_buf[2];
+
+	uint8_t data;
+	int wrote;
+
+//	wrote = SPI_Write(0x0, 0x01);
+	SPI_Write(0x00, 0x0A);
+	SPI_Read(0x3c, data);
+	printf("0x3c: 0x%x", data);
+//	SPI_Write(0x02, 0x05);
+//	if (wrote ==1){
+//		printf("Write succeeded!\r\n");
+//	}
+//	else{
+//		printf("Write failed\r\n");
+//	}
 	while (1)
 	{
+		HAL_SPI_Init(&hspi2);
+		for (int i=0x00; i<0x45; i++){
+	        SPI_Read(i, &data);
+	        printf("Reading from 0x%x: 0x%x\r\n", i, data);
+			HAL_Delay(200);
+		}
+
+		HAL_SPI_DeInit(&hspi2);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -314,11 +352,8 @@ void SystemClock_Config(void)
   * in the RCC_OscInitTypeDef structure.
   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
-  RCC_OscInitStruct.HSEState = RCC_HSE_BYPASS;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLLMUL_12;
-  RCC_OscInitStruct.PLL.PLLDIV = RCC_PLLDIV_3;
+  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -327,12 +362,12 @@ void SystemClock_Config(void)
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSE;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
   {
     Error_Handler();
   }
@@ -361,7 +396,7 @@ static void MX_I2C1_Init(void)
 
   /* USER CODE END I2C1_Init 1 */
   hi2c1.Instance = I2C1;
-  hi2c1.Init.Timing = 0x00300F38;
+  hi2c1.Init.Timing = 0x0000020B;
   hi2c1.Init.OwnAddress1 = 0;
   hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
   hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
@@ -407,7 +442,7 @@ static void MX_I2C2_Init(void)
 
   /* USER CODE END I2C2_Init 1 */
   hi2c2.Instance = I2C2;
-  hi2c2.Init.Timing = 0x00707CBB;
+  hi2c2.Init.Timing = 0x2000090E;
   hi2c2.Init.OwnAddress1 = 0;
   hi2c2.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
   hi2c2.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
@@ -460,7 +495,7 @@ static void MX_SPI1_Init(void)
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi1.Init.NSS = SPI_NSS_SOFT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_256;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -498,7 +533,7 @@ static void MX_SPI2_Init(void)
   hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi2.Init.NSS = SPI_NSS_SOFT;
-  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_32;
   hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -510,48 +545,6 @@ static void MX_SPI2_Init(void)
   /* USER CODE BEGIN SPI2_Init 2 */
 
   /* USER CODE END SPI2_Init 2 */
-
-}
-
-/**
-  * @brief TSC Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_TSC_Init(void)
-{
-
-  /* USER CODE BEGIN TSC_Init 0 */
-
-  /* USER CODE END TSC_Init 0 */
-
-  /* USER CODE BEGIN TSC_Init 1 */
-
-  /* USER CODE END TSC_Init 1 */
-  /** Configure the TSC peripheral
-  */
-  htsc.Instance = TSC;
-  htsc.Init.CTPulseHighLength = TSC_CTPH_2CYCLES;
-  htsc.Init.CTPulseLowLength = TSC_CTPL_2CYCLES;
-  htsc.Init.SpreadSpectrum = DISABLE;
-  htsc.Init.SpreadSpectrumDeviation = 1;
-  htsc.Init.SpreadSpectrumPrescaler = TSC_SS_PRESC_DIV1;
-  htsc.Init.PulseGeneratorPrescaler = TSC_PG_PRESC_DIV4;
-  htsc.Init.MaxCountValue = TSC_MCV_8191;
-  htsc.Init.IODefaultMode = TSC_IODEF_OUT_PP_LOW;
-  htsc.Init.SynchroPinPolarity = TSC_SYNC_POLARITY_FALLING;
-  htsc.Init.AcquisitionMode = TSC_ACQ_MODE_NORMAL;
-  htsc.Init.MaxCountInterrupt = DISABLE;
-  htsc.Init.ChannelIOs = TSC_GROUP1_IO3|TSC_GROUP2_IO3|TSC_GROUP3_IO2;
-  htsc.Init.ShieldIOs = 0;
-  htsc.Init.SamplingIOs = TSC_GROUP1_IO4|TSC_GROUP2_IO4|TSC_GROUP3_IO3;
-  if (HAL_TSC_Init(&htsc) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN TSC_Init 2 */
-
-  /* USER CODE END TSC_Init 2 */
 
 }
 
@@ -609,7 +602,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(LD_R_GPIO_Port, LD_R_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, ePD1_RESET_Pin|GPIO_PIN_12|GPIO_PB6_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, ePD1_RESET_Pin|GPIO_PB6_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : MFX_IRQ_OUT_Pin */
   GPIO_InitStruct.Pin = MFX_IRQ_OUT_Pin;
@@ -623,10 +616,18 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : MFX_WAKEUP_Pin ePD1_BUSY_Pin */
-  GPIO_InitStruct.Pin = MFX_WAKEUP_Pin|ePD1_BUSY_Pin;
+  /*Configure GPIO pin : MFX_WAKEUP_Pin */
+  GPIO_InitStruct.Pin = MFX_WAKEUP_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(MFX_WAKEUP_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PA2 PA4 PA6 PA7 */
+  GPIO_InitStruct.Pin = GPIO_PIN_2|GPIO_PIN_4|GPIO_PIN_6|GPIO_PIN_7;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  GPIO_InitStruct.Alternate = GPIO_AF3_TSC;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pin : LD_R_Pin */
@@ -636,8 +637,16 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LD_R_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : ePD1_RESET_Pin PB12 GPIO_PB6_Pin */
-  GPIO_InitStruct.Pin = ePD1_RESET_Pin|GPIO_PIN_12|GPIO_PB6_Pin;
+  /*Configure GPIO pins : PB0 PB1 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  GPIO_InitStruct.Alternate = GPIO_AF3_TSC;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : ePD1_RESET_Pin GPIO_PB6_Pin */
+  GPIO_InitStruct.Pin = ePD1_RESET_Pin|GPIO_PB6_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

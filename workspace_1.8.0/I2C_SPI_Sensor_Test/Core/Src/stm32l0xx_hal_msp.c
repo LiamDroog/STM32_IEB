@@ -211,21 +211,12 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
     /* Peripheral clock enable */
     __HAL_RCC_SPI1_CLK_ENABLE();
 
-    __HAL_RCC_GPIOA_CLK_ENABLE();
     __HAL_RCC_GPIOB_CLK_ENABLE();
     /**SPI1 GPIO Configuration
-    PA15     ------> SPI1_NSS
     PB3     ------> SPI1_SCK
     PB4     ------> SPI1_MISO
     PB5     ------> SPI1_MOSI
     */
-    GPIO_InitStruct.Pin = ePD1_CS_Pin;
-    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    GPIO_InitStruct.Alternate = GPIO_AF0_SPI1;
-    HAL_GPIO_Init(ePD1_CS_GPIO_Port, &GPIO_InitStruct);
-
     GPIO_InitStruct.Pin = ePD1_SCK_Pin|ePD1_MOSI_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
@@ -255,6 +246,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
     __HAL_RCC_GPIOB_CLK_ENABLE();
     /**SPI2 GPIO Configuration
     PB10     ------> SPI2_SCK
+    PB12     ------> SPI2_NSS
     PB14     ------> SPI2_MISO
     PB15     ------> SPI2_MOSI
     */
@@ -265,7 +257,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
     GPIO_InitStruct.Alternate = GPIO_AF5_SPI2;
     HAL_GPIO_Init(NFC_SCK_GPIO_Port, &GPIO_InitStruct);
 
-    GPIO_InitStruct.Pin = NFC_MISO_Pin|NFC_MOSI_Pin;
+    GPIO_InitStruct.Pin = GPIO_PIN_12|NFC_MISO_Pin|NFC_MOSI_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
@@ -296,13 +288,10 @@ void HAL_SPI_MspDeInit(SPI_HandleTypeDef* hspi)
     __HAL_RCC_SPI1_CLK_DISABLE();
 
     /**SPI1 GPIO Configuration
-    PA15     ------> SPI1_NSS
     PB3     ------> SPI1_SCK
     PB4     ------> SPI1_MISO
     PB5     ------> SPI1_MOSI
     */
-    HAL_GPIO_DeInit(ePD1_CS_GPIO_Port, ePD1_CS_Pin);
-
     HAL_GPIO_DeInit(GPIOB, ePD1_SCK_Pin|GPIO_PIN_4|ePD1_MOSI_Pin);
 
   /* USER CODE BEGIN SPI1_MspDeInit 1 */
@@ -319,111 +308,15 @@ void HAL_SPI_MspDeInit(SPI_HandleTypeDef* hspi)
 
     /**SPI2 GPIO Configuration
     PB10     ------> SPI2_SCK
+    PB12     ------> SPI2_NSS
     PB14     ------> SPI2_MISO
     PB15     ------> SPI2_MOSI
     */
-    HAL_GPIO_DeInit(GPIOB, NFC_SCK_Pin|NFC_MISO_Pin|NFC_MOSI_Pin);
+    HAL_GPIO_DeInit(GPIOB, NFC_SCK_Pin|GPIO_PIN_12|NFC_MISO_Pin|NFC_MOSI_Pin);
 
   /* USER CODE BEGIN SPI2_MspDeInit 1 */
 
   /* USER CODE END SPI2_MspDeInit 1 */
-  }
-
-}
-
-/**
-* @brief TSC MSP Initialization
-* This function configures the hardware resources used in this example
-* @param htsc: TSC handle pointer
-* @retval None
-*/
-void HAL_TSC_MspInit(TSC_HandleTypeDef* htsc)
-{
-  GPIO_InitTypeDef GPIO_InitStruct = {0};
-  if(htsc->Instance==TSC)
-  {
-  /* USER CODE BEGIN TSC_MspInit 0 */
-
-  /* USER CODE END TSC_MspInit 0 */
-    /* Peripheral clock enable */
-    __HAL_RCC_TSC_CLK_ENABLE();
-
-    __HAL_RCC_GPIOA_CLK_ENABLE();
-    __HAL_RCC_GPIOB_CLK_ENABLE();
-    /**TSC GPIO Configuration
-    PA2     ------> TSC_G1_IO3
-    PA3     ------> TSC_G1_IO4
-    PA6     ------> TSC_G2_IO3
-    PA7     ------> TSC_G2_IO4
-    PB0     ------> TSC_G3_IO2
-    PB1     ------> TSC_G3_IO3
-    */
-    GPIO_InitStruct.Pin = GPIO_PIN_2|GPIO_PIN_6;
-    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    GPIO_InitStruct.Alternate = GPIO_AF3_TSC;
-    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-    GPIO_InitStruct.Pin = GPIO_PIN_3|GPIO_PIN_7;
-    GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    GPIO_InitStruct.Alternate = GPIO_AF3_TSC;
-    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-    GPIO_InitStruct.Pin = GPIO_PIN_0;
-    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    GPIO_InitStruct.Alternate = GPIO_AF3_TSC;
-    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-    GPIO_InitStruct.Pin = GPIO_PIN_1;
-    GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    GPIO_InitStruct.Alternate = GPIO_AF3_TSC;
-    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-  /* USER CODE BEGIN TSC_MspInit 1 */
-
-  /* USER CODE END TSC_MspInit 1 */
-  }
-
-}
-
-/**
-* @brief TSC MSP De-Initialization
-* This function freeze the hardware resources used in this example
-* @param htsc: TSC handle pointer
-* @retval None
-*/
-void HAL_TSC_MspDeInit(TSC_HandleTypeDef* htsc)
-{
-  if(htsc->Instance==TSC)
-  {
-  /* USER CODE BEGIN TSC_MspDeInit 0 */
-
-  /* USER CODE END TSC_MspDeInit 0 */
-    /* Peripheral clock disable */
-    __HAL_RCC_TSC_CLK_DISABLE();
-
-    /**TSC GPIO Configuration
-    PA2     ------> TSC_G1_IO3
-    PA3     ------> TSC_G1_IO4
-    PA6     ------> TSC_G2_IO3
-    PA7     ------> TSC_G2_IO4
-    PB0     ------> TSC_G3_IO2
-    PB1     ------> TSC_G3_IO3
-    */
-    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_6|GPIO_PIN_7);
-
-    HAL_GPIO_DeInit(GPIOB, GPIO_PIN_0|GPIO_PIN_1);
-
-  /* USER CODE BEGIN TSC_MspDeInit 1 */
-
-  /* USER CODE END TSC_MspDeInit 1 */
   }
 
 }
@@ -450,7 +343,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
     PA9     ------> USART1_TX
     PA10     ------> USART1_RX
     */
-    GPIO_InitStruct.Pin = USART_TX_Pin|USART_RX_Pin;
+    GPIO_InitStruct.Pin = GPIO_PIN_9|GPIO_PIN_10;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
@@ -484,7 +377,7 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* huart)
     PA9     ------> USART1_TX
     PA10     ------> USART1_RX
     */
-    HAL_GPIO_DeInit(GPIOA, USART_TX_Pin|USART_RX_Pin);
+    HAL_GPIO_DeInit(GPIOA, GPIO_PIN_9|GPIO_PIN_10);
 
   /* USER CODE BEGIN USART1_MspDeInit 1 */
 

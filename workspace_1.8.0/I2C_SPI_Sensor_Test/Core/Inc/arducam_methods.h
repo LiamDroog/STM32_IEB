@@ -18,8 +18,7 @@ uint8_t bus_read(int address);
 
 
 // ########################### SPI STUFF #################################
-void CS_HIGH(void);
-void CS_LOW(void);
+
 
 
 #endif /* INC_ARDUCAM_METHODS_H_ */

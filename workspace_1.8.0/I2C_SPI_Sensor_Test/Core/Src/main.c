@@ -81,7 +81,7 @@ uint16_t hi2c1_read_register(uint8_t address_pointer, uint8_t register_pointer)
     /* Check the communication status */
     if(status != HAL_OK)
     {
-    	printf("I2C read from 0x%x failed...\r\n", register_pointer );
+//    	printf("I2C read from 0x%x failed...\r\n", register_pointer );
     }
 
     return return_value;
@@ -103,7 +103,7 @@ void hi2c1_write_register(uint8_t address_pointer,uint8_t register_pointer, uint
 
 void scan_i2c(){
 	HAL_StatusTypeDef result;
-	uint8_t i;
+	uint8_t i =0;
 
 	printf("--------------------\r\n");
 	printf("Scanning I2C...\r\n");
@@ -173,10 +173,11 @@ uint8_t SPI_Write(uint8_t addr, uint8_t data){
 }
 
 uint8_t SPI_Read(uint8_t addr, uint8_t *data) {
-	uint8_t txBuf[2] = {addr, 0x00};
+	uint8_t txBuf[2] = {addr, 0x0A};
 	uint8_t rxBuf[2];
 	HAL_GPIO_WritePin(GPIO_PB6_GPIO_Port, GPIO_PB6_Pin, GPIO_PIN_RESET);
 	uint8_t status = (HAL_SPI_TransmitReceive(&hspi2, txBuf, rxBuf, 2, HAL_MAX_DELAY) == HAL_OK);
+//	HAL_Delay(100);
 	HAL_GPIO_WritePin(GPIO_PB6_GPIO_Port, GPIO_PB6_Pin, GPIO_PIN_SET);
 	*data = rxBuf[1];
 	return status;
@@ -190,45 +191,45 @@ void CS_HIGH(){
 	HAL_GPIO_WritePin(GPIO_PB6_GPIO_Port, GPIO_PB6_Pin, GPIO_PIN_SET);
 
 }
-
-void detect_ov5642(){
-	uint8_t temp=0;
-	CS_LOW();
-	HAL_Delay(100);
-	uint8_t data[2];
-	data[0] = 0x00 | 0x80;
-	data[1] = 0x55;
-	// send spi
-	HAL_SPI_Init(&hspi1);
-	HAL_StatusTypeDef status;
-    char spi_buf[2];
-//    status = HAL_SPI_TransmitReceive(&hspi1, &data, (uint8_t *)spi_buf, 2, 100);
-	status = HAL_SPI_Transmit(&hspi1, data, 2, 100);
-//    while(HAL_SPI_GetState(&hspi1) != HAL_SPI_STATE_READY);
-	if (status == HAL_OK){
-		printf("Transmitted successfully.\r\n");
-	}
-	else{
-		if (status == HAL_TIMEOUT){
-			printf("Connection timed out\r\n");
-		}
-		printf("Transmission failed.\r\n");
-	}
-	status = HAL_SPI_Receive(&hspi1, (uint8_t *)spi_buf, 2, 100);
-//    while(HAL_SPI_GetState(&hspi1) != HAL_SPI_STATE_READY);
-	if (status == HAL_OK){
-		printf("Recieved successfully.\r\n");
-	}
-	else{
-		if (status == HAL_TIMEOUT){
-			printf("Connection timed out\r\n");
-		}
-		printf("Receive failed.\r\n");
-	}
-	HAL_Delay(100);
-	CS_HIGH();
-	printf("Received: 0x%x", spi_buf);
-	}
+//
+//void detect_ov5642(){
+//	uint8_t temp=0;
+//	CS_LOW();
+//	HAL_Delay(100);
+//	uint8_t data[2];
+//	data[0] = 0x00 | 0x80;
+//	data[1] = 0x55;
+//	// send spi
+//	HAL_SPI_Init(&hspi1);
+//	HAL_StatusTypeDef status;
+//    char spi_buf[2];
+////    status = HAL_SPI_TransmitReceive(&hspi1, &data, (uint8_t *)spi_buf, 2, 100);
+//	status = HAL_SPI_Transmit(&hspi1, data, 2, 100);
+////    while(HAL_SPI_GetState(&hspi1) != HAL_SPI_STATE_READY);
+//	if (status == HAL_OK){
+//		printf("Transmitted successfully.\r\n");
+//	}
+//	else{
+//		if (status == HAL_TIMEOUT){
+//			printf("Connection timed out\r\n");
+//		}
+//		printf("Transmission failed.\r\n");
+//	}
+//	status = HAL_SPI_Receive(&hspi1, (uint8_t *)spi_buf, 2, 100);
+////    while(HAL_SPI_GetState(&hspi1) != HAL_SPI_STATE_READY);
+//	if (status == HAL_OK){
+//		printf("Recieved successfully.\r\n");
+//	}
+//	else{
+//		if (status == HAL_TIMEOUT){
+//			printf("Connection timed out\r\n");
+//		}
+//		printf("Receive failed.\r\n");
+//	}
+//	HAL_Delay(100);
+//	CS_HIGH();
+//	printf("Received: 0x%x", spi_buf);
+//	}
 
 HAL_StatusTypeDef ReadRegister(uint8_t addr, uint8_t *byte)
 {
@@ -286,7 +287,7 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 	HAL_Delay(1000);
-	printf("\r\n--------\r\n\r\nProject: I2C_BUS_SCAN; V0.1\r\nInitializing UART..\n\rConnected to UART.\r\n");
+	printf("\r\n--------\r\n\r\nProject: I2C__SPI_Sensor_Test; V0.1\r\nInitializing UART..\n\rConnected to UART.\r\n");
 
 	scan_i2c();
 	CS_HIGH();
@@ -307,9 +308,9 @@ int main(void)
 	int wrote;
 
 //	wrote = SPI_Write(0x0, 0x01);
-	SPI_Write(0x00, 0x0A);
-	SPI_Read(0x3c, data);
-	printf("0x3c: 0x%x", data);
+//	SPI_Write(0x00, 0x0A);
+//	SPI_Read(0x3c, data);
+//	printf("0x3c: 0x%x\r\n", data);
 //	SPI_Write(0x02, 0x05);
 //	if (wrote ==1){
 //		printf("Write succeeded!\r\n");
@@ -317,20 +318,28 @@ int main(void)
 //	else{
 //		printf("Write failed\r\n");
 //	}
+    HAL_StatusTypeDef result;
+
 	while (1)
 	{
 		HAL_SPI_Init(&hspi2);
 		for (int i=0x00; i<0x45; i++){
 	        SPI_Read(i, &data);
-	        printf("Reading from 0x%x: 0x%x\r\n", i, data);
-			HAL_Delay(200);
+	        if (data != 0){
+		        printf("Reading from 0x%x: 0x%x\r\n", i, data);
+	        }
+			HAL_Delay(50);
+//		SPI_Read(0x40, &data);
+////		printf("Reading from 0x40: 0x%x\r\n", data);
+//		HAL_Delay(50);
 		}
+		printf("--------\r\n");
 
-		HAL_SPI_DeInit(&hspi2);
+
+//		HAL_SPI_DeInit(&hspi2);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-
 	}
   /* USER CODE END 3 */
 }
@@ -573,7 +582,7 @@ static void MX_USART1_UART_Init(void)
   huart1.Init.OverSampling = UART_OVERSAMPLING_16;
   huart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
   huart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
-  if (HAL_UART_Init(&huart1) != HAL_OK)
+  if (HAL_HalfDuplex_Init(&huart1) != HAL_OK)
   {
     Error_Handler();
   }

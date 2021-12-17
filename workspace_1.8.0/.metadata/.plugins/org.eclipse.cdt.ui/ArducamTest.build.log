@@ -1,4 +1,4 @@
-10:48:14 **** Incremental Build of configuration Debug for project ArducamTest ****
+13:20:12 **** Incremental Build of configuration Debug for project ArducamTest ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/delay.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L053xx -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/delay.d" -MT"Core/Src/delay.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/delay.o"
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L053xx -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
@@ -8,32 +8,17 @@ arm-none-eabi-gcc "../Core/Src/stm32l1xx_adc.c" -mcpu=cortex-m0plus -std=gnu11 -
 arm-none-eabi-gcc "../Core/Src/stm32l1xx_aes.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L053xx -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32l1xx_aes.d" -MT"Core/Src/stm32l1xx_aes.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32l1xx_aes.o"
 arm-none-eabi-gcc "../Core/Src/stm32l1xx_aes_util.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L053xx -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32l1xx_aes_util.d" -MT"Core/Src/stm32l1xx_aes_util.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32l1xx_aes_util.o"
 arm-none-eabi-gcc "../Core/Src/stm32l1xx_comp.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L053xx -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32l1xx_comp.d" -MT"Core/Src/stm32l1xx_comp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32l1xx_comp.o"
-../Core/Src/stm32l1xx_aes_util.c:51:10: fatal error: stm32l1xx_aes.h: No such file or directory
-   51 | #include "stm32l1xx_aes.h"
-      |          ^~~~~~~~~~~~~~~~~
-compilation terminated.
 ../Core/Src/stm32l1xx_aes.c:73:10: fatal error: stm32l1xx_aes.h: No such file or directory
    73 | #include "stm32l1xx_aes.h"
+      |          ^~~~~~~~~~~~~~~~~
+compilation terminated.
+../Core/Src/stm32l1xx_aes_util.c:51:10: fatal error: stm32l1xx_aes.h: No such file or directory
+   51 | #include "stm32l1xx_aes.h"
       |          ^~~~~~~~~~~~~~~~~
 compilation terminated.
 make: *** [Core/Src/subdir.mk:136: Core/Src/stm32l1xx_aes_util.o] Error 1
 make: *** Waiting for unfinished jobs....
 make: *** [Core/Src/subdir.mk:136: Core/Src/stm32l1xx_aes.o] Error 1
-../Core/Src/stm32l1xx_comp.c: In function 'COMP_DeInit':
-../Core/Src/stm32l1xx_comp.c:118:3: error: 'COMP' undeclared (first use in this function); did you mean 'COMP2'?
-  118 |   COMP->CSR = ((uint32_t)0x00000000);    /*!< Set COMP->CSR to reset value */
-      |   ^~~~
-      |   COMP2
-../Core/Src/stm32l1xx_comp.c:118:3: note: each undeclared identifier is reported only once for each function it appears in
-../Core/Src/stm32l1xx_comp.c: In function 'COMP_Init':
-../Core/Src/stm32l1xx_comp.c:141:12: error: 'COMP' undeclared (first use in this function); did you mean 'COMP2'?
-  141 |   tmpreg = COMP->CSR;
-      |            ^~~~
-      |            COMP2
-../Core/Src/stm32l1xx_comp.c:144:38: error: 'COMP_CSR_OUTSEL' undeclared (first use in this function); did you mean 'COMP_CSR_COMP1EN'?
-  144 |   tmpreg &= (uint32_t) (~(uint32_t) (COMP_CSR_OUTSEL | COMP_CSR_INSEL | COMP_CSR_SPEED));
-      |                                      ^~~~~~~~~~~~~~~
-      |                                      COMP_CSR_COMP1EN
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:68: warning: "RCC_HSE_OFF" redefined
    68 | #define RCC_HSE_OFF                      ((uint8_t)0x00)
@@ -70,10 +55,6 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:123: note: this is the location of the previous definition
   123 | #define IS_RCC_HSE(__HSE__) (((__HSE__) == RCC_HSE_OFF) || ((__HSE__) == RCC_HSE_ON) || \
       | 
-../Core/Src/stm32l1xx_comp.c:144:56: error: 'COMP_CSR_INSEL' undeclared (first use in this function); did you mean 'COMP_CSR_WINMODE'?
-  144 |   tmpreg &= (uint32_t) (~(uint32_t) (COMP_CSR_OUTSEL | COMP_CSR_INSEL | COMP_CSR_SPEED));
-      |                                                        ^~~~~~~~~~~~~~
-      |                                                        COMP_CSR_WINMODE
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:90: warning: "IS_RCC_MSI_CLOCK_RANGE" redefined
    90 | #define IS_RCC_MSI_CLOCK_RANGE(RANGE) (((RANGE) == RCC_MSIRange_0) || \
@@ -98,10 +79,7 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:152: note: this is the location of the previous definition
   152 | #define IS_RCC_PLL_MUL(__MUL__) (((__MUL__) == RCC_PLL_MUL3)  || ((__MUL__) == RCC_PLL_MUL4)  || \
       | 
-../Core/Src/stm32l1xx_comp.c:144:73: error: 'COMP_CSR_SPEED' undeclared (first use in this function); did you mean 'COMP_CSR_COMP1EN'?
-  144 |   tmpreg &= (uint32_t) (~(uint32_t) (COMP_CSR_OUTSEL | COMP_CSR_INSEL | COMP_CSR_SPEED));
-      |                                                                         ^~~~~~~~~~~~~~
-      |                                                                         COMP_CSR_COMP1EN
+../Core/Src/main.c: In function 'main':
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:148: warning: "IS_RCC_PLL_DIV" redefined
   148 | #define IS_RCC_PLL_DIV(DIV) (((DIV) == RCC_PLLDiv_2) || ((DIV) == RCC_PLLDiv_3) || \
@@ -114,15 +92,15 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:149: note: this is the location of the previous definition
   149 | #define IS_RCC_PLL_DIV(__DIV__) (((__DIV__) == RCC_PLL_DIV2) || \
       | 
-../Core/Src/stm32l1xx_comp.c: In function 'COMP_Cmd':
-../Core/Src/stm32l1xx_comp.c:180:5: error: 'COMP' undeclared (first use in this function); did you mean 'COMP2'?
-  180 |     COMP->CSR |= (uint32_t) COMP_CSR_CMP1EN;
-      |     ^~~~
-      |     COMP2
+../Core/Src/main.c:11:2: warning: implicit declaration of function 'NVIC_PriorityGroupConfig'; did you mean 'NVIC_SetPriorityGrouping'? [-Wimplicit-function-declaration]
+   11 |  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~
+      |  NVIC_SetPriorityGrouping
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:183: warning: "IS_RCC_HCLK" redefined
   183 | #define IS_RCC_HCLK(HCLK) (((HCLK) == RCC_SYSCLK_Div1) || ((HCLK) == RCC_SYSCLK_Div2) || \
       | 
+../Core/Src/spi.c: In function 'SPI2_Init':
 In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
                  from ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h:30,
                  from ../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h:256,
@@ -131,10 +109,10 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:169: note: this is the location of the previous definition
   169 | #define IS_RCC_HCLK(__HCLK__) (((__HCLK__) == RCC_SYSCLK_DIV1) || ((__HCLK__) == RCC_SYSCLK_DIV2) || \
       | 
-../Core/Src/stm32l1xx_comp.c:180:29: error: 'COMP_CSR_CMP1EN' undeclared (first use in this function); did you mean 'COMP_CSR_COMP1EN'?
-  180 |     COMP->CSR |= (uint32_t) COMP_CSR_CMP1EN;
-      |                             ^~~~~~~~~~~~~~~
-      |                             COMP_CSR_COMP1EN
+../Core/Src/spi.c:28:2: error: unknown type name 'SPI_InitTypeDef'; did you mean 'GPIO_InitTypeDef'?
+   28 |  SPI_InitTypeDef  SPI_InitStructure;
+      |  ^~~~~~~~~~~~~~~
+      |  GPIO_InitTypeDef
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:201: warning: "IS_RCC_PCLK" redefined
   201 | #define IS_RCC_PCLK(PCLK) (((PCLK) == RCC_HCLK_Div1) || ((PCLK) == RCC_HCLK_Div2) || \
@@ -147,15 +125,10 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:174: note: this is the location of the previous definition
   174 | #define IS_RCC_PCLK(__PCLK__) (((__PCLK__) == RCC_HCLK_DIV1) || ((__PCLK__) == RCC_HCLK_DIV2) || \
       | 
-../Core/Src/stm32l1xx_comp.c: In function 'COMP_GetOutputLevel':
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:213: warning: "RCC_IT_LSIRDY" redefined
   213 | #define RCC_IT_LSIRDY                    ((uint8_t)0x01)
       | 
-../Core/Src/stm32l1xx_comp.c:215:9: error: 'COMP' undeclared (first use in this function); did you mean 'COMP2'?
-  215 |     if((COMP->CSR & COMP_CSR_CMP1OUT) != (uint8_t) RESET)
-      |         ^~~~
-      |         COMP2
 In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
                  from ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h:30,
                  from ../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h:256,
@@ -164,6 +137,7 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:605: note: this is the location of the previous definition
   605 | #define RCC_IT_LSIRDY                    RCC_CIFR_LSIRDYF   /*!< LSI Ready Interrupt flag */
       | 
+../Core/Src/delay.c: In function 'delay_init':
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:214: warning: "RCC_IT_LSERDY" redefined
   214 | #define RCC_IT_LSERDY                    ((uint8_t)0x02)
@@ -176,6 +150,15 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:606: note: this is the location of the previous definition
   606 | #define RCC_IT_LSERDY                    RCC_CIFR_LSERDYF   /*!< LSE Ready Interrupt flag */
       | 
+../Core/Src/stm32l1xx_comp.c: In function 'COMP_DeInit':
+../Core/Src/spi.c:30:2: error: unknown type name 'NVIC_InitTypeDef'; did you mean 'TSC_InitTypeDef'?
+   30 |  NVIC_InitTypeDef   NVIC_InitStructure;
+      |  ^~~~~~~~~~~~~~~~
+      |  TSC_InitTypeDef
+../Core/Src/delay.c:9:2: warning: implicit declaration of function 'SysTick_CLKSourceConfig'; did you mean 'HAL_SYSTICK_CLKSourceConfig'? [-Wimplicit-function-declaration]
+    9 |  SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK_Div8);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~
+      |  HAL_SYSTICK_CLKSourceConfig
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:215: warning: "RCC_IT_HSIRDY" redefined
   215 | #define RCC_IT_HSIRDY                    ((uint8_t)0x04)
@@ -188,6 +171,17 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:607: note: this is the location of the previous definition
   607 | #define RCC_IT_HSIRDY                    RCC_CIFR_HSIRDYF   /*!< HSI Ready Interrupt flag */
       | 
+../Core/Src/main.c:11:27: error: 'NVIC_PriorityGroup_4' undeclared (first use in this function); did you mean 'NVIC_SetPriorityGrouping'?
+   11 |  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
+      |                           ^~~~~~~~~~~~~~~~~~~~
+      |                           NVIC_SetPriorityGrouping
+../Core/Src/stm32l1xx_comp.c:118:3: error: 'COMP' undeclared (first use in this function); did you mean 'COMP2'?
+  118 |   COMP->CSR = ((uint32_t)0x00000000);    /*!< Set COMP->CSR to reset value */
+      |   ^~~~
+      |   COMP2
+../Core/Src/sccb_bus.c: In function 'sccb_bus_init':
+../Core/Src/main.c:11:27: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/stm32l1xx_comp.c:118:3: note: each undeclared identifier is reported only once for each function it appears in
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:216: warning: "RCC_IT_HSERDY" redefined
   216 | #define RCC_IT_HSERDY                    ((uint8_t)0x08)
@@ -200,10 +194,9 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:608: note: this is the location of the previous definition
   608 | #define RCC_IT_HSERDY                    RCC_CIFR_HSERDYF   /*!< HSE Ready Interrupt flag */
       | 
-../Core/Src/stm32l1xx_comp.c:215:21: error: 'COMP_CSR_CMP1OUT' undeclared (first use in this function); did you mean 'COMP_CSR_COMP1LOCK'?
-  215 |     if((COMP->CSR & COMP_CSR_CMP1OUT) != (uint8_t) RESET)
-      |                     ^~~~~~~~~~~~~~~~
-      |                     COMP_CSR_COMP1LOCK
+../Core/Src/sccb_bus.c:12:2: warning: implicit declaration of function 'RCC_AHBPeriphClockCmd' [-Wimplicit-function-declaration]
+   12 |  RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
+      |  ^~~~~~~~~~~~~~~~~~~~~
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:217: warning: "RCC_IT_PLLRDY" redefined
   217 | #define RCC_IT_PLLRDY                    ((uint8_t)0x10)
@@ -216,6 +209,19 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:609: note: this is the location of the previous definition
   609 | #define RCC_IT_PLLRDY                    RCC_CIFR_PLLRDYF   /*!< PLL Ready Interrupt flag */
       | 
+../Core/Src/stm32l1xx_comp.c: In function 'COMP_Init':
+../Core/Src/delay.c:9:26: error: 'SysTick_CLKSource_HCLK_Div8' undeclared (first use in this function)
+    9 |  SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK_Div8);
+      |                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/spi.c:31:2: warning: implicit declaration of function 'RCC_AHBPeriphClockCmd' [-Wimplicit-function-declaration]
+   31 |  RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB,ENABLE);
+      |  ^~~~~~~~~~~~~~~~~~~~~
+../Core/Src/delay.c:9:26: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:136: Core/Src/main.o] Error 1
+../Core/Src/stm32l1xx_comp.c:141:12: error: 'COMP' undeclared (first use in this function); did you mean 'COMP2'?
+  141 |   tmpreg = COMP->CSR;
+      |            ^~~~
+      |            COMP2
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:218: warning: "RCC_IT_MSIRDY" redefined
   218 | #define RCC_IT_MSIRDY                    ((uint8_t)0x20)
@@ -228,10 +234,10 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:610: note: this is the location of the previous definition
   610 | #define RCC_IT_MSIRDY                    RCC_CIFR_MSIRDYF   /*!< MSI Ready Interrupt flag */
       | 
-../Core/Src/stm32l1xx_comp.c:231:21: error: 'COMP_CSR_CMP2OUT' undeclared (first use in this function); did you mean 'COMP_CSR_COMP2LOCK'?
-  231 |     if((COMP->CSR & COMP_CSR_CMP2OUT) != (uint8_t) RESET)
-      |                     ^~~~~~~~~~~~~~~~
-      |                     COMP_CSR_COMP2LOCK
+../Core/Src/sccb_bus.c:12:24: error: 'RCC_AHBPeriph_GPIOB' undeclared (first use in this function)
+   12 |  RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
+      |                        ^~~~~~~~~~~~~~~~~~~
+../Core/Src/sccb_bus.c:12:24: note: each undeclared identifier is reported only once for each function it appears in
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:219: warning: "RCC_IT_LSECSS" redefined
   219 | #define RCC_IT_LSECSS                    ((uint8_t)0x40)
@@ -244,15 +250,21 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:611: note: this is the location of the previous definition
   611 | #define RCC_IT_LSECSS                    RCC_CIFR_CSSLSEF   /*!< LSE Clock Security System Interrupt flag */
       | 
-../Core/Src/stm32l1xx_comp.c: In function 'COMP_SW1SwitchConfig':
+../Core/Src/sccb_bus.c:13:20: error: 'GPIO_InitTypeDef' {aka 'struct <anonymous>'} has no member named 'GPIO_PIN'
+   13 |  GPIO_InitStructure.GPIO_PIN = GPIO_PIN_11;
+      |                    ^
+../Core/Src/stm32l1xx_comp.c:144:38: error: 'COMP_CSR_OUTSEL' undeclared (first use in this function); did you mean 'COMP_CSR_COMP1EN'?
+  144 |   tmpreg &= (uint32_t) (~(uint32_t) (COMP_CSR_OUTSEL | COMP_CSR_INSEL | COMP_CSR_SPEED));
+      |                                      ^~~~~~~~~~~~~~~
+      |                                      COMP_CSR_COMP1EN
+make: *** [Core/Src/subdir.mk:136: Core/Src/delay.o] Error 1
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:220: warning: "RCC_IT_CSS" redefined
   220 | #define RCC_IT_CSS                       ((uint8_t)0x80)
       | 
-../Core/Src/stm32l1xx_comp.c:263:5: error: 'COMP' undeclared (first use in this function); did you mean 'COMP2'?
-  263 |     COMP->CSR |= (uint32_t) COMP_CSR_SW1;
-      |     ^~~~
-      |     COMP2
+../Core/Src/sccb_bus.c:14:20: error: 'GPIO_InitTypeDef' {aka 'struct <anonymous>'} has no member named 'GPIO_Mode'
+   14 |  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+      |                    ^
 In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
                  from ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h:30,
                  from ../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h:256,
@@ -261,6 +273,14 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:613: note: this is the location of the previous definition
   613 | #define RCC_IT_CSS                       RCC_CIFR_CSSHSEF   /*!< Clock Security System Interrupt flag */
       | 
+../Core/Src/spi.c:31:24: error: 'RCC_AHBPeriph_GPIOB' undeclared (first use in this function)
+   31 |  RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB,ENABLE);
+      |                        ^~~~~~~~~~~~~~~~~~~
+../Core/Src/spi.c:31:24: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/stm32l1xx_comp.c:144:56: error: 'COMP_CSR_INSEL' undeclared (first use in this function); did you mean 'COMP_CSR_WINMODE'?
+  144 |   tmpreg &= (uint32_t) (~(uint32_t) (COMP_CSR_OUTSEL | COMP_CSR_INSEL | COMP_CSR_SPEED));
+      |                                                        ^~~~~~~~~~~~~~
+      |                                                        COMP_CSR_WINMODE
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:239: warning: "RCC_LSE_OFF" redefined
   239 | #define RCC_LSE_OFF                      ((uint8_t)0x00)
@@ -273,9 +293,12 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:345: note: this is the location of the previous definition
   345 | #define RCC_LSE_OFF                      (0x00000000U)                       /*!< LSE clock deactivation */
       | 
-../Core/Src/stm32l1xx_comp.c:263:29: error: 'COMP_CSR_SW1' undeclared (first use in this function)
-  263 |     COMP->CSR |= (uint32_t) COMP_CSR_SW1;
-      |                             ^~~~~~~~~~~~
+../Core/Src/sccb_bus.c:14:33: error: 'GPIO_Mode_IN' undeclared (first use in this function)
+   14 |  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+      |                                 ^~~~~~~~~~~~
+../Core/Src/sccb_bus.c:15:20: error: 'GPIO_InitTypeDef' {aka 'struct <anonymous>'} has no member named 'GPIO_Speed'
+   15 |  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_40MHz;
+      |                    ^
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:240: warning: "RCC_LSE_ON" redefined
   240 | #define RCC_LSE_ON                       ((uint8_t)0x01)
@@ -288,15 +311,10 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:346: note: this is the location of the previous definition
   346 | #define RCC_LSE_ON                       RCC_CSR_LSEON                                /*!< LSE clock activation */
       | 
-../Core/Src/stm32l1xx_comp.c: In function 'COMP_WindowCmd':
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:242: warning: "IS_RCC_LSE" redefined
   242 | #define IS_RCC_LSE(LSE) (((LSE) == RCC_LSE_OFF) || ((LSE) == RCC_LSE_ON) || \
       | 
-../Core/Src/stm32l1xx_comp.c:310:5: error: 'COMP' undeclared (first use in this function); did you mean 'COMP2'?
-  310 |     COMP->CSR |= (uint32_t) COMP_CSR_WNDWE;
-      |     ^~~~
-      |     COMP2
 In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
                  from ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h:30,
                  from ../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h:256,
@@ -305,10 +323,25 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:125: note: this is the location of the previous definition
   125 | #define IS_RCC_LSE(__LSE__) (((__LSE__) == RCC_LSE_OFF) || ((__LSE__) == RCC_LSE_ON) || \
       | 
+../Core/Src/stm32l1xx_comp.c:144:73: error: 'COMP_CSR_SPEED' undeclared (first use in this function); did you mean 'COMP_CSR_COMP1EN'?
+  144 |   tmpreg &= (uint32_t) (~(uint32_t) (COMP_CSR_OUTSEL | COMP_CSR_INSEL | COMP_CSR_SPEED));
+      |                                                                         ^~~~~~~~~~~~~~
+      |                                                                         COMP_CSR_COMP1EN
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:258: warning: "IS_RCC_RTCCLK_SOURCE" redefined
   258 | #define IS_RCC_RTCCLK_SOURCE(SOURCE) (((SOURCE) == RCC_RTCCLKSource_LSE) || \
       | 
+../Core/Src/spi.c:32:2: warning: implicit declaration of function 'RCC_APB1PeriphClockCmd' [-Wimplicit-function-declaration]
+   32 |  RCC_APB1PeriphClockCmd(RCC_APB1Periph_SPI2,ENABLE);
+      |  ^~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/stm32l1xx_comp.c: In function 'COMP_Cmd':
+../Core/Src/sccb_bus.c:15:34: error: 'GPIO_Speed_40MHz' undeclared (first use in this function)
+   15 |  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_40MHz;
+      |                                  ^~~~~~~~~~~~~~~~
+../Core/Src/stm32l1xx_comp.c:180:5: error: 'COMP' undeclared (first use in this function); did you mean 'COMP2'?
+  180 |     COMP->CSR |= (uint32_t) COMP_CSR_CMP1EN;
+      |     ^~~~
+      |     COMP2
 In file included from ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h:31,
                  from ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:29,
                  from ../Core/Inc/stm32l0xx_hal_conf.h:188,
@@ -319,10 +352,14 @@ In file included from ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h:31
 ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h:3235: note: this is the location of the previous definition
  3235 | #define IS_RCC_RTCCLK_SOURCE        IS_RCC_RTCCLKSOURCE
       | 
-../Core/Src/stm32l1xx_comp.c:310:29: error: 'COMP_CSR_WNDWE' undeclared (first use in this function); did you mean 'COMP_CSR_WINMODE'?
-  310 |     COMP->CSR |= (uint32_t) COMP_CSR_WNDWE;
-      |                             ^~~~~~~~~~~~~~
-      |                             COMP_CSR_WINMODE
+../Core/Src/sccb_bus.c:16:2: warning: implicit declaration of function 'GPIO_Init'; did you mean 'SPI2_Init'? [-Wimplicit-function-declaration]
+   16 |  GPIO_Init(GPIOB, &GPIO_InitStructure);
+      |  ^~~~~~~~~
+      |  SPI2_Init
+../Core/Src/stm32l1xx_comp.c:180:29: error: 'COMP_CSR_CMP1EN' undeclared (first use in this function); did you mean 'COMP_CSR_COMP1EN'?
+  180 |     COMP->CSR |= (uint32_t) COMP_CSR_CMP1EN;
+      |                             ^~~~~~~~~~~~~~~
+      |                             COMP_CSR_COMP1EN
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:386: warning: "RCC_FLAG_HSIRDY" redefined
   386 | #define RCC_FLAG_HSIRDY                  ((uint8_t)0x21)
@@ -335,11 +372,11 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:633: note: this is the location of the previous definition
   633 | #define RCC_FLAG_HSIRDY                  ((uint8_t)((CR_REG_INDEX << 5) | RCC_CR_HSIRDY_Pos))     /*!< Internal High Speed clock ready flag */
       | 
-../Core/Src/stm32l1xx_comp.c: In function 'COMP_VrefintOutputCmd':
-../Core/Src/stm32l1xx_comp.c:353:5: error: 'COMP' undeclared (first use in this function); did you mean 'COMP2'?
-  353 |     COMP->CSR |= (uint32_t) COMP_CSR_VREFOUTEN;
-      |     ^~~~
-      |     COMP2
+../Core/Src/stm32l1xx_comp.c: In function 'COMP_GetOutputLevel':
+../Core/Src/stm32l1xx_comp.c:215:9: error: 'COMP' undeclared (first use in this function); did you mean 'COMP2'?
+  215 |     if((COMP->CSR & COMP_CSR_CMP1OUT) != (uint8_t) RESET)
+      |         ^~~~
+      |         COMP2
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:387: warning: "RCC_FLAG_MSIRDY" redefined
   387 | #define RCC_FLAG_MSIRDY                  ((uint8_t)0x29)
@@ -352,10 +389,19 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:635: note: this is the location of the previous definition
   635 | #define RCC_FLAG_MSIRDY                  ((uint8_t)((CR_REG_INDEX << 5) | RCC_CR_MSIRDY_Pos))     /*!< MSI clock ready flag */
       | 
+../Core/Src/sccb_bus.c:17:2: warning: implicit declaration of function 'GPIO_SetBits' [-Wimplicit-function-declaration]
+   17 |  GPIO_SetBits(GPIOB,GPIO_PIN_11);
+      |  ^~~~~~~~~~~~
+../Core/Src/spi.c:32:25: error: 'RCC_APB1Periph_SPI2' undeclared (first use in this function)
+   32 |  RCC_APB1PeriphClockCmd(RCC_APB1Periph_SPI2,ENABLE);
+      |                         ^~~~~~~~~~~~~~~~~~~
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:388: warning: "RCC_FLAG_HSERDY" redefined
   388 | #define RCC_FLAG_HSERDY                  ((uint8_t)0x31)
       | 
+../Core/Src/sccb_bus.c:18:20: error: 'GPIO_InitTypeDef' {aka 'struct <anonymous>'} has no member named 'GPIO_PIN'
+   18 |  GPIO_InitStructure.GPIO_PIN = GPIO_PIN_10;
+      |                    ^
 In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
                  from ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h:30,
                  from ../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h:256,
@@ -364,9 +410,13 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:636: note: this is the location of the previous definition
   636 | #define RCC_FLAG_HSERDY                  ((uint8_t)((CR_REG_INDEX << 5) | RCC_CR_HSERDY_Pos))     /*!< External High Speed clock ready flag */
       | 
-../Core/Src/stm32l1xx_comp.c:353:29: error: 'COMP_CSR_VREFOUTEN' undeclared (first use in this function)
-  353 |     COMP->CSR |= (uint32_t) COMP_CSR_VREFOUTEN;
-      |                             ^~~~~~~~~~~~~~~~~~
+../Core/Src/sccb_bus.c:19:20: error: 'GPIO_InitTypeDef' {aka 'struct <anonymous>'} has no member named 'GPIO_Mode'
+   19 |  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+      |                    ^
+../Core/Src/stm32l1xx_comp.c:215:21: error: 'COMP_CSR_CMP1OUT' undeclared (first use in this function); did you mean 'COMP_CSR_COMP1LOCK'?
+  215 |     if((COMP->CSR & COMP_CSR_CMP1OUT) != (uint8_t) RESET)
+      |                     ^~~~~~~~~~~~~~~~
+      |                     COMP_CSR_COMP1LOCK
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:389: warning: "RCC_FLAG_PLLRDY" redefined
   389 | #define RCC_FLAG_PLLRDY                  ((uint8_t)0x39)
@@ -379,6 +429,10 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:637: note: this is the location of the previous definition
   637 | #define RCC_FLAG_PLLRDY                  ((uint8_t)((CR_REG_INDEX << 5) | RCC_CR_PLLRDY_Pos))     /*!< PLL clock ready flag */
       | 
+../Core/Src/stm32l1xx_comp.c:231:21: error: 'COMP_CSR_CMP2OUT' undeclared (first use in this function); did you mean 'COMP_CSR_COMP2LOCK'?
+  231 |     if((COMP->CSR & COMP_CSR_CMP2OUT) != (uint8_t) RESET)
+      |                     ^~~~~~~~~~~~~~~~
+      |                     COMP_CSR_COMP2LOCK
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:390: warning: "RCC_FLAG_LSERDY" redefined
   390 | #define RCC_FLAG_LSERDY                  ((uint8_t)0x49)
@@ -391,11 +445,24 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:640: note: this is the location of the previous definition
   640 | #define RCC_FLAG_LSERDY                  ((uint8_t)((CSR_REG_INDEX << 5) | RCC_CSR_LSERDY_Pos))   /*!< External Low Speed oscillator Ready */
       | 
-make: *** [Core/Src/subdir.mk:136: Core/Src/stm32l1xx_comp.o] Error 1
+../Core/Src/stm32l1xx_comp.c: In function 'COMP_SW1SwitchConfig':
+../Core/Src/sccb_bus.c:19:33: error: 'GPIO_Mode_OUT' undeclared (first use in this function)
+   19 |  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+      |                                 ^~~~~~~~~~~~~
+../Core/Src/spi.c:33:24: error: 'RCC_AHBPeriph_DMA1' undeclared (first use in this function)
+   33 |  RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1,ENABLE);
+      |                        ^~~~~~~~~~~~~~~~~~
+../Core/Src/stm32l1xx_comp.c:263:5: error: 'COMP' undeclared (first use in this function); did you mean 'COMP2'?
+  263 |     COMP->CSR |= (uint32_t) COMP_CSR_SW1;
+      |     ^~~~
+      |     COMP2
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:391: warning: "RCC_FLAG_LSECSS" redefined
   391 | #define RCC_FLAG_LSECSS                  ((uint8_t)0x4A)
       | 
+../Core/Src/spi.c:34:20: error: 'GPIO_InitTypeDef' {aka 'struct <anonymous>'} has no member named 'GPIO_Pin'
+   34 |  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
+      |                    ^
 In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
                  from ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h:30,
                  from ../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h:256,
@@ -404,6 +471,10 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:641: note: this is the location of the previous definition
   641 | #define RCC_FLAG_LSECSS                  ((uint8_t)((CSR_REG_INDEX << 5) | RCC_CSR_LSECSSD_Pos))  /*!< CSS on LSE failure Detection */
       | 
+../Core/Src/spi.c:34:32: error: 'GPIO_Pin_13' undeclared (first use in this function); did you mean 'GPIO_PIN_13'?
+   34 |  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
+      |                                ^~~~~~~~~~~
+      |                                GPIO_PIN_13
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:392: warning: "RCC_FLAG_LSIRDY" redefined
   392 | #define RCC_FLAG_LSIRDY                  ((uint8_t)0x41)
@@ -416,6 +487,15 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:639: note: this is the location of the previous definition
   639 | #define RCC_FLAG_LSIRDY                  ((uint8_t)((CSR_REG_INDEX << 5) | RCC_CSR_LSIRDY_Pos))   /*!< Internal Low Speed oscillator Ready */
       | 
+In file included from ../Core/Src/sccb_bus.c:1:
+../Core/Src/sccb_bus.c: In function 'sccb_bus_start':
+../Core/Src/stm32l1xx_comp.c:263:29: error: 'COMP_CSR_SW1' undeclared (first use in this function)
+  263 |     COMP->CSR |= (uint32_t) COMP_CSR_SW1;
+      |                             ^~~~~~~~~~~~
+../Core/Src/spi.c:34:46: error: 'GPIO_Pin_14' undeclared (first use in this function); did you mean 'GPIO_PIN_14'?
+   34 |  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
+      |                                              ^~~~~~~~~~~
+      |                                              GPIO_PIN_14
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:393: warning: "RCC_FLAG_OBLRST" redefined
   393 | #define RCC_FLAG_OBLRST                  ((uint8_t)0x59)
@@ -428,10 +508,28 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:642: note: this is the location of the previous definition
   642 | #define RCC_FLAG_OBLRST                  ((uint8_t)((CSR_REG_INDEX << 5) | RCC_CSR_OBLRSTF_Pos))  /*!< Options bytes loading reset flag */
       | 
+../Core/Inc/sccb_bus.h:13:27: warning: implicit declaration of function 'GPIO_ResetBits' [-Wimplicit-function-declaration]
+   13 | #define SCCB_SID_L()      GPIO_ResetBits(GPIOB,GPIO_PIN_11)  //SDA H
+      |                           ^~~~~~~~~~~~~~
+../Core/Src/sccb_bus.c:34:5: note: in expansion of macro 'SCCB_SID_L'
+   34 |     SCCB_SID_L();
+      |     ^~~~~~~~~~
+../Core/Src/stm32l1xx_comp.c: In function 'COMP_WindowCmd':
+../Core/Src/spi.c:34:60: error: 'GPIO_Pin_15' undeclared (first use in this function); did you mean 'GPIO_PIN_15'?
+   34 |  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
+      |                                                            ^~~~~~~~~~~
+      |                                                            GPIO_PIN_15
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:394: warning: "RCC_FLAG_PINRST" redefined
   394 | #define RCC_FLAG_PINRST                  ((uint8_t)0x5A)
       | 
+../Core/Src/stm32l1xx_comp.c:310:5: error: 'COMP' undeclared (first use in this function); did you mean 'COMP2'?
+  310 |     COMP->CSR |= (uint32_t) COMP_CSR_WNDWE;
+      |     ^~~~
+      |     COMP2
+../Core/Src/spi.c:35:20: error: 'GPIO_InitTypeDef' {aka 'struct <anonymous>'} has no member named 'GPIO_Mode'
+   35 |  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+      |                    ^
 In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
                  from ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h:30,
                  from ../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h:256,
@@ -452,10 +550,21 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:644: note: this is the location of the previous definition
   644 | #define RCC_FLAG_PORRST                  ((uint8_t)((CSR_REG_INDEX << 5) | RCC_CSR_PORRSTF_Pos))  /*!< POR/PDR reset flag */
       | 
+../Core/Src/spi.c:35:33: error: 'GPIO_Mode_AF' undeclared (first use in this function)
+   35 |  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+      |                                 ^~~~~~~~~~~~
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:396: warning: "RCC_FLAG_SFTRST" redefined
   396 | #define RCC_FLAG_SFTRST                  ((uint8_t)0x5C)
       | 
+../Core/Src/spi.c:36:20: error: 'GPIO_InitTypeDef' {aka 'struct <anonymous>'} has no member named 'GPIO_Speed'
+   36 |  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_40MHz;
+      |                    ^
+../Core/Src/stm32l1xx_comp.c:310:29: error: 'COMP_CSR_WNDWE' undeclared (first use in this function); did you mean 'COMP_CSR_WINMODE'?
+  310 |     COMP->CSR |= (uint32_t) COMP_CSR_WNDWE;
+      |                             ^~~~~~~~~~~~~~
+      |                             COMP_CSR_WINMODE
+../Core/Src/sccb_bus.c: In function 'sccb_bus_write_byte':
 In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
                  from ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h:30,
                  from ../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h:256,
@@ -464,6 +573,17 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:645: note: this is the location of the previous definition
   645 | #define RCC_FLAG_SFTRST                  ((uint8_t)((CSR_REG_INDEX << 5) | RCC_CSR_SFTRSTF_Pos))  /*!< Software Reset flag */
       | 
+../Core/Inc/sccb_bus.h:18:26: warning: implicit declaration of function 'GPIO_ReadInputDataBit' [-Wimplicit-function-declaration]
+   18 | #define SCCB_SID_STATE   GPIO_ReadInputDataBit(GPIOB,GPIO_PIN_11)
+      |                          ^~~~~~~~~~~~~~~~~~~~~
+../Core/Src/sccb_bus.c:103:5: note: in expansion of macro 'SCCB_SID_STATE'
+  103 |  if(SCCB_SID_STATE)
+      |     ^~~~~~~~~~~~~~
+../Core/Src/stm32l1xx_comp.c: In function 'COMP_VrefintOutputCmd':
+../Core/Src/stm32l1xx_comp.c:353:5: error: 'COMP' undeclared (first use in this function); did you mean 'COMP2'?
+  353 |     COMP->CSR |= (uint32_t) COMP_CSR_VREFOUTEN;
+      |     ^~~~
+      |     COMP2
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:397: warning: "RCC_FLAG_IWDGRST" redefined
   397 | #define RCC_FLAG_IWDGRST                 ((uint8_t)0x5D)
@@ -488,6 +608,9 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:647: note: this is the location of the previous definition
   647 | #define RCC_FLAG_WWDGRST                 ((uint8_t)((CSR_REG_INDEX << 5) | RCC_CSR_WWDGRSTF_Pos)) /*!< Window watchdog reset flag */
       | 
+../Core/Src/spi.c:36:34: error: 'GPIO_Speed_40MHz' undeclared (first use in this function)
+   36 |  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_40MHz;
+      |                                  ^~~~~~~~~~~~~~~~
 In file included from ../Core/Src/stm32l1xx_adc.c:87:
 ../Core/Inc/stm32l1xx_rcc.h:399: warning: "RCC_FLAG_LPWRRST" redefined
   399 | #define RCC_FLAG_LPWRRST                 ((uint8_t)0x5F)
@@ -500,6 +623,11 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:648: note: this is the location of the previous definition
   648 | #define RCC_FLAG_LPWRRST                 ((uint8_t)((CSR_REG_INDEX << 5) | RCC_CSR_LPWRRSTF_Pos)) /*!< Low-Power reset flag */
       | 
+make: *** [Core/Src/subdir.mk:136: Core/Src/sccb_bus.o] Error 1
+../Core/Src/spi.c:37:2: warning: implicit declaration of function 'GPIO_Init'; did you mean 'SPI2_Init'? [-Wimplicit-function-declaration]
+   37 |  GPIO_Init(GPIOB, &GPIO_InitStructure);
+      |  ^~~~~~~~~
+      |  SPI2_Init
 ../Core/Src/stm32l1xx_adc.c: In function 'ADC_Init':
 ../Core/Src/stm32l1xx_adc.c:234:19: error: 'ADC_TypeDef' {aka 'struct <anonymous>'} has no member named 'CR1'; did you mean 'CR'?
   234 |   tmpreg1 = ADCx->CR1;
@@ -513,6 +641,9 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
   246 |   tmpreg1 = ADCx->CR2;
       |                   ^~~
       |                   CR
+../Core/Src/stm32l1xx_comp.c:353:29: error: 'COMP_CSR_VREFOUTEN' undeclared (first use in this function)
+  353 |     COMP->CSR |= (uint32_t) COMP_CSR_VREFOUTEN;
+      |                             ^~~~~~~~~~~~~~~~~~
 ../Core/Src/stm32l1xx_adc.c:257:9: error: 'ADC_TypeDef' {aka 'struct <anonymous>'} has no member named 'CR2'; did you mean 'CR'?
   257 |   ADCx->CR2 = tmpreg1;
       |         ^~~
@@ -523,6 +654,9 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Core/Src/stm32l1xx_adc.c:269:7: error: 'ADC_TypeDef' {aka 'struct <anonymous>'} has no member named 'SQR1'
   269 |   ADCx->SQR1 = tmpreg1;
       |       ^~
+../Core/Src/spi.c:38:2: warning: implicit declaration of function 'GPIO_SetBits' [-Wimplicit-function-declaration]
+   38 |  GPIO_SetBits(GPIOB,GPIO_Pin_13|GPIO_Pin_14|GPIO_Pin_15);
+      |  ^~~~~~~~~~~~
 ../Core/Src/stm32l1xx_adc.c: In function 'ADC_Cmd':
 ../Core/Src/stm32l1xx_adc.c:365:11: error: 'ADC_TypeDef' {aka 'struct <anonymous>'} has no member named 'CR2'; did you mean 'CR'?
   365 |     ADCx->CR2 |= (uint32_t)ADC_CR2_ADON;
@@ -537,6 +671,7 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
   370 |     ADCx->CR2 &= (uint32_t)(~ADC_CR2_ADON);
       |           ^~~
       |           CR
+make: *** [Core/Src/subdir.mk:136: Core/Src/stm32l1xx_comp.o] Error 1
 ../Core/Src/stm32l1xx_adc.c: In function 'ADC_BankSelection':
 ../Core/Src/stm32l1xx_adc.c:391:11: error: 'ADC_TypeDef' {aka 'struct <anonymous>'} has no member named 'CR2'; did you mean 'CR'?
   391 |     ADCx->CR2 |= (uint32_t)ADC_CR2_CFG;
@@ -590,6 +725,9 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
   663 |   tmpreg = ADCx->CR1;
       |                  ^~~
       |                  CR
+../Core/Src/spi.c:39:2: warning: implicit declaration of function 'GPIO_PinAFConfig' [-Wimplicit-function-declaration]
+   39 |  GPIO_PinAFConfig(GPIOB,GPIO_PinSource13,GPIO_AF_SPI2);
+      |  ^~~~~~~~~~~~~~~~
 ../Core/Src/stm32l1xx_adc.c:669:9: error: 'ADC_TypeDef' {aka 'struct <anonymous>'} has no member named 'CR1'; did you mean 'CR'?
   669 |   ADCx->CR1 = tmpreg;
       |         ^~~
@@ -656,6 +794,10 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
 ../Core/Src/stm32l1xx_adc.c:958:9: error: 'ADC_TypeDef' {aka 'struct <anonymous>'} has no member named 'SQR2'
   958 |     ADCx->SQR2 = tmpreg1;
       |         ^~
+../Core/Src/spi.c:39:25: error: 'GPIO_PinSource13' undeclared (first use in this function); did you mean 'GPIO_PinState'?
+   39 |  GPIO_PinAFConfig(GPIOB,GPIO_PinSource13,GPIO_AF_SPI2);
+      |                         ^~~~~~~~~~~~~~~~
+      |                         GPIO_PinState
 ../Core/Src/stm32l1xx_adc.c:965:19: error: 'ADC_TypeDef' {aka 'struct <anonymous>'} has no member named 'SQR1'
   965 |     tmpreg1 = ADCx->SQR1;
       |                   ^~
@@ -667,6 +809,10 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
   990 |   ADCx->CR2 |= (uint32_t)ADC_CR2_SWSTART;
       |         ^~~
       |         CR
+../Core/Src/spi.c:39:42: error: 'GPIO_AF_SPI2' undeclared (first use in this function); did you mean 'GPIO_AF0_SPI2'?
+   39 |  GPIO_PinAFConfig(GPIOB,GPIO_PinSource13,GPIO_AF_SPI2);
+      |                                          ^~~~~~~~~~~~
+      |                                          GPIO_AF0_SPI2
 ../Core/Src/stm32l1xx_adc.c:990:26: error: 'ADC_CR2_SWSTART' undeclared (first use in this function); did you mean 'ADC_CR_ADSTART'?
   990 |   ADCx->CR2 |= (uint32_t)ADC_CR2_SWSTART;
       |                          ^~~~~~~~~~~~~~~
@@ -676,6 +822,10 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
  1006 |   if ((ADCx->CR2 & ADC_CR2_SWSTART) != (uint32_t)RESET)
       |              ^~~
       |              CR
+../Core/Src/spi.c:40:25: error: 'GPIO_PinSource14' undeclared (first use in this function); did you mean 'GPIO_PinState'?
+   40 |  GPIO_PinAFConfig(GPIOB,GPIO_PinSource14,GPIO_AF_SPI2);
+      |                         ^~~~~~~~~~~~~~~~
+      |                         GPIO_PinState
 ../Core/Src/stm32l1xx_adc.c:1006:20: error: 'ADC_CR2_SWSTART' undeclared (first use in this function); did you mean 'ADC_CR_ADSTART'?
  1006 |   if ((ADCx->CR2 & ADC_CR2_SWSTART) != (uint32_t)RESET)
       |                    ^~~~~~~~~~~~~~~
@@ -685,11 +835,19 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
  1036 |     ADCx->CR2 |= ADC_CR2_EOCS;
       |           ^~~
       |           CR
-../Core/Src/spi.c: In function 'SPI2_Init':
-../Core/Src/spi.c:28:2: error: unknown type name 'SPI_InitTypeDef'; did you mean 'GPIO_InitTypeDef'?
-   28 |  SPI_InitTypeDef  SPI_InitStructure;
-      |  ^~~~~~~~~~~~~~~
-      |  GPIO_InitTypeDef
+../Core/Src/spi.c:41:25: error: 'GPIO_PinSource15' undeclared (first use in this function); did you mean 'GPIO_PinState'?
+   41 |  GPIO_PinAFConfig(GPIOB,GPIO_PinSource15,GPIO_AF_SPI2);
+      |                         ^~~~~~~~~~~~~~~~
+      |                         GPIO_PinState
+../Core/Src/spi.c:43:20: error: 'GPIO_InitTypeDef' {aka 'struct <anonymous>'} has no member named 'GPIO_Pin'
+   43 |  GPIO_InitStructure.GPIO_Pin = CS_PIN;
+      |                    ^
+../Core/Src/spi.c:43:32: error: 'CS_PIN' undeclared (first use in this function)
+   43 |  GPIO_InitStructure.GPIO_Pin = CS_PIN;
+      |                                ^~~~~~
+../Core/Src/spi.c:44:20: error: 'GPIO_InitTypeDef' {aka 'struct <anonymous>'} has no member named 'GPIO_Mode'
+   44 |  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+      |                    ^
 ../Core/Src/stm32l1xx_adc.c:1036:18: error: 'ADC_CR2_EOCS' undeclared (first use in this function); did you mean 'ADC_ISR_EOS'?
  1036 |     ADCx->CR2 |= ADC_CR2_EOCS;
       |                  ^~~~~~~~~~~~
@@ -703,33 +861,22 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
  1061 |     ADCx->CR2 |= (uint32_t)ADC_CR2_CONT;
       |           ^~~
       |           CR
-../Core/Src/spi.c:30:2: error: unknown type name 'NVIC_InitTypeDef'; did you mean 'TSC_InitTypeDef'?
-   30 |  NVIC_InitTypeDef   NVIC_InitStructure;
-      |  ^~~~~~~~~~~~~~~~
-      |  TSC_InitTypeDef
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:11:2: warning: implicit declaration of function 'NVIC_PriorityGroupConfig'; did you mean 'NVIC_SetPriorityGrouping'? [-Wimplicit-function-declaration]
-   11 |  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
-      |  ^~~~~~~~~~~~~~~~~~~~~~~~
-      |  NVIC_SetPriorityGrouping
-../Core/Src/delay.c: In function 'delay_init':
-../Core/Src/delay.c:9:2: warning: implicit declaration of function 'SysTick_CLKSourceConfig'; did you mean 'HAL_SYSTICK_CLKSourceConfig'? [-Wimplicit-function-declaration]
-    9 |  SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK_Div8);
-      |  ^~~~~~~~~~~~~~~~~~~~~~~
-      |  HAL_SYSTICK_CLKSourceConfig
-../Core/Src/sccb_bus.c: In function 'sccb_bus_init':
-../Core/Src/sccb_bus.c:12:2: warning: implicit declaration of function 'RCC_AHBPeriphClockCmd' [-Wimplicit-function-declaration]
-   12 |  RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
-      |  ^~~~~~~~~~~~~~~~~~~~~
+../Core/Src/spi.c:44:33: error: 'GPIO_Mode_OUT' undeclared (first use in this function)
+   44 |  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+      |                                 ^~~~~~~~~~~~~
+../Core/Src/spi.c:45:20: error: 'GPIO_InitTypeDef' {aka 'struct <anonymous>'} has no member named 'GPIO_Speed'
+   45 |  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_40MHz;    ;
+      |                    ^
+../Core/Src/spi.c:46:13: error: 'CS_PORT' undeclared (first use in this function)
+   46 |  GPIO_Init( CS_PORT, &GPIO_InitStructure );
+      |             ^~~~~~~
+../Core/Src/spi.c:48:19: error: request for member 'SPI_Direction' in something not a structure or union
+   48 |  SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex;
+      |                   ^
 ../Core/Src/stm32l1xx_adc.c:1061:28: error: 'ADC_CR2_CONT' undeclared (first use in this function); did you mean 'ADC_CFGR1_CONT'?
  1061 |     ADCx->CR2 |= (uint32_t)ADC_CR2_CONT;
       |                            ^~~~~~~~~~~~
       |                            ADC_CFGR1_CONT
-../Core/Src/main.c:11:27: error: 'NVIC_PriorityGroup_4' undeclared (first use in this function); did you mean 'NVIC_SetPriorityGrouping'?
-   11 |  NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
-      |                           ^~~~~~~~~~~~~~~~~~~~
-      |                           NVIC_SetPriorityGrouping
-../Core/Src/main.c:11:27: note: each undeclared identifier is reported only once for each function it appears in
 ../Core/Src/stm32l1xx_adc.c:1066:11: error: 'ADC_TypeDef' {aka 'struct <anonymous>'} has no member named 'CR2'; did you mean 'CR'?
  1066 |     ADCx->CR2 &= (uint32_t)(~ADC_CR2_CONT);
       |           ^~~
@@ -748,27 +895,10 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
  1116 |     ADCx->CR1 |= (uint32_t)ADC_CR1_DISCEN;
       |           ^~~
       |           CR
-../Core/Src/delay.c:9:26: error: 'SysTick_CLKSource_HCLK_Div8' undeclared (first use in this function)
-    9 |  SysTick_CLKSourceConfig(SysTick_CLKSource_HCLK_Div8);
-      |                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/delay.c:9:26: note: each undeclared identifier is reported only once for each function it appears in
-../Core/Src/sccb_bus.c:12:24: error: 'RCC_AHBPeriph_GPIOB' undeclared (first use in this function)
-   12 |  RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
-      |                        ^~~~~~~~~~~~~~~~~~~
-../Core/Src/sccb_bus.c:12:24: note: each undeclared identifier is reported only once for each function it appears in
-../Core/Src/sccb_bus.c:13:20: error: 'GPIO_InitTypeDef' {aka 'struct <anonymous>'} has no member named 'GPIO_PIN'
-   13 |  GPIO_InitStructure.GPIO_PIN = GPIO_PIN_11;
-      |                    ^
-../Core/Src/sccb_bus.c:14:20: error: 'GPIO_InitTypeDef' {aka 'struct <anonymous>'} has no member named 'GPIO_Mode'
-   14 |  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
-      |                    ^
 ../Core/Src/stm32l1xx_adc.c:1116:28: error: 'ADC_CR1_DISCEN' undeclared (first use in this function); did you mean 'ADC_CFGR1_DISCEN'?
  1116 |     ADCx->CR1 |= (uint32_t)ADC_CR1_DISCEN;
       |                            ^~~~~~~~~~~~~~
       |                            ADC_CFGR1_DISCEN
-../Core/Src/spi.c:31:2: warning: implicit declaration of function 'RCC_AHBPeriphClockCmd' [-Wimplicit-function-declaration]
-   31 |  RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB,ENABLE);
-      |  ^~~~~~~~~~~~~~~~~~~~~
 ../Core/Src/stm32l1xx_adc.c:1121:11: error: 'ADC_TypeDef' {aka 'struct <anonymous>'} has no member named 'CR1'; did you mean 'CR'?
  1121 |     ADCx->CR1 &= (uint32_t)(~ADC_CR1_DISCEN);
       |           ^~~
@@ -778,13 +908,12 @@ In file included from ../Core/Inc/stm32l0xx_hal_conf.h:188,
  1183 |     ADCx->CR2 |= (uint32_t)ADC_CR2_DMA;
       |           ^~~
       |           CR
-make: *** [Core/Src/subdir.mk:136: Core/Src/main.o] Error 1
-../Core/Src/sccb_bus.c:14:33: error: 'GPIO_Mode_IN' undeclared (first use in this function)
-   14 |  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
-      |                                 ^~~~~~~~~~~~
-../Core/Src/sccb_bus.c:15:20: error: 'GPIO_InitTypeDef' {aka 'struct <anonymous>'} has no member named 'GPIO_Speed'
-   15 |  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_40MHz;
-      |                    ^
+../Core/Src/spi.c:48:36: error: 'SPI_Direction_2Lines_FullDuplex' undeclared (first use in this function)
+   48 |  SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex;
+      |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/spi.c:49:19: error: request for member 'SPI_Mode' in something not a structure or union
+   49 |  SPI_InitStructure.SPI_Mode = SPI_Mode_Master;
+      |                   ^
 ../Core/Src/stm32l1xx_adc.c:1183:28: error: 'ADC_CR2_DMA' undeclared (first use in this function)
  1183 |     ADCx->CR2 |= (uint32_t)ADC_CR2_DMA;
       |                            ^~~~~~~~~~~
@@ -792,7 +921,6 @@ make: *** [Core/Src/subdir.mk:136: Core/Src/main.o] Error 1
  1188 |     ADCx->CR2 &= (uint32_t)(~ADC_CR2_DMA);
       |           ^~~
       |           CR
-make: *** [Core/Src/subdir.mk:136: Core/Src/delay.o] Error 1
 ../Core/Src/stm32l1xx_adc.c: In function 'ADC_DMARequestAfterLastTransferCmd':
 ../Core/Src/stm32l1xx_adc.c:1209:11: error: 'ADC_TypeDef' {aka 'struct <anonymous>'} has no member named 'CR2'; did you mean 'CR'?
  1209 |     ADCx->CR2 |= ADC_CR2_DDS;
@@ -807,17 +935,10 @@ make: *** [Core/Src/subdir.mk:136: Core/Src/delay.o] Error 1
       |           ^~~
       |           CR
 ../Core/Src/stm32l1xx_adc.c: In function 'ADC_InjectedChannelConfig':
-../Core/Src/spi.c:31:24: error: 'RCC_AHBPeriph_GPIOB' undeclared (first use in this function)
-   31 |  RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB,ENABLE);
-      |                        ^~~~~~~~~~~~~~~~~~~
-../Core/Src/spi.c:31:24: note: each undeclared identifier is reported only once for each function it appears in
 ../Core/Src/stm32l1xx_adc.c:1326:21: error: 'ADC_TypeDef' {aka 'struct <anonymous>'} has no member named 'SMPR0'; did you mean 'SMPR'?
  1326 |     tmpreg1 = ADCx->SMPR0;
       |                     ^~~~~
       |                     SMPR
-../Core/Src/sccb_bus.c:15:34: error: 'GPIO_Speed_40MHz' undeclared (first use in this function)
-   15 |  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_40MHz;
-      |                                  ^~~~~~~~~~~~~~~~
 ../Core/Src/stm32l1xx_adc.c:1336:11: error: 'ADC_TypeDef' {aka 'struct <anonymous>'} has no member named 'SMPR0'; did you mean 'SMPR'?
  1336 |     ADCx->SMPR0 = tmpreg1;
       |           ^~~~~
@@ -826,10 +947,6 @@ make: *** [Core/Src/subdir.mk:136: Core/Src/delay.o] Error 1
  1342 |     tmpreg1 = ADCx->SMPR1;
       |                     ^~~~~
       |                     SMPR
-../Core/Src/sccb_bus.c:16:2: warning: implicit declaration of function 'GPIO_Init'; did you mean 'SPI2_Init'? [-Wimplicit-function-declaration]
-   16 |  GPIO_Init(GPIOB, &GPIO_InitStructure);
-      |  ^~~~~~~~~
-      |  SPI2_Init
 ../Core/Src/stm32l1xx_adc.c:1352:11: error: 'ADC_TypeDef' {aka 'struct <anonymous>'} has no member named 'SMPR1'; did you mean 'SMPR'?
  1352 |     ADCx->SMPR1 = tmpreg1;
       |           ^~~~~
@@ -856,22 +973,19 @@ make: *** [Core/Src/subdir.mk:136: Core/Src/delay.o] Error 1
 ../Core/Src/stm32l1xx_adc.c:1400:7: error: 'ADC_TypeDef' {aka 'struct <anonymous>'} has no member named 'JSQR'
  1400 |   ADCx->JSQR = tmpreg1;
       |       ^~
+../Core/Src/spi.c:49:31: error: 'SPI_Mode_Master' undeclared (first use in this function)
+   49 |  SPI_InitStructure.SPI_Mode = SPI_Mode_Master;
+      |                               ^~~~~~~~~~~~~~~
+../Core/Src/spi.c:50:19: error: request for member 'SPI_DataSize' in something not a structure or union
+   50 |  SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b;
+      |                   ^
 ../Core/Src/stm32l1xx_adc.c: In function 'ADC_InjectedSequencerLengthConfig':
 ../Core/Src/stm32l1xx_adc.c:1420:17: error: 'ADC_TypeDef' {aka 'struct <anonymous>'} has no member named 'JSQR'
  1420 |   tmpreg1 = ADCx->JSQR;
       |                 ^~
-../Core/Src/sccb_bus.c:17:2: warning: implicit declaration of function 'GPIO_SetBits' [-Wimplicit-function-declaration]
-   17 |  GPIO_SetBits(GPIOB,GPIO_PIN_11);
-      |  ^~~~~~~~~~~~
-../Core/Src/sccb_bus.c:18:20: error: 'GPIO_InitTypeDef' {aka 'struct <anonymous>'} has no member named 'GPIO_PIN'
-   18 |  GPIO_InitStructure.GPIO_PIN = GPIO_PIN_10;
-      |                    ^
 ../Core/Src/stm32l1xx_adc.c:1427:7: error: 'ADC_TypeDef' {aka 'struct <anonymous>'} has no member named 'JSQR'
  1427 |   ADCx->JSQR = tmpreg1;
       |       ^~
-../Core/Src/sccb_bus.c:19:20: error: 'GPIO_InitTypeDef' {aka 'struct <anonymous>'} has no member named 'GPIO_Mode'
-   19 |  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
-      |                    ^
 ../Core/Src/stm32l1xx_adc.c: In function 'ADC_ExternalTrigInjectedConvConfig':
 ../Core/Src/stm32l1xx_adc.c:1487:18: error: 'ADC_TypeDef' {aka 'struct <anonymous>'} has no member named 'CR2'; did you mean 'CR'?
  1487 |   tmpreg = ADCx->CR2;
@@ -881,9 +995,6 @@ make: *** [Core/Src/subdir.mk:136: Core/Src/delay.o] Error 1
  1493 |   ADCx->CR2 = tmpreg;
       |         ^~~
       |         CR
-../Core/Src/spi.c:32:2: warning: implicit declaration of function 'RCC_APB1PeriphClockCmd' [-Wimplicit-function-declaration]
-   32 |  RCC_APB1PeriphClockCmd(RCC_APB1Periph_SPI2,ENABLE);
-      |  ^~~~~~~~~~~~~~~~~~~~~~
 ../Core/Src/stm32l1xx_adc.c: In function 'ADC_ExternalTrigInjectedConvEdgeConfig':
 ../Core/Src/stm32l1xx_adc.c:1519:18: error: 'ADC_TypeDef' {aka 'struct <anonymous>'} has no member named 'CR2'; did you mean 'CR'?
  1519 |   tmpreg = ADCx->CR2;
@@ -898,12 +1009,18 @@ make: *** [Core/Src/subdir.mk:136: Core/Src/delay.o] Error 1
  1539 |   ADCx->CR2 |= (uint32_t)ADC_CR2_JSWSTART;
       |         ^~~
       |         CR
-../Core/Src/sccb_bus.c:19:33: error: 'GPIO_Mode_OUT' undeclared (first use in this function)
-   19 |  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
-      |                                 ^~~~~~~~~~~~~
-../Core/Src/spi.c:32:25: error: 'RCC_APB1Periph_SPI2' undeclared (first use in this function)
-   32 |  RCC_APB1PeriphClockCmd(RCC_APB1Periph_SPI2,ENABLE);
-      |                         ^~~~~~~~~~~~~~~~~~~
+../Core/Src/spi.c:50:35: error: 'SPI_DataSize_8b' undeclared (first use in this function)
+   50 |  SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b;
+      |                                   ^~~~~~~~~~~~~~~
+../Core/Src/spi.c:51:19: error: request for member 'SPI_CPOL' in something not a structure or union
+   51 |  SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low;
+      |                   ^
+../Core/Src/spi.c:51:31: error: 'SPI_CPOL_Low' undeclared (first use in this function)
+   51 |  SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low;
+      |                               ^~~~~~~~~~~~
+../Core/Src/spi.c:52:19: error: request for member 'SPI_CPHA' in something not a structure or union
+   52 |  SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge;
+      |                   ^
 ../Core/Src/stm32l1xx_adc.c:1539:26: error: 'ADC_CR2_JSWSTART' undeclared (first use in this function); did you mean 'ADC_CR_ADSTART'?
  1539 |   ADCx->CR2 |= (uint32_t)ADC_CR2_JSWSTART;
       |                          ^~~~~~~~~~~~~~~~
@@ -913,14 +1030,12 @@ make: *** [Core/Src/subdir.mk:136: Core/Src/delay.o] Error 1
  1555 |   if ((ADCx->CR2 & ADC_CR2_JSWSTART) != (uint32_t)RESET)
       |              ^~~
       |              CR
-In file included from ../Core/Src/sccb_bus.c:1:
-../Core/Src/sccb_bus.c: In function 'sccb_bus_start':
-../Core/Inc/sccb_bus.h:13:27: warning: implicit declaration of function 'GPIO_ResetBits' [-Wimplicit-function-declaration]
-   13 | #define SCCB_SID_L()      GPIO_ResetBits(GPIOB,GPIO_PIN_11)  //SDA H
-      |                           ^~~~~~~~~~~~~~
-../Core/Src/sccb_bus.c:34:5: note: in expansion of macro 'SCCB_SID_L'
-   34 |     SCCB_SID_L();
-      |     ^~~~~~~~~~
+../Core/Src/spi.c:52:31: error: 'SPI_CPHA_1Edge' undeclared (first use in this function)
+   52 |  SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge;
+      |                               ^~~~~~~~~~~~~~
+../Core/Src/spi.c:53:19: error: request for member 'SPI_NSS' in something not a structure or union
+   53 |  SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
+      |                   ^
 ../Core/Src/stm32l1xx_adc.c:1555:20: error: 'ADC_CR2_JSWSTART' undeclared (first use in this function); did you mean 'ADC_CR_ADSTART'?
  1555 |   if ((ADCx->CR2 & ADC_CR2_JSWSTART) != (uint32_t)RESET)
       |                    ^~~~~~~~~~~~~~~~
@@ -930,16 +1045,12 @@ In file included from ../Core/Src/sccb_bus.c:1:
  1587 |     ADCx->CR1 |= (uint32_t)ADC_CR1_JAUTO;
       |           ^~~
       |           CR
-../Core/Src/spi.c:33:24: error: 'RCC_AHBPeriph_DMA1' undeclared (first use in this function)
-   33 |  RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1,ENABLE);
-      |                        ^~~~~~~~~~~~~~~~~~
-../Core/Src/spi.c:34:20: error: 'GPIO_InitTypeDef' {aka 'struct <anonymous>'} has no member named 'GPIO_Pin'
-   34 |  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
-      |                    ^
-../Core/Src/spi.c:34:32: error: 'GPIO_Pin_13' undeclared (first use in this function); did you mean 'GPIO_PIN_13'?
-   34 |  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
-      |                                ^~~~~~~~~~~
-      |                                GPIO_PIN_13
+../Core/Src/spi.c:53:30: error: 'SPI_NSS_Soft' undeclared (first use in this function)
+   53 |  SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
+      |                              ^~~~~~~~~~~~
+../Core/Src/spi.c:54:19: error: request for member 'SPI_BaudRatePrescaler' in something not a structure or union
+   54 |  SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_8;
+      |                   ^
 ../Core/Src/stm32l1xx_adc.c:1587:28: error: 'ADC_CR1_JAUTO' undeclared (first use in this function); did you mean 'ADC_CFGR1_AUTOFF'?
  1587 |     ADCx->CR1 |= (uint32_t)ADC_CR1_JAUTO;
       |                            ^~~~~~~~~~~~~
@@ -948,29 +1059,11 @@ In file included from ../Core/Src/sccb_bus.c:1:
  1592 |     ADCx->CR1 &= (uint32_t)(~ADC_CR1_JAUTO);
       |           ^~~
       |           CR
-../Core/Src/spi.c:34:46: error: 'GPIO_Pin_14' undeclared (first use in this function); did you mean 'GPIO_PIN_14'?
-   34 |  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
-      |                                              ^~~~~~~~~~~
-      |                                              GPIO_PIN_14
 ../Core/Src/stm32l1xx_adc.c: In function 'ADC_InjectedDiscModeCmd':
 ../Core/Src/stm32l1xx_adc.c:1613:11: error: 'ADC_TypeDef' {aka 'struct <anonymous>'} has no member named 'CR1'; did you mean 'CR'?
  1613 |     ADCx->CR1 |= (uint32_t)ADC_CR1_JDISCEN;
       |           ^~~
       |           CR
-../Core/Src/sccb_bus.c: In function 'sccb_bus_write_byte':
-../Core/Inc/sccb_bus.h:18:26: warning: implicit declaration of function 'GPIO_ReadInputDataBit' [-Wimplicit-function-declaration]
-   18 | #define SCCB_SID_STATE   GPIO_ReadInputDataBit(GPIOB,GPIO_PIN_11)
-      |                          ^~~~~~~~~~~~~~~~~~~~~
-../Core/Src/sccb_bus.c:103:5: note: in expansion of macro 'SCCB_SID_STATE'
-  103 |  if(SCCB_SID_STATE)
-      |     ^~~~~~~~~~~~~~
-../Core/Src/spi.c:34:60: error: 'GPIO_Pin_15' undeclared (first use in this function); did you mean 'GPIO_PIN_15'?
-   34 |  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
-      |                                                            ^~~~~~~~~~~
-      |                                                            GPIO_PIN_15
-../Core/Src/spi.c:35:20: error: 'GPIO_InitTypeDef' {aka 'struct <anonymous>'} has no member named 'GPIO_Mode'
-   35 |  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
-      |                    ^
 ../Core/Src/stm32l1xx_adc.c:1613:28: error: 'ADC_CR1_JDISCEN' undeclared (first use in this function); did you mean 'ADC_CFGR1_DISCEN'?
  1613 |     ADCx->CR1 |= (uint32_t)ADC_CR1_JDISCEN;
       |                            ^~~~~~~~~~~~~~~
@@ -998,14 +1091,13 @@ In file included from ../Core/Src/sccb_bus.c:1:
  1823 |   ADCx->SR = ~(uint32_t)ADC_FLAG;
       |         ^~
       |         ISR
+../Core/Src/spi.c:54:44: error: 'SPI_BaudRatePrescaler_8' undeclared (first use in this function)
+   54 |  SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_8;
+      |                                            ^~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/spi.c:55:19: error: request for member 'SPI_FirstBit' in something not a structure or union
+   55 |  SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;
+      |                   ^
 ../Core/Src/stm32l1xx_adc.c: In function 'ADC_GetITStatus':
-../Core/Src/spi.c:35:33: error: 'GPIO_Mode_AF' undeclared (first use in this function)
-   35 |  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
-      |                                 ^~~~~~~~~~~~
-make: *** [Core/Src/subdir.mk:136: Core/Src/sccb_bus.o] Error 1
-../Core/Src/spi.c:36:20: error: 'GPIO_InitTypeDef' {aka 'struct <anonymous>'} has no member named 'GPIO_Speed'
-   36 |  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_40MHz;
-      |                    ^
 ../Core/Src/stm32l1xx_adc.c:1850:25: error: 'ADC_TypeDef' {aka 'struct <anonymous>'} has no member named 'CR1'; did you mean 'CR'?
  1850 |   enablestatus = (ADCx->CR1 & ((uint32_t)0x01 << (uint8_t)ADC_IT));
       |                         ^~~
@@ -1019,99 +1111,6 @@ make: *** [Core/Src/subdir.mk:136: Core/Src/sccb_bus.o] Error 1
  1890 |   ADCx->SR = ~(uint32_t)itmask;
       |         ^~
       |         ISR
-../Core/Src/spi.c:36:34: error: 'GPIO_Speed_40MHz' undeclared (first use in this function)
-   36 |  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_40MHz;
-      |                                  ^~~~~~~~~~~~~~~~
-../Core/Src/spi.c:37:2: warning: implicit declaration of function 'GPIO_Init'; did you mean 'SPI2_Init'? [-Wimplicit-function-declaration]
-   37 |  GPIO_Init(GPIOB, &GPIO_InitStructure);
-      |  ^~~~~~~~~
-      |  SPI2_Init
-make: *** [Core/Src/subdir.mk:136: Core/Src/stm32l1xx_adc.o] Error 1
-../Core/Src/spi.c:38:2: warning: implicit declaration of function 'GPIO_SetBits' [-Wimplicit-function-declaration]
-   38 |  GPIO_SetBits(GPIOB,GPIO_Pin_13|GPIO_Pin_14|GPIO_Pin_15);
-      |  ^~~~~~~~~~~~
-../Core/Src/spi.c:39:2: warning: implicit declaration of function 'GPIO_PinAFConfig' [-Wimplicit-function-declaration]
-   39 |  GPIO_PinAFConfig(GPIOB,GPIO_PinSource13,GPIO_AF_SPI2);
-      |  ^~~~~~~~~~~~~~~~
-../Core/Src/spi.c:39:25: error: 'GPIO_PinSource13' undeclared (first use in this function); did you mean 'GPIO_PinState'?
-   39 |  GPIO_PinAFConfig(GPIOB,GPIO_PinSource13,GPIO_AF_SPI2);
-      |                         ^~~~~~~~~~~~~~~~
-      |                         GPIO_PinState
-../Core/Src/spi.c:39:42: error: 'GPIO_AF_SPI2' undeclared (first use in this function); did you mean 'GPIO_AF0_SPI2'?
-   39 |  GPIO_PinAFConfig(GPIOB,GPIO_PinSource13,GPIO_AF_SPI2);
-      |                                          ^~~~~~~~~~~~
-      |                                          GPIO_AF0_SPI2
-../Core/Src/spi.c:40:25: error: 'GPIO_PinSource14' undeclared (first use in this function); did you mean 'GPIO_PinState'?
-   40 |  GPIO_PinAFConfig(GPIOB,GPIO_PinSource14,GPIO_AF_SPI2);
-      |                         ^~~~~~~~~~~~~~~~
-      |                         GPIO_PinState
-../Core/Src/spi.c:41:25: error: 'GPIO_PinSource15' undeclared (first use in this function); did you mean 'GPIO_PinState'?
-   41 |  GPIO_PinAFConfig(GPIOB,GPIO_PinSource15,GPIO_AF_SPI2);
-      |                         ^~~~~~~~~~~~~~~~
-      |                         GPIO_PinState
-../Core/Src/spi.c:43:20: error: 'GPIO_InitTypeDef' {aka 'struct <anonymous>'} has no member named 'GPIO_Pin'
-   43 |  GPIO_InitStructure.GPIO_Pin = CS_PIN;
-      |                    ^
-../Core/Src/spi.c:43:32: error: 'CS_PIN' undeclared (first use in this function)
-   43 |  GPIO_InitStructure.GPIO_Pin = CS_PIN;
-      |                                ^~~~~~
-../Core/Src/spi.c:44:20: error: 'GPIO_InitTypeDef' {aka 'struct <anonymous>'} has no member named 'GPIO_Mode'
-   44 |  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
-      |                    ^
-../Core/Src/spi.c:44:33: error: 'GPIO_Mode_OUT' undeclared (first use in this function)
-   44 |  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
-      |                                 ^~~~~~~~~~~~~
-../Core/Src/spi.c:45:20: error: 'GPIO_InitTypeDef' {aka 'struct <anonymous>'} has no member named 'GPIO_Speed'
-   45 |  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_40MHz;    ;
-      |                    ^
-../Core/Src/spi.c:46:13: error: 'CS_PORT' undeclared (first use in this function)
-   46 |  GPIO_Init( CS_PORT, &GPIO_InitStructure );
-      |             ^~~~~~~
-../Core/Src/spi.c:48:19: error: request for member 'SPI_Direction' in something not a structure or union
-   48 |  SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex;
-      |                   ^
-../Core/Src/spi.c:48:36: error: 'SPI_Direction_2Lines_FullDuplex' undeclared (first use in this function)
-   48 |  SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex;
-      |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/spi.c:49:19: error: request for member 'SPI_Mode' in something not a structure or union
-   49 |  SPI_InitStructure.SPI_Mode = SPI_Mode_Master;
-      |                   ^
-../Core/Src/spi.c:49:31: error: 'SPI_Mode_Master' undeclared (first use in this function)
-   49 |  SPI_InitStructure.SPI_Mode = SPI_Mode_Master;
-      |                               ^~~~~~~~~~~~~~~
-../Core/Src/spi.c:50:19: error: request for member 'SPI_DataSize' in something not a structure or union
-   50 |  SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b;
-      |                   ^
-../Core/Src/spi.c:50:35: error: 'SPI_DataSize_8b' undeclared (first use in this function)
-   50 |  SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b;
-      |                                   ^~~~~~~~~~~~~~~
-../Core/Src/spi.c:51:19: error: request for member 'SPI_CPOL' in something not a structure or union
-   51 |  SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low;
-      |                   ^
-../Core/Src/spi.c:51:31: error: 'SPI_CPOL_Low' undeclared (first use in this function)
-   51 |  SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low;
-      |                               ^~~~~~~~~~~~
-../Core/Src/spi.c:52:19: error: request for member 'SPI_CPHA' in something not a structure or union
-   52 |  SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge;
-      |                   ^
-../Core/Src/spi.c:52:31: error: 'SPI_CPHA_1Edge' undeclared (first use in this function)
-   52 |  SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge;
-      |                               ^~~~~~~~~~~~~~
-../Core/Src/spi.c:53:19: error: request for member 'SPI_NSS' in something not a structure or union
-   53 |  SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
-      |                   ^
-../Core/Src/spi.c:53:30: error: 'SPI_NSS_Soft' undeclared (first use in this function)
-   53 |  SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
-      |                              ^~~~~~~~~~~~
-../Core/Src/spi.c:54:19: error: request for member 'SPI_BaudRatePrescaler' in something not a structure or union
-   54 |  SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_8;
-      |                   ^
-../Core/Src/spi.c:54:44: error: 'SPI_BaudRatePrescaler_8' undeclared (first use in this function)
-   54 |  SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_8;
-      |                                            ^~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/spi.c:55:19: error: request for member 'SPI_FirstBit' in something not a structure or union
-   55 |  SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;
-      |                   ^
 ../Core/Src/spi.c:55:35: error: 'SPI_FirstBit_MSB' undeclared (first use in this function)
    55 |  SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;
       |                                   ^~~~~~~~~~~~~~~~
@@ -1122,6 +1121,7 @@ make: *** [Core/Src/subdir.mk:136: Core/Src/stm32l1xx_adc.o] Error 1
    57 |  SPI_Init(SPI2, &SPI_InitStructure);
       |  ^~~~~~~~
       |  SPI2_Init
+make: *** [Core/Src/subdir.mk:136: Core/Src/stm32l1xx_adc.o] Error 1
 ../Core/Src/spi.c:58:2: warning: implicit declaration of function 'SPI_Cmd' [-Wimplicit-function-declaration]
    58 |  SPI_Cmd(SPI2, ENABLE);
       |  ^~~~~~~
@@ -1321,5 +1321,5 @@ make: *** [Core/Src/subdir.mk:136: Core/Src/stm32l1xx_adc.o] Error 1
 make: *** [Core/Src/subdir.mk:136: Core/Src/spi.o] Error 1
 "make -j8 all" terminated with exit code 2. Build might be incomplete.
 
-10:48:15 Build Failed. 216 errors, 62 warnings. (took 1s.626ms)
+13:20:13 Build Failed. 216 errors, 62 warnings. (took 1s.502ms)
 

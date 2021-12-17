@@ -89,8 +89,6 @@ void Error_Handler(void);
 #define ePD1_BUSY_GPIO_Port GPIOA
 #define USART_TX_Pin GPIO_PIN_9
 #define USART_TX_GPIO_Port GPIOA
-#define USART_RX_Pin GPIO_PIN_10
-#define USART_RX_GPIO_Port GPIOA
 #define USB1_DM_Pin GPIO_PIN_11
 #define USB1_DM_GPIO_Port GPIOA
 #define USB1_DP_Pin GPIO_PIN_12

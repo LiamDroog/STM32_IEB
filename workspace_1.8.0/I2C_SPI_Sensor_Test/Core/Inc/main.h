@@ -32,6 +32,7 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 //#include "arducam_methods.h"
+//#include "interface_methods.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

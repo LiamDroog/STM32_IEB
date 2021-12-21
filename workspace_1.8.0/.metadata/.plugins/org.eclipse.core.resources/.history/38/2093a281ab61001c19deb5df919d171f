@@ -1,0 +1,14 @@
+/*
+ * interface_methods.h
+ *
+ *  Created on: Dec. 20, 2021
+ *      Author: Liam Droog
+ */
+
+#ifndef INC_INTERFACE_METHODS_H_
+#define INC_INTERFACE_METHODS_H_
+#include "stm32l0xx_hal.h"
+
+
+
+#endif /* INC_INTERFACE_METHODS_H_ */

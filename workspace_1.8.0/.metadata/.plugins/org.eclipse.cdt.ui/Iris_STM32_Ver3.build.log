@@ -1,0 +1,20 @@
+11:12:52 **** Incremental Build of configuration Debug for project Iris_STM32_Ver3 ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L071xx -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Iris_STM32_Ver3.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\Liam\Documents\GitHub\STM32_IEB\workspace_1.8.0\Iris_STM32_Ver3\STM32L071C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Iris_STM32_Ver3.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Iris_STM32_Ver3.elf
+ 
+arm-none-eabi-size   Iris_STM32_Ver3.elf 
+arm-none-eabi-objdump -h -S  Iris_STM32_Ver3.elf  > "Iris_STM32_Ver3.list"
+arm-none-eabi-objcopy  -O binary  Iris_STM32_Ver3.elf  "Iris_STM32_Ver3.bin"
+   text	   data	    bss	    dec	    hex	filename
+  15156	     20	   2108	  17284	   4384	Iris_STM32_Ver3.elf
+Finished building: default.size.stdout
+ 
+Finished building: Iris_STM32_Ver3.bin
+ 
+Finished building: Iris_STM32_Ver3.list
+ 
+
+11:12:53 Build Finished. 0 errors, 0 warnings. (took 922ms)
+

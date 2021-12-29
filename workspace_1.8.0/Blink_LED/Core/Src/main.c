@@ -26,7 +26,11 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+#define dot_delay_ms 100
+#define dash_delay_ms 300
+#define word_delay_ms 700
+#define letter_delay_ms 300
+#define s_delay_ms 100
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -53,7 +57,115 @@ static void MX_GPIO_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+/**
+  * @brief LED_1 Test Function
+  * @param None
+  * @retval None
+  */
+void LED_1_test(void){
 
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(dash_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay(s_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(dot_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay(s_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(dot_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay(letter_delay_ms);
+
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(dash_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay(s_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(dash_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay(s_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(dash_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay(letter_delay_ms);
+
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(dash_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay(s_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(dot_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay(letter_delay_ms);
+
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(dash_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay(word_delay_ms);
+
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(dot_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay(s_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(dash_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay(s_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(dash_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay(s_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(dot_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay(letter_delay_ms);
+
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(dot_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay(s_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(dash_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay(letter_delay_ms);
+
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(dash_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay(s_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(dot_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay(letter_delay_ms);
+
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(dot_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay(s_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(dot_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay(letter_delay_ms);
+
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(dash_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay(s_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(dot_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay(s_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(dash_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay(letter_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_SET);
+    HAL_Delay(dot_delay_ms);
+    HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_RESET);
+    HAL_Delay(word_delay_ms);
+	return;
+}
 /* USER CODE END 0 */
 
 /**
@@ -93,8 +205,7 @@ int main(void)
   while (1)
   {
 
-	  HAL_GPIO_TogglePin(G_LED_GPIO_Port, G_LED_Pin);
-	  HAL_Delay(100);
+	LED_1_test();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

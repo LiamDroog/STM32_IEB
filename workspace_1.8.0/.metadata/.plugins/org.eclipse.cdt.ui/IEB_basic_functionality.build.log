@@ -1,0 +1,10 @@
+12:21:09 **** Incremental Build of configuration Debug for project IEB_basic_functionality ****
+make -j16 all 
+arm-none-eabi-size   IEB_basic_functionality.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13212	     20	   2108	  15340	   3bec	IEB_basic_functionality.elf
+Finished building: default.size.stdout
+ 
+
+12:21:09 Build Finished. 0 errors, 0 warnings. (took 363ms)
+

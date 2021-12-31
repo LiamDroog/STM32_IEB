@@ -24,14 +24,15 @@
 /* USER CODE BEGIN Includes */
 
 //██████╗░██████╗░██╗███╗░░██╗████████╗███████╗
-//██╔══██╗██╔══██╗██║████╗░██║╚══██╔══╝██╔════╝
-//██████╔╝██████╔╝██║██╔██╗██║░░░██║░░░█████╗░░
-//██╔═══╝░██╔══██╗██║██║╚████║░░░██║░░░██╔══╝░░
+//██╔�?�?██╗██╔�?�?██╗██║████╗░██║╚�?�?██╔�?�?�?██╔�?�?�?�?�?
+//██████╔�?██████╔�?██║██╔██╗██║░░░██║░░░█████╗░░
+//██╔�?�?�?�?░██╔�?�?██╗██║██║╚████║░░░██║░░░██╔�?�?�?░░
 //██║░░░░░██║░░██║██║██║░╚███║░░░██║░░░██║░░░░░
-//╚═╝░░░░░╚═╝░░╚═╝╚═╝╚═╝░░╚══╝░░░╚═╝░░░╚═╝░░░░░
+//╚�?�?░░░░░╚�?�?░░╚�?�?╚�?�?╚�?�?░░╚�?�?�?░░░╚�?�?░░░╚�?�?░░░░░
 
 // Enable printf sending over USART for ez debug
 #include <printf.h>
+//#include <nand_m79a.h>
 // Currently set to transmit over USART1 (PA9 == TX; connect to USB-UART converter's RX.
 //										  PA10 == RX; connect to USB-UART converter's TX)
 // Change UART output by modifying lines 118 and 124 in printf.c to the desired HandleTypeDef
@@ -43,11 +44,11 @@
 
 //
 //░█████╗░██╗░░░██╗████████╗██████╗░██╗░░░██╗████████╗  ████████╗███████╗██████╗░███╗░░░███╗██╗███╗░░██╗░█████╗░██╗░░░░░
-//██╔══██╗██║░░░██║╚══██╔══╝██╔══██╗██║░░░██║╚══██╔══╝  ╚══██╔══╝██╔════╝██╔══██╗████╗░████║██║████╗░██║██╔══██╗██║░░░░░
-//██║░░██║██║░░░██║░░░██║░░░██████╔╝██║░░░██║░░░██║░░░  ░░░██║░░░█████╗░░██████╔╝██╔████╔██║██║██╔██╗██║███████║██║░░░░░
-//██║░░██║██║░░░██║░░░██║░░░██╔═══╝░██║░░░██║░░░██║░░░  ░░░██║░░░██╔══╝░░██╔══██╗██║╚██╔╝██║██║██║╚████║██╔══██║██║░░░░░
-//╚█████╔╝╚██████╔╝░░░██║░░░██║░░░░░╚██████╔╝░░░██║░░░  ░░░██║░░░███████╗██║░░██║██║░╚═╝░██║██║██║░╚███║██║░░██║███████╗
-//░╚════╝░░╚═════╝░░░░╚═╝░░░╚═╝░░░░░░╚═════╝░░░░╚═╝░░░  ░░░╚═╝░░░╚══════╝╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═╝╚═╝░░╚══╝╚═╝░░╚═╝╚══════╝
+//██╔�?�?██╗██║░░░██║╚�?�?██╔�?�?�?██╔�?�?██╗██║░░░██║╚�?�?██╔�?�?�?  ╚�?�?██╔�?�?�?██╔�?�?�?�?�?██╔�?�?██╗████╗░████║██║████╗░██║██╔�?�?██╗██║░░░░░
+//██║░░██║██║░░░██║░░░██║░░░██████╔�?██║░░░██║░░░██║░░░  ░░░██║░░░█████╗░░██████╔�?██╔████╔██║██║██╔██╗██║███████║██║░░░░░
+//██║░░██║██║░░░██║░░░██║░░░██╔�?�?�?�?░██║░░░██║░░░██║░░░  ░░░██║░░░██╔�?�?�?░░██╔�?�?██╗██║╚██╔�?██║██║██║╚████║██╔�?�?██║██║░░░░░
+//╚█████╔�?╚██████╔�?░░░██║░░░██║░░░░░╚██████╔�?░░░██║░░░  ░░░██║░░░███████╗██║░░██║██║░╚�?�?░██║██║██║░╚███║██║░░██║███████╗
+//░╚�?�?�?�?�?░░╚�?�?�?�?�?�?░░░░╚�?�?░░░╚�?�?░░░░░░╚�?�?�?�?�?�?░░░░╚�?�?░░░  ░░░╚�?�?░░░╚�?�?�?�?�?�?�?╚�?�?░░╚�?�?╚�?�?░░░░░╚�?�?╚�?�?╚�?�?░░╚�?�?�?╚�?�?░░╚�?�?╚�?�?�?�?�?�?�?
 
 /**Can use whatever terminal you like to open a com port to see the uart output. I perfer RealTerm (free, and lightweight)
  * Steps to setting it up:
@@ -71,11 +72,11 @@
  * 			- Click Open. It should open the com port, and you'll be able to see everything coming through as ansi text!
 //
 //██████╗░██╗░░░██╗███╗░░██╗███╗░░██╗██╗███╗░░██╗░██████╗░
-//██╔══██╗██║░░░██║████╗░██║████╗░██║██║████╗░██║██╔════╝░
-//██████╔╝██║░░░██║██╔██╗██║██╔██╗██║██║██╔██╗██║██║░░██╗░
-//██╔══██╗██║░░░██║██║╚████║██║╚████║██║██║╚████║██║░░╚██╗
-//██║░░██║╚██████╔╝██║░╚███║██║░╚███║██║██║░╚███║╚██████╔╝
-//╚═╝░░╚═╝░╚═════╝░╚═╝░░╚══╝╚═╝░░╚══╝╚═╝╚═╝░░╚══╝░╚═════╝░
+//██╔�?�?██╗██║░░░██║████╗░██║████╗░██║██║████╗░██║██╔�?�?�?�?�?░
+//██████╔�?██║░░░██║██╔██╗██║██╔██╗██║██║██╔██╗██║██║░░██╗░
+//██╔�?�?██╗██║░░░██║██║╚████║██║╚████║██║██║╚████║██║░░╚██╗
+//██║░░██║╚██████╔�?██║░╚███║██║░╚███║██║██║░╚███║╚██████╔�?
+//╚�?�?░░╚�?�?░╚�?�?�?�?�?�?░╚�?�?░░╚�?�?�?╚�?�?░░╚�?�?�?╚�?�?╚�?�?░░╚�?�?�?░╚�?�?�?�?�?�?░
  *
  * within the main function, comment / uncomment tests that you want to run within the while loop (~line 440 ish)
  */
@@ -382,7 +383,7 @@ void scan_i2c2(){
 		}
 	}
 	printf("I2C Scan Complete\r\n--------------------\r\n");
-
+	HAL_Delay(1000);
 }
 
 /**
@@ -391,8 +392,16 @@ void scan_i2c2(){
   * @retval None
   */
 void spi_flash_test(void){
+//	NANDReturnType result;
+//	result = NAND_Init(&hspi2);
+//	if (result == Ret_Success){
+//		printf("NAND Initialized successfully");
+//		return;
+//	}
+//	printf("NAND is borked :(");
 	return;
 }
+
 /* USER CODE END 0 */
 
 /**
@@ -443,7 +452,6 @@ int main(void)
 //	  LED_1_test();		// Blink Test LED 1
 //	  LED_2_test();		// Blink Test LED 2
 //	  scan_i2c2();		// Scan I2C2 (arducam sensors i2c bus) - Needs USART printf output to see results!
-
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -469,10 +477,7 @@ void SystemClock_Config(void)
   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLLMUL_4;
-  RCC_OscInitStruct.PLL.PLLDIV = RCC_PLLDIV_2;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -481,12 +486,12 @@ void SystemClock_Config(void)
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSE;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
   {
     Error_Handler();
   }
@@ -517,7 +522,7 @@ static void MX_I2C1_Init(void)
 
   /* USER CODE END I2C1_Init 1 */
   hi2c1.Instance = I2C1;
-  hi2c1.Init.Timing = 0x00707CBB;
+  hi2c1.Init.Timing = 0x00303D5B;
   hi2c1.Init.OwnAddress1 = 0;
   hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
   hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
@@ -563,7 +568,7 @@ static void MX_I2C2_Init(void)
 
   /* USER CODE END I2C2_Init 1 */
   hi2c2.Instance = I2C2;
-  hi2c2.Init.Timing = 0x00707CBB;
+  hi2c2.Init.Timing = 0x00303D5B;
   hi2c2.Init.OwnAddress1 = 0;
   hi2c2.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
   hi2c2.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;

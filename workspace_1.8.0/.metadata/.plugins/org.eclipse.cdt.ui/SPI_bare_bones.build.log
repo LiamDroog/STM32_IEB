@@ -1,10 +1,32 @@
-12:24:08 **** Incremental Build of configuration Debug for project SPI_bare_bones ****
-make -j8 all 
+14:36:23 **** Incremental Build of configuration Debug for project SPI_bare_bones ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L053xx -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:117:4: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+  117 |    printf("Working...\r\n");
+      |    ^~~~~~
+../Core/Src/main.c:117:4: warning: incompatible implicit declaration of built-in function 'printf'
+../Core/Src/main.c:21:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+   20 | #include "main.h"
+  +++ |+#include <stdio.h>
+   21 | 
+../Core/Src/main.c:114:11: warning: unused variable 'data' [-Wunused-variable]
+  114 |   uint8_t data = 0x05;
+      |           ^~~~
+arm-none-eabi-gcc -o "SPI_bare_bones.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\Liam\Documents\GitHub\STM32_IEB\workspace_1.8.0\SPI_bare_bones\STM32L053C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SPI_bare_bones.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SPI_bare_bones.elf
+ 
 arm-none-eabi-size   SPI_bare_bones.elf 
+arm-none-eabi-objdump -h -S  SPI_bare_bones.elf  > "SPI_bare_bones.list"
+arm-none-eabi-objcopy  -O binary  SPI_bare_bones.elf  "SPI_bare_bones.bin"
    text	   data	    bss	    dec	    hex	filename
-   6892	     20	   1660	   8572	   217c	SPI_bare_bones.elf
+   9784	    120	   1688	  11592	   2d48	SPI_bare_bones.elf
 Finished building: default.size.stdout
  
+Finished building: SPI_bare_bones.bin
+ 
+Finished building: SPI_bare_bones.list
+ 
 
-12:24:08 Build Finished. 0 errors, 0 warnings. (took 246ms)
+14:36:24 Build Finished. 0 errors, 3 warnings. (took 868ms)
 

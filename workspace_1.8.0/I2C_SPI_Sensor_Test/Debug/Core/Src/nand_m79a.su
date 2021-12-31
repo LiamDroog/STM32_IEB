@@ -1,0 +1,8 @@
+nand_m79a.c:85:16:NAND_Reset	16	static
+nand_m79a.c:112:16:NAND_Read_ID	32	static
+nand_m79a.c:51:16:NAND_Init	24	static
+nand_m79a.c:135:9:NAND_Read_Status_Reg	24	static
+nand_m79a.c:156:16:NAND_Check_Busy	8	static
+nand_m79a.c:183:16:__wait_until_ready	0	static
+nand_m79a.c:195:19:__write_enable	16	static
+nand_m79a.c:200:19:__write_disable	16	static

@@ -60,8 +60,8 @@ all: main-build
 main-build: SPI_bare_bones.elf secondary-outputs
 
 # Tool invocations
-SPI_bare_bones.elf: $(OBJS) $(USER_OBJS) C:\Users\Liam\ Droog\STM32CubeIDE\workspace_1.8.0\SPI_bare_bones\STM32L053C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "SPI_bare_bones.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\SPI_bare_bones\STM32L053C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SPI_bare_bones.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+SPI_bare_bones.elf: $(OBJS) $(USER_OBJS) C:\Users\Liam\Documents\GitHub\STM32_IEB\workspace_1.8.0\SPI_bare_bones\STM32L053C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "SPI_bare_bones.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"C:\Users\Liam\Documents\GitHub\STM32_IEB\workspace_1.8.0\SPI_bare_bones\STM32L053C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SPI_bare_bones.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

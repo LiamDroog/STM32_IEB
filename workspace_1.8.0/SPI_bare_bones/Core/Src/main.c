@@ -114,13 +114,7 @@ int main(void)
   uint8_t data = 0x05;
   while (1)
   {
-	  CS_LOW();
-	  HAL_Delay(200);
-//	  HAL_SPI_Init(&hspi1);
-//	  HAL_SPI_Transmit(&hspi1, &data, 2, 0xFFFF);
-//	  HAL_SPI_DeInit(&hspi1);
-	  HAL_Delay(200);
-	  CS_HIGH();
+	  printf("Working...\r\n");
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

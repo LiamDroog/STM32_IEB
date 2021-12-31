@@ -24,6 +24,7 @@
 // IMPORTANT: printf prints out over UART - Pins PA10, PA9! NEED A USB-SERIAL CONVERTER
 // AND TERMINAL TO SEE STATEMENTS!
 #include "printf.h"
+#include "NAND_m79a.h"
 //#include "interface_methods.h"
 //#include "arducam_methods.h"
 //#include "ArduCAM.h"
@@ -291,7 +292,7 @@ int main(void)
 //	HAL_I2C_IsDeviceReady(&hi2c2, (uint16_t)(0x78<<1), 2, 2);
 
 	CS_HIGH();
-	printf("Testing SPI Connection\r\n");
+//	printf("Testing SPI Connection\r\n");
 //	detect_ov5642();
   /* USER CODE END 2 */
 
@@ -305,9 +306,12 @@ int main(void)
 //	uint8_t spi_buf[2];
 
 	uint8_t data;
-    HAL_StatusTypeDef result;
+//    HAL_StatusTypeDef result;
     static const uint8_t addr = 0x3C;
     uint16_t reg = 0x300A;
+
+	NANDReturnType result;
+	char helloworld[] = "Hello World";
 
 	while (1)
 	{
@@ -318,12 +322,29 @@ int main(void)
 //		if (data != 0){
 //			printf("0x00: 0x%x\r\n", data);
 //		}
-		reg = 0x300A;
-		data = hi2c2_read_register(addr, reg);
-		printf("Addr: 0x%x: Reg: 0x%x: Data: 0x%x\r\n", (addr <<1) |0x01, reg, data);
+//		reg = 0x300A;
+//		data = hi2c2_read_register(addr, reg);
+//		printf("Addr: 0x%x: Reg: 0x%x: Data: 0x%x\r\n", (addr <<1) |0x01, reg, data);
 //		reg = 0x300B;
 //		data = hi2c2_read_register(addr, reg);
 //		printf("Addr: 0x%x: Reg: 0x%x: Data: 0x%x\r\n", (addr <<1) |0x01, reg, data);
+
+
+		result = NAND_Init(&hspi2);
+		if (result == Ret_Success){
+			printf("NAND Initialized successfully");
+			return;
+		}
+		printf("NAND is borked :(");
+
+//		  HAL_SPI_DeInit(&hspi2);
+//
+//		  HAL_SPI_Init(&hspi2);
+//		  HAL_SPI_Transmit(&hspi2, (uint8_t *)helloworld, sizeof(helloworld), HAL_MAX_DELAY);
+//		  HAL_SPI_DeInit(&hspi2);
+//
+//		  NAND_Init(&hspi2);
+
 
 		HAL_Delay(1000);
 
@@ -540,7 +561,7 @@ static void MX_SPI2_Init(void)
   hspi2.Instance = SPI2;
   hspi2.Init.Mode = SPI_MODE_MASTER;
   hspi2.Init.Direction = SPI_DIRECTION_2LINES;
-  hspi2.Init.DataSize = SPI_DATASIZE_16BIT;
+  hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
   hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi2.Init.NSS = SPI_NSS_SOFT;

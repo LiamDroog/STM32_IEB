@@ -1,20 +1,10 @@
-09:22:08 **** Incremental Build of configuration Debug for project IEB_basic_functionality ****
-make -j16 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L071xx -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "IEB_basic_functionality.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\Liam\Documents\GitHub\STM32_IEB\workspace_1.8.0\IEB_basic_functionality\STM32L071C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IEB_basic_functionality.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: IEB_basic_functionality.elf
- 
+14:59:33 **** Incremental Build of configuration Debug for project IEB_basic_functionality ****
+make -j8 all 
 arm-none-eabi-size   IEB_basic_functionality.elf 
-arm-none-eabi-objdump -h -S  IEB_basic_functionality.elf  > "IEB_basic_functionality.list"
-arm-none-eabi-objcopy  -O binary  IEB_basic_functionality.elf  "IEB_basic_functionality.bin"
    text	   data	    bss	    dec	    hex	filename
-  13212	     20	   2108	  15340	   3bec	IEB_basic_functionality.elf
+  29284	     20	   2116	  31420	   7abc	IEB_basic_functionality.elf
 Finished building: default.size.stdout
  
-Finished building: IEB_basic_functionality.bin
- 
-Finished building: IEB_basic_functionality.list
- 
 
-09:22:10 Build Finished. 0 errors, 0 warnings. (took 1s.874ms)
+14:59:34 Build Finished. 0 errors, 0 warnings. (took 309ms)
 

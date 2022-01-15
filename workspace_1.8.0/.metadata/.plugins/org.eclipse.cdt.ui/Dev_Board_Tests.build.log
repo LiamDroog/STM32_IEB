@@ -1,10 +1,60 @@
-11:49:47 **** Incremental Build of configuration Debug for project Dev_Board_Tests ****
-make -j8 all 
+20:22:51 **** Incremental Build of configuration Debug for project Dev_Board_Tests ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L053xx -c -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'scan_i2c2':
+../Core/Src/main.c:116:22: warning: variable 'result' set but not used [-Wunused-but-set-variable]
+  116 |    HAL_StatusTypeDef result;
+      |                      ^~~~~~
+../Core/Src/main.c: In function 'check_i2c_addr':
+../Core/Src/main.c:136:12: warning: character constant too long for its type
+  136 |     printf('Addr Found');
+      |            ^~~~~~~~~~~~
+../Core/Src/main.c:136:12: warning: passing argument 1 of 'printf_' makes pointer from integer without a cast [-Wint-conversion]
+In file included from ../Core/Src/main.c:24:
+../Core/Inc/printf.h:55:25: note: expected 'const char *' but argument is of type 'int'
+   55 | int printf_(const char *format, ...);
+      |             ~~~~~~~~~~~~^~~~~~
+../Core/Src/main.c: In function 'hi2c2_read_register':
+../Core/Src/main.c:146:97: warning: passing argument 5 of 'HAL_I2C_Mem_Read' from incompatible pointer type [-Wincompatible-pointer-types]
+  146 |       status = HAL_I2C_Mem_Read(&hi2c1, addr, (uint16_t)register_pointer, I2C_MEMADD_SIZE_8BIT, &return_value, 1, 100);
+      |                                                                                                 ^~~~~~~~~~~~~
+      |                                                                                                 |
+      |                                                                                                 uint16_t * {aka short unsigned int *}
+In file included from ../Core/Inc/stm32l0xx_hal_conf.h:236,
+                 from ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h:30,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h:633:66: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint16_t *' {aka 'short unsigned int *'}
+  633 |                                    uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                         ~~~~~~~~~^~~~~
+../Core/Src/main.c:143:25: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  143 |       HAL_StatusTypeDef status = HAL_OK;
+      |                         ^~~~~~
+../Core/Src/main.c: In function 'hi2c2_write_register':
+../Core/Src/main.c:162:25: warning: variable 'status' set but not used [-Wunused-but-set-variable]
+  162 |       HAL_StatusTypeDef status;
+      |                         ^~~~~~
+At top level:
+../Core/Src/main.c:134:8: warning: 'check_i2c_addr' defined but not used [-Wunused-function]
+  134 |   void check_i2c_addr(uint8_t addr){
+      |        ^~~~~~~~~~~~~~
+../Core/Src/main.c:115:8: warning: 'scan_i2c2' defined but not used [-Wunused-function]
+  115 |   void scan_i2c2(){
+      |        ^~~~~~~~~
+arm-none-eabi-gcc -o "Dev_Board_Tests.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\Liam\Documents\GitHub\STM32_IEB\workspace_1.8.0\Dev_Board_Tests\STM32L053C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Dev_Board_Tests.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Dev_Board_Tests.elf
+ 
 arm-none-eabi-size   Dev_Board_Tests.elf 
+arm-none-eabi-objdump -h -S  Dev_Board_Tests.elf  > "Dev_Board_Tests.list"
+arm-none-eabi-objcopy  -O binary  Dev_Board_Tests.elf  "Dev_Board_Tests.bin"
    text	   data	    bss	    dec	    hex	filename
-  17436	    120	   2936	  20492	   500c	Dev_Board_Tests.elf
+  31552	     20	   2916	  34488	   86b8	Dev_Board_Tests.elf
 Finished building: default.size.stdout
  
+Finished building: Dev_Board_Tests.bin
+ 
+Finished building: Dev_Board_Tests.list
+ 
 
-11:49:47 Build Finished. 0 errors, 0 warnings. (took 313ms)
+20:22:52 Build Finished. 0 errors, 8 warnings. (took 981ms)
 

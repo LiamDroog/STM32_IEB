@@ -60,8 +60,8 @@ all: main-build
 main-build: IEB_basic_functionality.elf secondary-outputs
 
 # Tool invocations
-IEB_basic_functionality.elf: $(OBJS) $(USER_OBJS) C:\Users\Liam\Documents\GitHub\STM32_IEB\workspace_1.8.0\IEB_basic_functionality\STM32L071C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "IEB_basic_functionality.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"C:\Users\Liam\Documents\GitHub\STM32_IEB\workspace_1.8.0\IEB_basic_functionality\STM32L071C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IEB_basic_functionality.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+IEB_basic_functionality.elf: $(OBJS) $(USER_OBJS) C:\Users\Liam\ Droog\STM32CubeIDE\workspace_1.8.0\IEB_basic_functionality\STM32L071C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "IEB_basic_functionality.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"C:\Users\Liam Droog\STM32CubeIDE\workspace_1.8.0\IEB_basic_functionality\STM32L071C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IEB_basic_functionality.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -24,11 +24,11 @@
 /* USER CODE BEGIN Includes */
 
 //██████╗░██████╗░██╗███╗░░██╗████████╗███████╗
-//██╔�?�?██╗██╔�?�?██╗██║████╗░██║╚�?�?██╔�?�?�?██╔�?�?�?�?�?
-//██████╔�?██████╔�?██║██╔██╗██║░░░██║░░░█████╗░░
-//██╔�?�?�?�?░██╔�?�?██╗██║██║╚████║░░░██║░░░██╔�?�?�?░░
+//██╔�?�?██╗██╔�?�?██╗██║████╗░██║╚�?�?██╔�?�?�?██╔�?�?�?�?�?
+//██████╔�?██████╔�?██║██╔██╗██║░░░██║░░░█████╗░░
+//██╔�?�?�?�?░██╔�?�?██╗██║██║╚████║░░░██║░░░██╔�?�?�?░░
 //██║░░░░░██║░░██║██║██║░╚███║░░░██║░░░██║░░░░░
-//╚�?�?░░░░░╚�?�?░░╚�?�?╚�?�?╚�?�?░░╚�?�?�?░░░╚�?�?░░░╚�?�?░░░░░
+//╚�?�?░░░░░╚�?�?░░╚�?�?╚�?�?╚�?�?░░╚�?�?�?░░░╚�?�?░░░╚�?�?░░░░░
 
 // Enable printf sending over USART for ez debug
 #include <printf.h>
@@ -44,11 +44,11 @@
 
 //
 //░█████╗░██╗░░░██╗████████╗██████╗░██╗░░░██╗████████╗  ████████╗███████╗██████╗░███╗░░░███╗██╗███╗░░██╗░█████╗░██╗░░░░░
-//██╔�?�?██╗██║░░░██║╚�?�?██╔�?�?�?██╔�?�?██╗██║░░░██║╚�?�?██╔�?�?�?  ╚�?�?██╔�?�?�?██╔�?�?�?�?�?██╔�?�?██╗████╗░████║██║████╗░██║██╔�?�?██╗██║░░░░░
-//██║░░██║██║░░░██║░░░██║░░░██████╔�?██║░░░██║░░░██║░░░  ░░░██║░░░█████╗░░██████╔�?██╔████╔██║██║██╔██╗██║███████║██║░░░░░
-//██║░░██║██║░░░██║░░░██║░░░██╔�?�?�?�?░██║░░░██║░░░██║░░░  ░░░██║░░░██╔�?�?�?░░██╔�?�?██╗██║╚██╔�?██║██║██║╚████║██╔�?�?██║██║░░░░░
-//╚█████╔�?╚██████╔�?░░░██║░░░██║░░░░░╚██████╔�?░░░██║░░░  ░░░██║░░░███████╗██║░░██║██║░╚�?�?░██║██║██║░╚███║██║░░██║███████╗
-//░╚�?�?�?�?�?░░╚�?�?�?�?�?�?░░░░╚�?�?░░░╚�?�?░░░░░░╚�?�?�?�?�?�?░░░░╚�?�?░░░  ░░░╚�?�?░░░╚�?�?�?�?�?�?�?╚�?�?░░╚�?�?╚�?�?░░░░░╚�?�?╚�?�?╚�?�?░░╚�?�?�?╚�?�?░░╚�?�?╚�?�?�?�?�?�?�?
+//██╔�?�?██╗██║░░░██║╚�?�?██╔�?�?�?██╔�?�?██╗██║░░░██║╚�?�?██╔�?�?�?  ╚�?�?██╔�?�?�?██╔�?�?�?�?�?██╔�?�?██╗████╗░████║██║████╗░██║██╔�?�?██╗██║░░░░░
+//██║░░██║██║░░░██║░░░██║░░░██████╔�?██║░░░██║░░░██║░░░  ░░░██║░░░█████╗░░██████╔�?██╔████╔██║██║██╔██╗██║███████║██║░░░░░
+//██║░░██║██║░░░██║░░░██║░░░██╔�?�?�?�?░██║░░░██║░░░██║░░░  ░░░██║░░░██╔�?�?�?░░██╔�?�?██╗██║╚██╔�?██║██║██║╚████║██╔�?�?██║██║░░░░░
+//╚█████╔�?╚██████╔�?░░░██║░░░██║░░░░░╚██████╔�?░░░██║░░░  ░░░██║░░░███████╗██║░░██║██║░╚�?�?░██║██║██║░╚███║██║░░██║███████╗
+//░╚�?�?�?�?�?░░╚�?�?�?�?�?�?░░░░╚�?�?░░░╚�?�?░░░░░░╚�?�?�?�?�?�?░░░░╚�?�?░░░  ░░░╚�?�?░░░╚�?�?�?�?�?�?�?╚�?�?░░╚�?�?╚�?�?░░░░░╚�?�?╚�?�?╚�?�?░░╚�?�?�?╚�?�?░░╚�?�?╚�?�?�?�?�?�?�?
 
 /**Can use whatever terminal you like to open a com port to see the uart output. I perfer RealTerm (free, and lightweight)
  * Steps to setting it up:
@@ -72,11 +72,11 @@
  * 			- Click Open. It should open the com port, and you'll be able to see everything coming through as ansi text!
 //
 //██████╗░██╗░░░██╗███╗░░██╗███╗░░██╗██╗███╗░░██╗░██████╗░
-//██╔�?�?██╗██║░░░██║████╗░██║████╗░██║██║████╗░██║██╔�?�?�?�?�?░
-//██████╔�?██║░░░██║██╔██╗██║██╔██╗██║██║██╔██╗██║██║░░██╗░
-//██╔�?�?██╗██║░░░██║██║╚████║██║╚████║██║██║╚████║██║░░╚██╗
-//██║░░██║╚██████╔�?██║░╚███║██║░╚███║██║██║░╚███║╚██████╔�?
-//╚�?�?░░╚�?�?░╚�?�?�?�?�?�?░╚�?�?░░╚�?�?�?╚�?�?░░╚�?�?�?╚�?�?╚�?�?░░╚�?�?�?░╚�?�?�?�?�?�?░
+//██╔�?�?██╗██║░░░██║████╗░██║████╗░██║██║████╗░██║██╔�?�?�?�?�?░
+//██████╔�?██║░░░██║██╔██╗██║██╔██╗██║██║██╔██╗██║██║░░██╗░
+//██╔�?�?██╗██║░░░██║██║╚████║██║╚████║██║██║╚████║██║░░╚██╗
+//██║░░██║╚██████╔�?██║░╚███║██║░╚███║██║██║░╚███║╚██████╔�?
+//╚�?�?░░╚�?�?░╚�?�?�?�?�?�?░╚�?�?░░╚�?�?�?╚�?�?░░╚�?�?�?╚�?�?╚�?�?░░╚�?�?�?░╚�?�?�?�?�?�?░
  *
  * within the main function, comment / uncomment tests that you want to run within the while loop (~line 440 ish)
  */
@@ -85,11 +85,11 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-#define dot_delay_ms 100
-#define dash_delay_ms 300
-#define word_delay_ms 700
-#define letter_delay_ms 300
-#define s_delay_ms 100
+#define dot_delay_ms 10
+#define dash_delay_ms 30
+#define word_delay_ms 70
+#define letter_delay_ms 30
+#define s_delay_ms 10
 
 
 /* USER CODE END PTD */
@@ -260,105 +260,105 @@ void LED_1_test(void){
   */
 void LED_2_test(void){
 
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_SET);
     HAL_Delay(dash_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_RESET);
     HAL_Delay(s_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_SET);
     HAL_Delay(dot_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_RESET);
     HAL_Delay(s_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_SET);
     HAL_Delay(dot_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_RESET);
     HAL_Delay(letter_delay_ms);
 
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_SET);
     HAL_Delay(dash_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_RESET);
     HAL_Delay(s_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_SET);
     HAL_Delay(dash_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_RESET);
     HAL_Delay(s_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_SET);
     HAL_Delay(dash_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_RESET);
     HAL_Delay(letter_delay_ms);
 
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_SET);
     HAL_Delay(dash_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_RESET);
     HAL_Delay(s_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_SET);
     HAL_Delay(dot_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_RESET);
     HAL_Delay(letter_delay_ms);
 
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_SET);
     HAL_Delay(dash_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_RESET);
     HAL_Delay(word_delay_ms);
 
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_SET);
     HAL_Delay(dot_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_RESET);
     HAL_Delay(s_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_SET);
     HAL_Delay(dash_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_RESET);
     HAL_Delay(s_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_SET);
     HAL_Delay(dash_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_RESET);
     HAL_Delay(s_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_SET);
     HAL_Delay(dot_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_RESET);
     HAL_Delay(letter_delay_ms);
 
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_SET);
     HAL_Delay(dot_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_RESET);
     HAL_Delay(s_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_SET);
     HAL_Delay(dash_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_RESET);
     HAL_Delay(letter_delay_ms);
 
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_SET);
     HAL_Delay(dash_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_RESET);
     HAL_Delay(s_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_SET);
     HAL_Delay(dot_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_RESET);
     HAL_Delay(letter_delay_ms);
 
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_SET);
     HAL_Delay(dot_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_RESET);
     HAL_Delay(s_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_SET);
     HAL_Delay(dot_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_RESET);
     HAL_Delay(letter_delay_ms);
 
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_SET);
     HAL_Delay(dash_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_RESET);
     HAL_Delay(s_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_SET);
     HAL_Delay(dot_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_RESET);
     HAL_Delay(s_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_SET);
     HAL_Delay(dash_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_RESET);
     HAL_Delay(letter_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_SET);
     HAL_Delay(dot_delay_ms);
-    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT1_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(TEST_OUT2_GPIO_Port, TEST_OUT2_Pin, GPIO_PIN_RESET);
     HAL_Delay(word_delay_ms);
 	return;
 }
@@ -402,6 +402,8 @@ void spi_flash_test(void){
 	return;
 }
 
+
+
 /* USER CODE END 0 */
 
 /**
@@ -420,7 +422,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+//  HAL_Delay(300);
   /* USER CODE END Init */
 
   /* Configure the system clock */

@@ -205,10 +205,8 @@ int main(void)
   while (1)
   {
 
-	HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_SET);
-	HAL_Delay(100);
-	HAL_GPIO_WritePin(G_LED_GPIO_Port, G_LED_Pin, GPIO_PIN_RESET);
-	HAL_Delay(100);    /* USER CODE END WHILE */
+	LED_1_test();
+    /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
   }

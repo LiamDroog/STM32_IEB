@@ -22,6 +22,9 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "printf.h"
+#include <nand_m79a.h>
+#include "OV5642_regs.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -46,7 +49,6 @@ UART_HandleTypeDef hlpuart1;
 UART_HandleTypeDef huart1;
 
 SPI_HandleTypeDef hspi1;
-SPI_HandleTypeDef hspi2;
 
 TSC_HandleTypeDef htsc;
 
@@ -61,7 +63,6 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_SPI1_Init(void);
-static void MX_SPI2_Init(void);
 static void MX_TSC_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_USB_PCD_Init(void);
@@ -73,6 +74,101 @@ static void MX_LPUART1_UART_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+HAL_StatusTypeDef ReadRegister(uint8_t addr, uint8_t *byte)
+{
+    HAL_StatusTypeDef hal_status;
+    uint8_t tx_data[2];
+    uint8_t rx_data[2];
+
+    tx_data[0] = addr;  // read operation
+    tx_data[1] = 0; 	// dummy byte for response
+
+    rx_data[0] = addr;
+    rx_data[1] = 0;
+
+    hal_status = HAL_SPI_TransmitReceive(&hspi1, tx_data, rx_data, 2, 10000);
+//    HAL_SPI_Transmit(&hspi2, tx_data, 2, 10000);
+//    HAL_Delay(.5);
+//    HAL_SPI_Receive(&hspi2, rx_data, 2, 10000);
+
+    if (hal_status == HAL_OK)
+    {
+        *byte = rx_data[1];    // response is in the second byte
+    }
+    return hal_status;
+}
+
+uint8_t hi2c1_read_register(uint8_t addr, uint16_t register_pointer)
+{
+    HAL_StatusTypeDef status = HAL_OK;
+    uint16_t return_value = 0;
+
+    status = HAL_I2C_Mem_Read(&hi2c1, addr, (uint16_t)register_pointer, I2C_MEMADD_SIZE_16BIT, &return_value, 1, 100);
+
+    /* Check the communication status */
+//      if(status != HAL_OK)
+//      {
+//          // Error handling, for example re-initialization of the I2C peripheral
+//      	printf("I2C read from 0x%x failed...\r\n", register_pointer );
+//      }
+//      else{
+//      	printf("I2C read from 0x%x was successful!\r\n", register_pointer );
+//      }
+    return return_value;
+}
+
+void hi2c1_write_register(uint8_t addr, uint16_t register_pointer, uint16_t register_value)
+{
+    HAL_StatusTypeDef status;
+    uint8_t dataBuffer[1];
+    dataBuffer[0] = register_value;
+    status = HAL_I2C_Mem_Write(&hi2c1, addr, (uint16_t)register_pointer, I2C_MEMADD_SIZE_16BIT, dataBuffer, 1, 100);
+
+//      /* Check the communication status */
+//      if(status != HAL_OK)
+//      {
+//          // Error handling, for example re-initialization of the I2C peripheral
+//      	printf("I2C write to 0x%x failed...\r\n", register_pointer );
+//      }
+//      else{
+//      	printf("I2C write was successful\r\n");
+//      }
+}
+
+
+uint8_t SPI_Write(uint8_t addr, uint8_t data){
+	HAL_SPI_Init(&hspi1);
+//	uint8_t txBuf[2] = {((addr << 1) ), data};
+	uint8_t txBuf[2] = {(addr | 0x80), data};
+
+	uint8_t status = (HAL_SPI_Transmit(&hspi1, txBuf, 2, HAL_MAX_DELAY) == HAL_OK);
+    HAL_SPI_DeInit(&hspi1);
+
+	return status;
+}
+
+uint8_t SPI_Read_Byte(uint8_t addr, uint8_t *data) {
+	HAL_SPI_Init(&hspi1);
+//	uint8_t dataBuffer[2] = {(addr << 1), 0x00};
+	uint8_t dataBuffer[2] = {(addr), 0x00};
+
+	uint8_t rxBuf[1];
+	rxBuf[0] = 0x00;
+//	uint8_t status = (HAL_SPI_TransmitReceive(&hspi1, dataBuffer, rxBuf, 3, HAL_MAX_DELAY) == HAL_OK);
+	HAL_SPI_Transmit(&hspi1, dataBuffer, 1, 10000);
+	uint8_t status = HAL_SPI_Receive(&hspi1, rxBuf, 1, 10000);
+	*data = rxBuf[0];
+    HAL_SPI_DeInit(&hspi1);
+
+	return status;
+}
+
+void I2C1_Program_Sensor(){
+	for (int i=0; i<sizeof(ov5642_2592x1944); i++){
+		printf("%d\r\n", i);
+	}
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -82,7 +178,8 @@ static void MX_LPUART1_UART_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+	const uint8_t CAM_READ = 0b00100000;
+	char spi_buf[20];
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -105,112 +202,66 @@ int main(void)
   MX_GPIO_Init();
   MX_I2C1_Init();
   MX_SPI1_Init();
-  MX_SPI2_Init();
   MX_TSC_Init();
   MX_USART1_UART_Init();
   MX_USB_PCD_Init();
   MX_LPUART1_UART_Init();
+  /* USER CODE BEGIN 2 */
 
-
-  void scan_i2c2(){
-  	HAL_StatusTypeDef result;
-  	uint8_t i =0;
-
-//  	printf("--------------------\r\n");
-//  	printf("Scanning IEB I2C2...\r\n");
-
-  	for (i=0; i<128; i++){
-  		result = HAL_I2C_IsDeviceReady(&hi2c1, (uint16_t)(i<<1), 2, 2);
-
-//  		if (result == HAL_OK){
-//  			printf("I2C address found: 0x%X\r\n", (uint16_t)(i<<1));
-//  		}
-  	}
-
-//  	printf("I2C Scan Complete\r\n--------------------\r\n");
-  	HAL_Delay(1000);
-  }
-
-  void check_i2c_addr(uint8_t addr){
-	  if (HAL_I2C_IsDeviceReady(&hi2c1, (addr<<1), 2, 2) == HAL_OK){
-		  printf('Addr Found');
-		  return;
-	  }
-  }
-
-  uint8_t hi2c2_read_register(uint8_t addr, uint16_t register_pointer)
-  {
-      HAL_StatusTypeDef status = HAL_OK;
-      uint16_t return_value = 0;
-
-      status = HAL_I2C_Mem_Read(&hi2c1, addr, (uint16_t)register_pointer, I2C_MEMADD_SIZE_16BIT, &return_value, 1, 100);
-
-      /* Check the communication status */
-//      if(status != HAL_OK)
-//      {
-//          // Error handling, for example re-initialization of the I2C peripheral
-//      	printf("I2C read from 0x%x failed...\r\n", register_pointer );
-//      }
-//      else{
-//      	printf("I2C read from 0x%x was successful!\r\n", register_pointer );
-//      }
-      return return_value;
-  }
-
-  void hi2c2_write_register(uint8_t addr, uint16_t register_pointer, uint16_t register_value)
-  {
-      HAL_StatusTypeDef status;
-      uint8_t dataBuffer[1];
-      dataBuffer[0] = register_value;
-      status = HAL_I2C_Mem_Write(&hi2c1, addr, (uint16_t)register_pointer, I2C_MEMADD_SIZE_16BIT, dataBuffer, 1, 100);
-
-//      /* Check the communication status */
-//      if(status != HAL_OK)
-//      {
-//          // Error handling, for example re-initialization of the I2C peripheral
-//      	printf("I2C write to 0x%x failed...\r\n", register_pointer );
-//      }
-//      else{
-//      	printf("I2C write was successful\r\n");
-//      }
-  }
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  	uint8_t rtn;
-//	printf("Reading 0x3004 from 0x79; expecting 0xDF\r\n");
-//	rtn = hi2c2_read_register(0x79, 0X3004);
-//	printf("Read 0x%X from 0x3004 at 0x79\r\n", rtn);
+//  	uint8_t rtn;
+//  	printf("Reading 0x3801 from 0x3C; expecting 0xA8\r\n");
+//  	rtn = hi2c2_read_register(0x3C << 1, 0X3801);
+//  	printf("Read 0x%X from 0x3801 at 0x3C\r\n", rtn);
 //
+//  	printf("\r\nWriting 0xa8 to 0x3801 on 0x3C\r\n");
+//  	hi2c2_write_register(0x3C << 1, 0x3801, 0xA8);
 //
-//	printf("Reading 0x300B from 0x79; expecting 0x42\r\n");
-//	rtn = hi2c2_read_register(0x79, 0X300B);
-//	printf("Read 0x%X from 0x3005 at 0x79\r\n", rtn);
-//
-//	printf("Reading 0x300A from 0x79; expecting 0x56\r\n");
-//	rtn = hi2c2_read_register(0x79, 0X300A);
-//	printf("Read 0x%X from 0x300A at 0x79\r\n", rtn);
-//
-//	  printf("Reading 0x3801 from 0x79; expecting 0xB4\r\n");
-//	  rtn = hi2c2_read_register(0x79, 0X3801);
-//	  printf("Read 0x%X from 0x3801 at 0x79\r\n", rtn);
+//  	printf("Reading 0x3801 from 0x3C; expecting 0xA8\r\n");
+//  	rtn = hi2c2_read_register(0x3C << 1, 0X3801);
+//  	printf("Read 0x%X from 0x3801 at 0x3C\r\n", rtn);
+  	I2C1_Program_Sensor();
+  	uint8_t rxbuf[1];
+  	uint8_t addr = 0x40;
+  	HAL_StatusTypeDef result;
 
-	  printf("\r\nWriting 0xa8 to 0x3801 on 0x78\r\n");
-	  hi2c2_write_register(0x3C << 1, 0x3801, (0xA8));
-
-	  printf("Reading 0x3801 from 0x79; expecting 0xA8\r\n");
-	  rtn = hi2c2_read_register(0x3C << 1, 0X3801);
-	  printf("Read 0x%X from 0x3801 at 0x79\r\n", rtn);
+  	uint8_t vid,pid;
+  	vid = hi2c1_read_register(0x3C << 1, 0x300A);
+  	pid = hi2c1_read_register(0x3C << 1, 0x300B);
+  	if ((vid == 0x56) && (pid == 0x42))
+  			{
+  				printf("OV5642 detected.\r\n");
+  			}
 
 	while (1)
   {
+//		HAL_SPI_Init(&hspi1);
+
+//		SPI_Write(0x00, 0x55);
+		SPI_Read_Byte(0x00, rxbuf);
+
+//		HAL_SPI_DeInit(&hspi1);
+
+	  	SPI_Read_Byte(0x46, rxbuf); // 0x46 -> 0x8c
+	  	SPI_Read_Byte(0x8e, rxbuf); // 0x47 -> 0x8e
+//	  	SPI_Read_Byte(0x48, rxbuf); // 0x48 -> 0x90
+//	  	SPI_Read_Byte(0x46, rxbuf);
+//
+//	    printf("Recieved 0x%x", rxbuf[0]);
+
+//	  	vid = hi2c1_read_register(0x3C << 1, 0x300A);
+//	  	pid = hi2c1_read_register(0x3C << 1, 0x300B);
+//	  	if ((vid == 0x56) && (pid == 0x42))
+//	  			{
+//	  				printf("OV5642 detected.\r\n");
+//	  			}
+	  	HAL_Delay(100);
 
     /* USER CODE END WHILE */
-//	  check_i2c_addr(0x3C);
 
-
-	   HAL_Delay(2000);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -401,12 +452,12 @@ static void MX_SPI1_Init(void)
   /* SPI1 parameter configuration*/
   hspi1.Instance = SPI1;
   hspi1.Init.Mode = SPI_MODE_MASTER;
-  hspi1.Init.Direction = SPI_DIRECTION_1LINE;
+  hspi1.Init.Direction = SPI_DIRECTION_2LINES;
   hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
-  hspi1.Init.NSS = SPI_NSS_HARD_INPUT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi1.Init.NSS = SPI_NSS_HARD_OUTPUT;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_256;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -418,44 +469,6 @@ static void MX_SPI1_Init(void)
   /* USER CODE BEGIN SPI1_Init 2 */
 
   /* USER CODE END SPI1_Init 2 */
-
-}
-
-/**
-  * @brief SPI2 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_SPI2_Init(void)
-{
-
-  /* USER CODE BEGIN SPI2_Init 0 */
-
-  /* USER CODE END SPI2_Init 0 */
-
-  /* USER CODE BEGIN SPI2_Init 1 */
-
-  /* USER CODE END SPI2_Init 1 */
-  /* SPI2 parameter configuration*/
-  hspi2.Instance = SPI2;
-  hspi2.Init.Mode = SPI_MODE_MASTER;
-  hspi2.Init.Direction = SPI_DIRECTION_2LINES;
-  hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
-  hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
-  hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
-  hspi2.Init.NSS = SPI_NSS_HARD_INPUT;
-  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
-  hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
-  hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
-  hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
-  hspi2.Init.CRCPolynomial = 7;
-  if (HAL_SPI_Init(&hspi2) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN SPI2_Init 2 */
-
-  /* USER CODE END SPI2_Init 2 */
 
 }
 
@@ -552,7 +565,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(LD_R_GPIO_Port, LD_R_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, ePD1_RESET_Pin|LED_GN_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(ePD1_RESET_GPIO_Port, ePD1_RESET_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : MFX_IRQ_OUT_Pin */
   GPIO_InitStruct.Pin = MFX_IRQ_OUT_Pin;
@@ -579,11 +592,27 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LD_R_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : ePD1_RESET_Pin LED_GN_Pin */
-  GPIO_InitStruct.Pin = ePD1_RESET_Pin|LED_GN_Pin;
+  /*Configure GPIO pin : ePD1_RESET_Pin */
+  GPIO_InitStruct.Pin = ePD1_RESET_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(ePD1_RESET_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PB12 */
+  GPIO_InitStruct.Pin = GPIO_PIN_12;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  GPIO_InitStruct.Alternate = GPIO_AF0_SPI2;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : NFC_SCK_Pin NFC_MISO_Pin PB15 */
+  GPIO_InitStruct.Pin = NFC_SCK_Pin|NFC_MISO_Pin|GPIO_PIN_15;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  GPIO_InitStruct.Alternate = GPIO_AF0_SPI2;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 }

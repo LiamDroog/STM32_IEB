@@ -1,0 +1,8 @@
+main.c:61:9:SPI_Write	32	static
+main.c:72:9:SPI_Read_Byte	40	static
+main.c:93:5:main	16	static
+main.c:142:6:SystemClock_Config	112	static
+main.c:191:13:MX_SPI1_Init	8	static
+main.c:229:13:MX_USART2_UART_Init	8	static
+main.c:264:13:MX_GPIO_Init	48	static
+main.c:293:6:Error_Handler	8	static,ignoring_inline_asm

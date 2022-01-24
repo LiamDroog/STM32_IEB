@@ -32,7 +32,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pcd.h \
  ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_ll_usb.h \
  ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pcd_ex.h \
- ../Core/Inc/printf.h
+ ../Core/Inc/printf.h ../Core/Inc/nand_m79a.h ../Core/Inc/OV5642_regs.h
 
 ../Core/Inc/main.h:
 
@@ -103,3 +103,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pcd_ex.h:
 
 ../Core/Inc/printf.h:
+
+../Core/Inc/nand_m79a.h:
+
+../Core/Inc/OV5642_regs.h:

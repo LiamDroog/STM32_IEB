@@ -1,0 +1,13 @@
+/*
+ * OV5642_regs.h
+ *
+ *  Created on: Jan 20, 2022
+ *      Author: Liam
+ */
+
+#ifndef INC_OV5642_REGS_H_
+#define INC_OV5642_REGS_H_
+
+
+
+#endif /* INC_OV5642_REGS_H_ */
